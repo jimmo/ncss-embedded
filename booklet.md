@@ -1,14 +1,5 @@
 # NCSS Embedded Stream
 
-## Chapter 1 -- Intro to micro:bit
-
-![Taylor Series](http://mathurl.com/yaay9fvf.png)
-
-```python
-from microbit import *
-display.show(Image.HEART)
-```
-
-### But what is a voltage divider, really?
-
-Two volts enter, one volt leaves... THUNDER OHM!
+1. [Chapter 1 - Introduction](chapters/1-intro.md)
+2. ?
+99. [Chapter Z - Learn more](chapters/Z-learn-more.md)
