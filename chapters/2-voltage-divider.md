@@ -8,7 +8,7 @@ Given a voltage input, it produces a fraction of the input as the output.
 
 The equation for the output is:
 
-<img src="https://latex.codecogs.com/gif.latex?V_{out}&space;=&space;V_{in}\frac{R_1}{R_1&space;&plus;&space;R_2}" title="Voltage divider equation" />
+<img src="https://latex.codecogs.com/gif.latex?V_{out}&space;=&space;V_{in}\frac{R_2}{R_1&space;&plus;&space;R_2}" title="Voltage divider equation" />
 
 The voltage divider produces a smaller voltage using the ratio of resistors, which we can calculate from the equation above. 
 
