@@ -1,16 +1,5 @@
 ## Chapter 3 -- micro:bit basics
 
-* display
-  * show
-  * scroll
-* print
-* REPL
-* while True
-* if
-* buttons
-* music
-* for
-
 ### Images and sleeping
 
 Let's turn on the display!
@@ -27,9 +16,9 @@ What's happening here? The first line is to `import` the microbit module, which 
 
 There are a long list of in-built images [on the microbit documentation](https://microbit-micropython.readthedocs.io/en/latest/tutorials/images.html).
 
-To show multiple images, we need to `sleep` in between instructions, becasue the micro:bit runs so fast that Images will flash faster than our eyes can see them if we don't do this.
+To show multiple images, we need to `sleep` in between instructions, because the micro:bit runs so fast that the images will flash faster than our eyes can see them if we don't do this.
 
-The parameter of `sleep` is in *milliseconds*, so `sleep(1000)` means *sleep for 1 second*. So someone's life story told in 2 seconds might look like this: 
+The parameter of `sleep` is in *milliseconds*, so `sleep(1000)` means *sleep for 1 second*. So someone's life story told in 2 seconds might look like this:
 
 ```python
 from microbit import *
@@ -116,7 +105,7 @@ while True:
   sleep(500)
 ```
 
-The `while` loop is what does this. It comes in the form `while condition:`, why the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues. 
+The `while` loop is what does this. It comes in the form `while condition:`, why the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues.
 
 By typing
 ```python
@@ -141,7 +130,7 @@ while True:
   # code keeps executing if
 ```
 
-Notice the use of the `if` statement. Like the `while` loop, `if` checks if a condition is `True` or `False`. 
+Notice the use of the `if` statement. Like the `while` loop, `if` checks if a condition is `True` or `False`.
 
 So if `button_a` is pressed down, the function `button_a.is_pressed()` returns `True`.
 
@@ -175,9 +164,9 @@ while True:
 
 ### was it pressed?
 
-Because the microbit moves so fast, often it's better to use `was_pressed()`. 
+Because the microbit moves so fast, often it's better to use `was_pressed()`.
 
-`was_pressed` means between this time and the last time we checked, was the button pressed? The button needs to be released before `was_pressed` will return `True` again. 
+`was_pressed` means between this time and the last time we checked, was the button pressed? The button needs to be released before `was_pressed` will return `True` again.
 
 So `was_pressed` makes the buttons work a bit more like buttons how we 'expect' them to work.
 
@@ -190,7 +179,7 @@ if button_a.was_pressed():
 
 ### Working with the display
 
-The `display` module does more than just setting pre-built images. We can programmatically do this with the `display.set_pixel` function. 
+The `display` module does more than just setting pre-built images. We can programmatically do this with the `display.set_pixel` function.
 
 The display works on a grid with (0, 0) at the top left:
 
@@ -203,7 +192,7 @@ display.set_pixel(2, 2, 9)
 
 Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 2) to full brightness.
 
-### Working with loops
+### Writing for loops
 
 Some times the images we want don't exist, so we can set the pixel by writing a `for` loop.
 
@@ -230,4 +219,3 @@ display.set_pixel(4, 4, 9)
 ```
 
 that's pretty boring to write. So use a `for` loop instead.
-
