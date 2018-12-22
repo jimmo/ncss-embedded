@@ -52,3 +52,7 @@ while True:
   else:
     pin1.write_digital(0)  # turn it off
 ```
+
+### Hang on, how do I know what resistor to use?
+
+This comes from knowing the *range of values* for your sensor (it will be in the datasheet). So if your sensor ranges from 1 kΩ to 10 kΩ, pick a static resistor around the middle, like 5.6 kΩ. This will mean the range of output values is large.
