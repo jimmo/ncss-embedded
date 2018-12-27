@@ -65,7 +65,7 @@ pinC.write_analog(512)
 pinD.write_analog(512)
 ```
 
-#### Line following
+#### Line sensing
 
 The line sensors are connected to `pinA` and `pinB`. They will read `HIGH` or `LOW` depending on whether the surface below them is light or dark.
 
