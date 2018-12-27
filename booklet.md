@@ -7,5 +7,6 @@
 10. [Chapter 10 - bit:bot Intro](chapters/10-bitbot.md)
 11. [Chapter 11 - Neopixels](chapters/11-neopixels.md)
 12. [Chapter 12 - Line Following & Control](chapters/12-line-following.md)
+13. [Chapter 13 - Distance sensing](chapters/13-distance-sensor.md)
 98. ?
 99. [Chapter Z - Learn more](chapters/Z-learn-more.md)
