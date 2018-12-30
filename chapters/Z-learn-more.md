@@ -2,8 +2,13 @@
 
 ### Websites / Tutorials
 * [All About Circuits](https://www.allaboutcircuits.com/)
+* [Contextual Electronics](https://contextualelectronics.com/)
+* [Hackaday](https://hackaday.com/)
+* [Megaprocessor](http://megaprocessor.com/)
+* [OSH Park Blog](http://blog.oshpark.com/)
+* [Visual 6502](http://visual6502.org/)
 
-### Youtube
+### Youtube Channels
 
 * [Ben Eater](https://www.youtube.com/channel/UCS0N5baNlQWJCUrhCEo8WlA)
 * [Chris Gammell](https://www.youtube.com/channel/UCsBkR5o25dIPeSmwVcU8YOQ)
@@ -21,6 +26,13 @@
 * [The Signal Path](https://www.youtube.com/channel/UCKxRARSpahF1Mt-2vbPug-g)
 * [w2aew](https://www.youtube.com/channel/UCiqd3GLTluk2s_IBt7p_LjA)
 
+### Videos
+
+* [The Atari 2600 Video Computer System: The Ultimate Talk](https://www.youtube.com/watch?v=qvpwf50a48E)
+* [The Ultimate Apollo Guidance Computer Talk](https://www.youtube.com/watch?v=xx7Lfh5SKUQ)
+* [The Ultimate Commodore 64 Talk](https://www.youtube.com/watch?v=ZsRRCnque2E)
+* [The Ultimate Game Boy Talk](https://www.youtube.com/watch?v=HyzD8pNlpwI)
+
 ### Podcasts
 
 * [The Amp Hour](https://theamphour.com/)
@@ -28,7 +40,7 @@
 
 ## Mathematics
 
-### Youtube
+### Youtube Channels
 
 * [3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw)
 * [Mathologer](https://www.youtube.com/channel/UC1_uAIS3r8Vu6JjXWvastJg)
@@ -38,12 +50,12 @@
 
 ### Podcasts
 
-* The Numberphile Podcast
-* Ben Ben Blue
+* [The Numberphile Podcast](https://www.numberphile.com/podcast/)
+* [Ben Ben Blue](https://www.benbenandblue.com/)
 
 ## Other
 
-### Youtube
+### Youtube Channels
 
 * [Acapella Science](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw)
 * [Applied Science](https://www.youtube.com/channel/UCivA7_KLKWo43tFcCkFvydw)
@@ -75,7 +87,5 @@
 
 ### Podcasts
 
-* Ask a Spaceman
-* Dr Karl on Triple J
-* Dr Karl Great Moments in Science
-* Sleek Geeks
+* [Ask a Spaceman](http://www.pmsutter.com/shows/askaspaceman/)
+* [Dr Karl (various)](https://drkarl.com/podcasts/)
