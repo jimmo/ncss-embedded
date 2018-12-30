@@ -14,7 +14,7 @@ But how do we want know what the voltage is at the `pin` when the switch is open
 
 We don't! The point is *floating*, which means we can't tell what the voltage at the point will be. When something is supposed to be either "on" or "off", floating is the opposite of what we want, because we have no idea what it is.
 
-So what we do is use a resistor to *pull* the voltage to a known state when it would be floating. This is a pull **up** resistor circuit:
+So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything. This is a pull **up** resistor circuit:
 
 ### pull up resistor image here
 
