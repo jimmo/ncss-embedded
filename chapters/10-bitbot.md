@@ -157,13 +157,13 @@ np.show()
 
 #### Buzzer
 
-The buzzer on the bit:bot have an internal oscillator, and put out a fixed tone when the pin is driven `HIGH`. Note that this also means that we are only able to play a single tone with this speaker.
+The buzzer on the bit:bot have an internal oscillator, and put out a fixed tone when pin 14 is driven `HIGH`. Note that this also means that we are only able to play a single tone with this speaker.
 
 ```python
 # Play a short beep.
-pinF.write_digital(1)
+pin14.write_digital(1)
 sleep(500)
-pinF.write_digital(0)
+pin14.write_digital(0)
 ```
 
 ## Lab exercises
