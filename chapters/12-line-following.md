@@ -1,19 +1,19 @@
 ## Line following
 
-We've seen how to use the sensors on the bottom of the bit:bot to detect masking tape. In Python, we read the current state of these sensors with `pinA` and `pinB`.
+We've already seen how we can use the sensors on the bottom of the bit:bot to detect masking tape. In Python, we read the current state of these sensors with `pin11` and `pin5`. We can make a very simple line following program by reading whether the sensors are over the masking tape and applying a correcting rotation when they are:
 
 ```python
 
 while True:
-  if pinA.read_digital() == 1:
+  if pin11.read_digital() == 1:
     # left side on masking tape, turn left.
-  if pinB.read_digital() == 1:
+  if pin5.read_digital() == 1:
     # right side on masking tape, turn right.
   else:
     # all clear, drive straight.
 ```
 
-### Control algorithsm
+### Control algorithms
 
 The code above is an example of a "control" algorithm -- it continuously adjusts an output (e.g. the motors) in order to maintain a desired state (following the line), and optionally reads some sensor or sensors (the light sensors) in order to measure the output. You see control algorithms everywhere - here are some examples:
 
@@ -21,13 +21,12 @@ The code above is an example of a "control" algorithm -- it continuously adjusts
  * An automatic light that detects motion to keep the light on while people are in the room.
  * An air conditioner monitors the current room temperature and turns on or off the compressor, heater and fans. (Or similarly, a fridge).
  * The cruise control system in a car monitors the speed, and adjusts the accelerator to maintain a constant speed.
- * TODO: more examples
 
 There are two main categories of control algorithms, "open-loop" and "closed-loop" control. The difference being whether they use feedback from sensors to change their behaviour.
 
-There are three important terms:
+Since these algorithms are very commonly used to control systems, there are a couple of bits of jargon that you may come across when reading about control algorithms. The three most important terms that you will come across repeatedly are:
 * Process value (pv) -- the current measured value (e.g. in degrees C)
-* Set point (sp) -- the desired state (i.e. the desired coldness level from 1-5)
+* Set point (sp) -- the desired state (i.e. the desired temperature in degrees C)
 * Output (op) -- the current control output (i.e. is the compressor on or off)
 
 #### Open-loop control
@@ -39,22 +38,26 @@ Here are some examples from the bit:bot:
 * Turn left 90 degrees by turning the the motors in opposite directions for 0.9 seconds.
 * Follow a course by pre-programming motor movements.
 
-Open-loop control is much simpler to implement, but tends to make it very difficult to get accurate results. For example, if the battery is lower, then the time needed to drive forward 1 metre will be longer. *It's very difficult to do line following with open loop control!*
+You might recognise this form of control from the previous lab. When we preprogrammed the motor powers and rotation times to get our robot to move in certain ways in the previous lab we were doing *open loop control*.
+
+Open-loop control is much simpler to implement, but tends to make it very difficult to get accurate results. For example, if the battery is lower, then the time needed to drive forward 1 metre will be longer. If the torque of the two motors is different (due to imperfections in the gears, fluff on the tyres etc.) then we have to adjust the powers in our program with no guarantee they won't change. *For this reason it's very difficult to do line following with open loop control!*
 
 #### Closed-loop control
 
 The system operates in a loop, where sensor readings provide "feedback" into the control algorithm. The fridge or air conditioner is a great example of this -- when the temperature is too high, it turns on the cooling, and when it's too low it turns it off.
 
-##### Closed loop diagram.
+[comment]: # TODO: Closed Loop diagram
 
 Here are some examples from the bit:bot:
 * Drive forward 1 metre by using the ultrasonic distance sensor to measure how far has been travelled.
 * Turn left 90 degrees using the micro:bit's compass.
-* Line following using the sensors.
+* Line following using the line sensors on the bit:bot.
 
-The main challenge with closed-loop control is getting good results from the sensors:
- * accuracy: does the sensor reflect the true value of what it's measuring
- * precision: how noisy is the sensor
+The main challenge with closed-loop control is getting good results from the sensors, and figuring out how to translate the sensor inputs (`pv`) into control outputs (`op`). 
+
+[comment]: # TODO: Move the below definitions somewhere else, as this does not flow
+[comment]: #  * accuracy: does the sensor reflect the true value of what it's measuring
+[comment]: #  * precision: how noisy is the sensor
 
 ### "Bang bang" control
 
