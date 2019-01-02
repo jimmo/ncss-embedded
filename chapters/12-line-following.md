@@ -79,7 +79,8 @@ The problem with this simple approach is that the compressor will *oscillate* ve
 
 To improve this, we have two options. The first is to simply slow down our loop, preventing the system from changing state too often. In this case, adding a `sleep(30 * 60 * 1000)` at the end of the loop to only allow the compressor to be adjusted every 30 minutes. This will result in our algorithm being less responsive to temperature changes in the fridge, but will at least prevent this oscillation.
 
-The other option is to use a range of sensor values rather than a specific threshold value. In the example below, we still target 3 degress C, but allow a movement down to 2 and up to 4 before changing the compressor state.
+The other option is to turn the compressor on at a higher temperature, and off at a lower temperature. This is called adding `hysteresis` to the system. In the example below, we still target 3 degress C, but allow a movement down to 2 and up to 4 before changing the compressor state. In this case the state of the compressor (output) will change depending on the temperature (process value) something like this:
+![Hysteresis 1](images/Hysteresis1.png)
 
 ```python
 sp = 3
@@ -92,6 +93,9 @@ while True:
   # Otherwise compressor stays in the same state.
   sleep(60 * 1000)
 ```
+
+The temperature of the fridge using this sort of control will then look something like:
+![Hysteresis 2](images/Hysteresis2.png)
 
 The simplest possible line following algorithm works in much the same way, however there's a key difference. In a fridge, we can measure the PV (current temperature) extremely well, but only have very crude control over the OP (compressor on/off). On a bit:bot we have very good control over the OP (motor speed), but a very limited way to measure the PV (are we currently over a line).
 
