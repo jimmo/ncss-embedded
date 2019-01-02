@@ -168,9 +168,9 @@ pinF.write_digital(0)
 
 ## Lab exercises
 0. Getting Started:
- * Put some batteries in the compartment and plug in a micro:bit using the right-angle adaptor. As we have SONAR distance sensors installed on the fronts of these robots, you won't be able to plug them in directly.
- * Ensure that the power LED comes on, and that the micro:bit is powered by the batteries. You may have to write a short program that outputs something on the display to ensure this work, as we don't want to rely on the USB cable for this exercise.
- * Make the robot drive forwards.
+    * Put some batteries in the compartment and plug in a micro:bit using the right-angle adaptor. As we have SONAR distance sensors installed on the fronts of these robots, you won't be able to plug them in directly.
+    * Ensure that the power LED comes on, and that the micro:bit is powered by the batteries. You may have to write a short program that outputs something on the display to ensure this work, as we don't want to rely on the USB cable for this exercise.
+    * Make the robot drive forwards.
 1. Speed Control
     * Now that the bit:bot works, let's play around with the motors and speed controls a bit. First let's try making the bit:bot drive in a straight line. Does it work when both motors are set to the same power? Why or why not? Can you find some values that do make it move in a straight line? Write a function that makes the bit:bot drive forward with these speed values, it will be useful later on.
     * Write a three functions that make the bit:bot turn 90-degrees clockwise, 90-degrees counter-clockwise and 180-degrees around.
