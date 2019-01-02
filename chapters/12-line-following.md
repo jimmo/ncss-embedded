@@ -103,7 +103,7 @@ The temperature of the fridge using this sort of control will then look somethin
 
 The simplest possible line following algorithm works in much the same way, however there's a key difference. In a fridge, we can measure the PV (current temperature) extremely well, but only have very crude control over the OP (compressor on/off). On a bit:bot we have very good control over the OP (motor speed), but a very limited way to measure the PV (are we currently over a line).
 
-[comment]: # (*Note: Some modern fridges have a VFD (variable frequency drive) compressor that allows much finer control over the compressor power. This lets you use a much more efficient control algorithm, resulting in a quieter and more energy efficient fridge.* (Commented out as simething of interest, but not particularly instructive at this point...))
+[comment]: # (*Note*: Some modern fridges have a VFD variable frequency drive compressor that allows much finer control over the compressor power. This lets you use a much more efficient control algorithm, resulting in a quieter and more energy efficient fridge.* Commented out as simething of interest, but not particularly instructive at this point...)
 
 #### Proportional control
 
