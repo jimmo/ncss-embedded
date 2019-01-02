@@ -34,9 +34,7 @@ There are four pins that control driving:
 
 The direction pins can be set to `HIGH` (forward) or `LOW` (backward), by using `pinN.write_digital(0)` or `pinN.write_digital(1)`.
 
-The speed pins can be set using PWM (pulse width modulation) by using `pinN.write_analog(speed)` where `speed` is a number between `0` and `1023`. To recap, PWM will turn the pin on for a fraction of the time, which has the effect of reducing the speed of the motor.
-
-TODO: if we haven't covered PWM elsewhere, more info here.
+The speed pins can be set using PWM (pulse width modulation) by using `pinN.write_analog(speed)` where `speed` is a number between `0` and `1023`. To recap, PWM will turn the pin on for a fraction of the time, which has the effect of reducing the speed of the motor (just like how we used it to change the brightness of an LED).
 
 For example, to drive the bit:bot forward at 1/4 speed:
 
