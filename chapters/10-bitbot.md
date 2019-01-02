@@ -190,6 +190,7 @@ pinF.write_digital(0)
     * To do this exercise you will need a rectangular area marked out with masking tape on the floor.
     * Before you get started, you can study how the screensaver looks here: https://bouncingdvdlogo.com/
     * **HINT**: You will need to use both of the line sensors to figure out which way your robot needs to turn when it hits an edge.
+    * **EXTENSION**: Add colors to your bit:bot using the neopixels.
     * **EXTENSION**: Can you detect a rare corner-hit and play a sound if it happens?
 6. Let's combine the radio controller and the light sensors! Make a circular-ish fenced off area for your bit:bot using masking tape. Using the line sensors, modify your radio controlled bit:bot such that it can't be driven out of its area.
     * **HINT**: you might want to make is spin around and move backwards whenever it hits the edge of the pen, otherwise it will just get stuck at the edge.
