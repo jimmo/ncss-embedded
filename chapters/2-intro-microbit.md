@@ -7,6 +7,7 @@ Let's turn on the display!
 ```python
 from microbit import *
 
+#show an image on the 5 x 5 display
 display.show(Image.HAPPY)
 ```
 
@@ -23,7 +24,9 @@ The parameter of `sleep` is in *milliseconds*, so `sleep(1000)` means *sleep for
 ```python
 from microbit import *
 
+#show an image on the 5 x 5 display
 display.show(Image.HAPPY)
+#wait for a number of milliseconds
 sleep(1000)
 display.show(Image.SAD)
 sleep(1000)
@@ -36,6 +39,8 @@ We can use the same command to show text:
 
 ```python
 from microbit import *
+
+#show text on the 5 x 5 display one letter at a time
 display.show('Hi NCSS')
 ```
 
@@ -43,6 +48,8 @@ But that flashes letters and it's a bit weird. Much better of `scroll` text inst
 
 ```python
 from microbit import *
+
+#scroll text on the 5 x 5 display 
 display.scroll('Hello there, this text is scroooooooling')
 ```
 
@@ -50,7 +57,9 @@ To scroll integers, we need to convert them to a string using the `str` function
 
 ```python
 from microbit import *
+
 num = 50
+#scrolling text with joining
 display.scroll('The answer is: ' + str(num))
 ```
 
@@ -58,14 +67,18 @@ We might want to repeatedly scroll text:
 
 ```python
 from microbit import *
-display.scroll('LOLOLOLOLOLOLO', repeat=True)
+
+#scrolling text with repetition
+display.scroll('LOLOLOLOLOLOLO', loop=True)
 ```
 
 That text will keep repeating, to speed it up we can use the `delay` *key word argument* (called a kwarg).
 
 ```python
 from microbit import *
-display.scroll('LOLOLOLOLOLOLO', delay=50, repeat=True)
+
+#scrolling text with repetition and change of speed
+display.scroll('LOLOLOLOLOLOLO', delay=50, loop=True)
 ```
 
 The `delay` specifies the delay in *milliseconds* between each frame.
@@ -77,6 +90,8 @@ Find more info on scrolling text in the [docs](https://microbit-micropython.read
 It's annoying to try and look at a scrolling error message on the LED display.
 
 ```python
+
+#displaying to the console 
 print('hello')
 ```
 
@@ -87,17 +102,20 @@ That will print messages to the serial console so you can get an actual output, 
 Printing is the same as `display.scroll` (and in python), where we need to convert to `str` before printing numbers.
 
 ```python
+
+#displaying joined text to the console  
 answer = 42
-print('The answer to live is ' + str(answer))
+print('The answer to life the universe and everything is ' + str(answer))
 ```
 
 ### Using loops
 
-Embedded systems, we generally don't want to stop them to stop. So we really want them to do things *forever*. Let's take a look a program that does this:
+Embedded systems, we generally don't want them to stop. So we really want them to do things *forever*. Let's take a look a program that does this:
 
 ```python
 from microbit import *
 
+#first while loop
 while True:
   display.show(Image.HEART)
   sleep(500)
