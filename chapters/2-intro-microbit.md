@@ -34,14 +34,14 @@ display.show(Image.SKULL)
 
 We can use the same command to show text:
 
-```pythnon
+```python
 from microbit import *
 display.show('Hi NCSS')
 ```
 
 But that flashes letters and it's a bit weird. Much better of `scroll` text instead:
 
-```pythnon
+```python
 from microbit import *
 display.scroll('Hello there, this text is scroooooooling')
 ```
@@ -56,14 +56,14 @@ display.scroll('The answer is: ' + str(num))
 
 We might want to repeatedly scroll text:
 
-```pythnon
+```python
 from microbit import *
 display.scroll('LOLOLOLOLOLOLO', repeat=True)
 ```
 
 That text will keep repeating, to speed it up we can use the `delay` *key word argument* (called a kwarg).
 
-```pythnon
+```python
 from microbit import *
 display.scroll('LOLOLOLOLOLOLO', delay=50, repeat=True)
 ```
