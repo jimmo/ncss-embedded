@@ -9,11 +9,11 @@ Aside from working with sensors and screens, we can also hook up our micro:bits 
 * 12 programmable RGB LEDs
 * Optional accessories, including a distance sensor and a claw
 
-**Warning!!** The gearboxes on the bit:bot are a little fragile, and the teeth on the gears can break if too much torque is applied. Don't try to hold the wheels from spinning while the motors are on.
+<span style="color:red">**Warning!!**</span> The gearboxes on the bit:bot are a little fragile, and the teeth on the gears can break if too much torque is applied. Don't try to hold the wheels from spinning while the motors are on.
 
 [comment]: # (The below should be reworded... Don't like how this turned out)
 
-Over the course of the next two labs, we are going to start off by playing with the features of the bit:bot, before getting into some algorithms for controlling the bit:bot with a bit more intelligently. At the end of this section, there will be a short challenge that will aim to get you using some of those algorithms for line following.
+Over the course of the next two labs, we are going to start off by playing with the features of the bit:bot, before getting into some algorithms for controlling the bit:bot a bit more intelligently.
 
 ### Getting Started
 
