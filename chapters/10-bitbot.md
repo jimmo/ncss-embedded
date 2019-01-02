@@ -29,14 +29,14 @@ Each function on the bit:bot is accessible on a pin through the micro:bit. The b
 | Right Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog` |
 | Left Line Sensor | Pin 11 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
 | Right Line Sensor | Pin 5 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
-| Neopixels | Pin 13 | RGB LEDs around the edge of the bit:bot. Access using the `neopixel` module |
+| Neopixels | Pin 13 | RGB LEDs around the edge of the bit:bot.<br>Access using the `neopixel` module |
 | Buzzer | Pin 14 | Makes a beeping noise, when accessed using `write_digital` |
 | Light Sensor Select | Pin 16 | Select upwards facing light sensor to read.<br>`LOW` - Left Sensor<br>`HIGH` - Right Sensor |
-| Light Sensor Input | Pin 2 | Reads the upwards facing light sensors on the left/right of the micro:bit. Returns a value between `0-1023` |
-
-**NOTE** The light sensors are not useful for line following, for that task you must use the line sensors, which return either a digital value.
+| Light Sensor Input | Pin 2 | Reads the upwards facing light sensors on the left/right of the micro:bit.<br>Returns a value between `0-1023` |
 
 If you ever need it, this information is also helpfully printed on the bottom of the bit:bots.
+
+**NOTE** The light sensors are not useful for line following, for that task you must use the line sensors, which return a digital value.
 
 #### Powering the bit:bot
 
@@ -47,12 +47,12 @@ In order to use any of the functionality on the bit:bot, the bit:bot needs to be
 #### Driving
 There are four pins that control driving:
 
-* pin8 -- left direction.
-* pin12 -- right direction.
-* pin0 -- left speed.
-* pin1 -- right speed.
+* pin8 -- left direction
+* pin12 -- right direction
+* pin0 -- left speed
+* pin1 -- right speed
 
-The direction pins can be set to `LOW` (forward) or `HIGH` (backward), by using `pin8/12.write_digital(0)` or `pin8/12.write_digital(1)`.
+The direction pins can be set to `LOW` (forward) or `HIGH` (backward), by using `pin8/12.write_digital(0)` or `pin8/12.write_digital(1)` respectively.
 
 The speed pins can be set using PWM (pulse width modulation) by using `pin0/1.write_analog(speed)` where `speed` is a number between `0` and `1023`. To recap, PWM will turn the pin on for a fraction of the time, which has the effect of reducing the speed of the motor (just like how we used it to change the brightness of an LED).
 
@@ -95,7 +95,9 @@ pin1.write_analog(512)
 
 #### Line sensing
 
-The line sensors are connected to `pin11` and `pin5`. They will read `HIGH` or `LOW` depending on whether the surface below them is light or dark respectively. The sensors themselves are the pair of black/blue bumps situated just behind the front coaster on the bottom of the bit:bot. They are made up of an IR-LED (the bluish bulb at the front of each sensor) and a photodiode with an IR filter (black bulb at the back of each sensor). On a reflective or white surface the light from the LED at the front is reflected back at the photodiode, causing the sensor to read `HIGH`. On a dark or absorbing surface, the sensor will read `LOW`.
+The line sensors are connected to `pin11` and `pin5`. They will read `HIGH` or `LOW` depending on whether the surface below them is light or dark respectively. The sensors themselves are the pair of black/blue bumps situated just behind the front coaster on the bottom of the bit:bot. They are made up of an infrared (IR)-LED (the bluish bulb at the front of each sensor) and a photodiode with an IR filter (black bulb at the back of each sensor). Although the IR light is not visible to the naked eye, most mobile phone cameras do not completely block IR light, so if you are curious you can see a purplish-glow from those LEDs.
+
+On a reflective or white surface the light from the LED at the front is reflected back at the photodiode, causing the sensor to read `HIGH`. On a dark or absorbing surface, the sensor will read `LOW`.
 
 For these sensors, the thresholds are fixed and unchangeable, which has led to issues when using the sensors on shiny surfaces, such as tiles. If you would like to use the sensors on tiled surfaces, we recommend either printing a dark line onto white paper, or pulling over a carpet.
 
@@ -123,35 +125,45 @@ During the labs we will usually be following a line made of masking tape against
 
 #### Light sensing
 
-TODO
+The light sensors on top of the bit:bots, unlike the line sensors, are analog sensors, and so are able to detect a range of different light values. Unfortunately, as there are only 3 free analog pins on the micro:bit, and 2 of those are used to control the motors, we somehow have to multiplex two light sensors onto one analog pins. In order to do this, the bit:bot uses `pin16` to control a switch that selects which sensor should be read, and the sensor value can be read from `pin2`.
+
+For example, to read the left and right sensor values, we can do:
+
+```python
+# Select the left sensor
+pin16.write_digital(0)
+left_sensor = pin2.read_analog()
+
+# Select the right sensor
+pin16.write_digital(1)
+right_sensor = pin2.read_analog()
+```
 
 #### Neopixels
 
-See the next chapter
+Along the edge of the bit:bots there are 12 RGB LEDs called neopixels. By writing values RGB values to each of these sensors, we can show colors around the edge of the LEDs. The neopixels are chained together on a single pin, such that we don't need to use a pin (or 3) per LED. We will go neopixels in more detail in the next chapter, but as an example of how they work, let's set the 2nd LED to show a dim blue light, and the 8th LED to show a bright green light:
+
+```python
+import neopixel
+
+neopixel_pin = pin13 # Control pin for neopixels
+neopixel_num = 12 # The number of neopixels in the chain
+
+np = neopixel.NeoPixel(neopixel_pin, neopixel_num)
+np[2] = (0, 0, 40) # Format is (r, g, b) with a number between 0-255 for each
+np[8] = (80, 0, 0)
+np.show()
+```
 
 #### Buzzer
 
-The buzzer on the bit:bot is a bit different to the speakers we've seen in earlier chapters. It has a set frequency/note, and can only be turned on or off.
-
+The buzzer on the bit:bot have an internal oscillator, and put out a fixed tone when the pin is driven `HIGH`. Note that this also means that we are only able to play a single tone with this speaker.
 
 ```python
-# Drive forward slowly.
-pinA.write_digital(0)
-pinB.write_digital(0)
-pinC.write_analog(256)
-pinD.write_analog(256)
-
-while True:
-  if pinA.read_digital() == 1 or pinB.read_digital() == 1:
-    # Detected dark on either sensor, stop the bit:bot.
-    pinC.write_analog(0)
-    pinD.write_analog(0)
-
-	# Play a short beep.
-	pinF.write_digital(1)
-	sleep(500)
-	pinF.write_digital(0)
-	break
+# Play a short beep.
+pinF.write_digital(1)
+sleep(500)
+pinF.write_digital(0)
 ```
 
 ## Lab exercises
