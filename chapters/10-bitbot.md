@@ -167,24 +167,29 @@ pinF.write_digital(0)
 ```
 
 ## Lab exercises
-
-1. Experiment with setting different speeds and directions.
- * Does your bit:bot drive in a perfectly straight line? Can you come up with speeds for each motor that does make it drive straight.
-2. Make a simple radio-controlled car using the micro:bit radio. When a button is pressed on the controller, toggle between two modes:
+0. Getting Started:
+ * Put some batteries in the compartment and plug in a micro:bit using the right-angle adaptor. As we have SONAR distance sensors installed on the fronts of these robots, you won't be able to plug them in directly.
+ * Ensure that the power LED comes on, and that the micro:bit is powered by the batteries. You may have to write a short program that outputs something on the display to ensure this work, as we don't want to rely on the USB cable for this exercise.
+ * Make the robot drive forwards.
+1. Speed Control
+ * Now that the bit:bot works, let's play around with the motors and speed controls a bit. First let's try making the bit:bot drive in a straight line. Does it work when both motors are set to the same power? Why or why not? Can you find some values that do make it move in a straight line? Write a function that makes the bit:bot drive forward with these speed values, it will be useful later on.
+ * Write a three functions that make the bit:bot turn 90-degrees clockwise, 90-degrees counter-clockwise and 180-degrees around.
+ * Write a program that uses the previous functions you wrote and makes the bit:bot drive forwards for one second, spin around, and drive back to where it started. Did it work as you expected?
+2. Make your bit:bot detect when it's driven into a "garage" and stop automatically. i.e. the ambient light decreases
+3. Make a simple radio-controlled car using the micro:bit radio and two micro:bits. When a button is pressed on the controller, toggle between two modes:
  * Driving forward at 100% speed.
  * Reversing in an arc to the left.
  Play a beep sound when changing modes.
  (This is how cheap radio-controlled car toys in the 90's worked as they only had a very simple radio that allowed for a single button!)
-3. Make your radio controlled car automatically change mode when it drives over a masking tape line on the ground.
 4. Improve the radio control to allow for four modes:
  - drive forwards (both buttons pressed)
  - turn left (left button only)
  - turn right (right button only)
  - stop (no buttons pressed)
-5. Make the bit:bot follow a masking tape line by:
- - driving forwards when both sensors detect dark
- - turning slowly left when the left sensor detects light
- - turning slowly right when the right sensor detects light
- - stopping when both detect light
- How well does this work? Can your bit:bot follow sharp turns in the line? How does the turning speed affect things? What about different ways of turning (i.e. arc left vs spin left).
-6. Make your bit:bot detect when it's driven into a "garage" and stop automatically. i.e. the ambient light decreases.
+5. The bouncing DVD logo is one of the more iconic screensavers of the early 2000s, and recently made a bit of a resurgence (for example: https://youtu.be/m8NAlDOCG6g). Let's try to recreate it with our bit:bots using the functions we wrote before and the line following sensors on our bit:bots.
+ * To do this exercise you will need a rectangular area marked out with masking tape on the floor.
+ * Before you get started, you can study how the screensaver looks here: https://bouncingdvdlogo.com/
+ * **HINT**: You will need to use both of the line sensors to figure out which way your robot needs to turn when it hits an edge.
+ * **EXTENSION**: Can you detect a rare corner-hit and play a sound if it happens?
+6. Let's combine the radio controller and the light sensors! Make a circular-ish fenced off area for your bit:bot using masking tape. Using the line sensors, modify your radio controlled bit:bot such that it can't be driven out of its area.
+ * **HINT**: you might want to make is spin around and move backwards whenever it hits the edge of the pen, otherwise it will just get stuck at the edge.
