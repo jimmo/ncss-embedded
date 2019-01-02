@@ -1,0 +1,15 @@
+digraph G {
+	graph [fontsize=14,fontname="Myriad-Pro",rankdir=TB];
+  overlap=false;
+  node [shape=ellipse];
+  start [label="START"];
+  check [label="Check Sensor"];
+  on [label="Compressor On"];
+  off [label="Compressor Off"];
+  {rank="same"; on; off;}
+  start -> check;
+  check -> on [label="T > 3"];
+  check -> off [label="T < 3"];
+  on -> start;
+  off -> start;
+}

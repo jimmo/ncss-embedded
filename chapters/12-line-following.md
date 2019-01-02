@@ -13,7 +13,7 @@ while True:
     # all clear, drive straight.
 ```
 
-### Control algorithms
+### Theory of Control
 
 The code above is an example of a "control" algorithm -- it continuously adjusts an output (e.g. the motors) in order to maintain a desired state (following the line), and optionally reads some sensor or sensors (the light sensors) in order to measure the output. You see control algorithms everywhere - here are some examples:
 
@@ -47,6 +47,7 @@ Open-loop control is much simpler to implement, but tends to make it very diffic
 The system operates in a loop, where sensor readings provide "feedback" into the control algorithm. The fridge or air conditioner is a great example of this -- when the temperature is too high, it turns on the cooling, and when it's too low it turns it off.
 
 [comment]: # TODO: Closed Loop diagram
+![Closed Loop](images/closed-loop.png)
 
 Here are some examples from the bit:bot:
 * Drive forward 1 metre by using the ultrasonic distance sensor to measure how far has been travelled.
@@ -59,7 +60,11 @@ The main challenge with closed-loop control is getting good results from the sen
 [comment]: #  * accuracy: does the sensor reflect the true value of what it's measuring
 [comment]: #  * precision: how noisy is the sensor
 
-### "Bang bang" control
+### Control Algorithms
+
+Although it does add an additional bit of complexity, for any system that needs to operate for any length of time, some form of closed-loop control is generally necessary. The difficulty then becomes how does one translate a control input 
+
+#### "Bang bang" control
 
 You've probably heard your fridge loudly "click" as the compressor turns on or off. This is an example of "bang bang control", named because it switches abruptly between two states.
 
@@ -99,15 +104,15 @@ The temperature of the fridge using this sort of control will then look somethin
 
 The simplest possible line following algorithm works in much the same way, however there's a key difference. In a fridge, we can measure the PV (current temperature) extremely well, but only have very crude control over the OP (compressor on/off). On a bit:bot we have very good control over the OP (motor speed), but a very limited way to measure the PV (are we currently over a line).
 
-*Note: Some modern fridges have a VFD (variable frequency drive) compressor that allows much finer control over the compressor power. This lets you use a much more efficient control algorithm, resulting in a quieter and more energy efficient fridge.*
+[comment]: # *Note: Some modern fridges have a VFD (variable frequency drive) compressor that allows much finer control over the compressor power. This lets you use a much more efficient control algorithm, resulting in a quieter and more energy efficient fridge.* (Commented out as simething of interest, but not particularly instructive at this point...)
 
-### Proportional control
+#### Proportional control
 
 TODO
 
 *Note: this is the first part of a commonly used control algorithm called a PID Controller. PID stands for proportional-integral-derivative.*
 
-### Line following
+#### Line following
 
 For our line following algorithm, the obvious approach is to use the following values:
  * sp - make both sensors read "dark".
