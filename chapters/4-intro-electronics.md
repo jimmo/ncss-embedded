@@ -1,9 +1,14 @@
 ## Chapter 4 -- Electronics
 
-### What is a voltage?
+Since we're learning all about embedded development, we need to spend some time learning about electronics. How do microcontrollers send information between sensors, displays and other microcontrollers? Electronics is a huge field, and encompasses a large number of topics, so it's impossible for us to cover every topic exhaustively. So, rather than trying to exhaustively cover the field of electronics, what we'll try and do is introduce enough topics that you can put together simple circuits, hook components together and start to understand what is going on with the embedded devices you see around you.
 
-To build circuits and make the devices that use modern technology, we want to send signals from sensors to controllers, and from controllers to an output.
+Since there is such a large number of topics to cover, don't worry if this doesn't all make sense on your first readthrough. Most of this is stuff that you will have a chance to learn along the way. But since we can't cover everything in the limited time we have, this section is meant to be a reference to come back to as the program progresses.
 
+### Voltages and Currents
+
+
+
+To build any electronic device, we need to have a way of sending signals between controllers, sensors and outputs. The
 The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called *current*.
 
 The way create a current is to apply a *voltage*, a difference in voltage between two points in a circuit will cause current to flow.
@@ -25,7 +30,6 @@ This gives us the relationship called Ohm's Law, which is the most important equ
 ![Ohm's Law](https://latex.codecogs.com/svg.latex?V%20%3D%20IR)
 
 The *voltage* is the *resistance* times the *current*.
-
 **Remember this equation!** Seriously. It's the foundation of everything.
 
 ### What is resistance?
