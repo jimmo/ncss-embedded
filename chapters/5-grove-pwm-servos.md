@@ -41,14 +41,12 @@ The pin connections on each connector, from right to left, are:
 | Angle Servo | Digital PWM | Rotates to a given angle |
 | Infrared Reflective Sensor | Digital | Senses proximity |
 | PIR Motion Sensor | Digital | Detects movement |
-| LDR | Analog | Detects light intensity |
 | Sound Pressure Sensor | Analog | Detects loudness |
 | Loudness Sensor | Analog | Detects loudness with adjustable gain |
 | Ultrasonic Distance | Digital | Distance Sensor |
 | Multi Colour Flash LED | Digital | Flashes between colours |
 | Circular LED | Digital | 24 LEDs in a ring |
 | LED Bar | Digital | LED Bar chart |
-| Flex Sensor | Analog | Detects bending |
 | NeoPixels | Digital | RGB LED Strip |
 | Level Shifter | Digital | Allows you to connect and power 5V Grove modules |
 | Heatrate monitor | Digital | Attaches to a finger to measure heart rate |
@@ -142,6 +140,18 @@ Datasheet here: [](https://cdn.sparkfun.com/datasheets/Components/General/YSL-R1
 #### Potentiometer
 
 This is a variable resistor that changes based on the angle you turn it to (like a volume knob).
+
+#### LDR
+
+This is a variable resistor that changes based on how much light is shining on the sensor.
+
+![ldr](images/ldr.jpg)
+
+#### Flex sensor
+
+This is a variable resistor that changes based on how much the strip has been bent.
+
+![flex](images/flex-sensor.jpg)
 
 #### GPS Receiver
 
