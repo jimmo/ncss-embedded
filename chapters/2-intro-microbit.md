@@ -20,19 +20,11 @@ Alternatively, you can use the `Mu` editor -  a simple editor for python that in
 
 **Note**: If this set of buttons doesn't appear in your copy of `Mu`, you may not be running in the "micro:bit" mode. You can change the target in `Mu` by pressing the `Mode` button in the top left corner of the editor.
 
-#### The REPL
+### Using the micro:bit
 
-In addition to uploading scripts to the micro:bit and running them, we can also interactively run single lines of python code on the micro:bit. The easiest way to access the REPL on the micro:bit is using the `Mu` editor, where we can press the `REPL` button in the menu bar. This will stop the currently running program and bring up a prompt, into which you can type Python expressions.
+Plug your micro:bit into the computer with a USB cable, open up `Mu` and let's start coding!
 
-For example, try bringing up the `REPL` and type the following lines:
-
-```pycon
->>> display.show(Image.HAPPY)
-```
-
-Opening the `REPL` causes whatever code is uploading to stop, however we can also restart our running code, either by pressing the "reset" button on the micro:bit, or pressing `<Ctrl-D>` in the `REPL` window. Any `print` statements in our program will also be show up here.
-
-### Images and sleeping
+#### Our first program (the micro:bit display and sleep)
 
 Let's turn on the display!
 
@@ -65,7 +57,7 @@ sleep(1000)
 display.show(Image.SKULL)
 ```
 
-### Show and scrolling text
+#### Show and scrolling text
 
 We can use the same command to show text:
 
@@ -117,30 +109,42 @@ The `delay` specifies the delay in *milliseconds* between each frame.
 
 Find more info on scrolling text in the [docs](https://microbit-micropython.readthedocs.io/en/latest/display.html?highlight=scroll#microbit.display.scroll). Lots of those options are available in `display.show` too!
 
-### Printing to the console
+#### The REPL
 
-It's annoying to try and look at a scrolling error message on the LED display.
+In addition to uploading scripts to the micro:bit and running them, we can also interactively run single lines of python code on the micro:bit. The easiest way to access the REPL on the micro:bit is using the `Mu` editor, where we can press the `REPL` button in the menu bar. This will stop the currently running program and bring up a prompt, into which you can type Python expressions.
 
-```python
+For example, try bringing up the `REPL` and type the following lines:
 
-#displaying to the console 
-print('hello')
+```pycon
+>>> display.show(Image.HAPPY)
 ```
 
-That will print messages to the serial console so you can get an actual output, to do some debugging. In Grok, look at the "Output" tab to view the serial output in the simulator (you can also get a REPL there, too).
+Opening the `REPL` causes whatever code is uploading to stop, however we can also restart our running code, either by pressing the "reset" button on the micro:bit, or pressing `<Ctrl-D>` in the `REPL` window.
 
-### picture here
+Note, you won't be able to upload code to the micro:bit while the `REPL` window is open. If you want to upload a new program, you will have to close the `REPL` window first.
+
+#### Printing to the console
+
+It's annoying to try and look at a scrolling error message on the LED display. Instead of printing to the display, we can output straight to the `REPL` window. Upload the following code to your micro:bit.
+
+```python
+#displaying to the console 
+print('Hello, World!')
+```
+
+That will print messages to the serial console so you can get an actual output, to do some debugging. In Grok, look at the "Output" tab to view the serial output in the simulator. In `Mu` to see what the output looks like, you can open the `REPL` window, and either hit the "reset" button on your micro:bit or press `<Ctrl-D>` in the `REPL` window to start your program going again. Your message will show up in the window:
+
+![REPL_Print](images/REPL_print.PNG)
 
 Printing is the same as `display.scroll` (and in python), where we need to convert to `str` before printing numbers.
 
 ```python
-
 #displaying joined text to the console  
 answer = 42
 print('The answer to life the universe and everything is ' + str(answer))
 ```
 
-### Using loops
+#### Using loops
 
 Embedded systems, we generally don't want them to stop. So we really want them to do things *forever*. Let's take a look a program that does this:
 
@@ -149,23 +153,47 @@ from microbit import *
 
 #first while loop
 while True:
-  display.show(Image.HEART)
-  sleep(500)
-  display.show(Image.HEART_SMALL)
-  sleep(500)
+    display.show(Image.HEART)
+    sleep(500)
+    display.show(Image.HEART_SMALL)
+    sleep(500)
 ```
 
-The `while` loop is what does this. It comes in the form `while condition:`, why the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues.
+The `while` loop is what does this. It comes in the form `while <condition>:`, when the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues. The code that we want to run is indented to indicate that it is all part of the `while` loop. Unindented code will not be run as part of the loop. For example, in the following code:
 
-By typing
 ```python
 while True:
+    print("Hello, World!")
+    sleep(500)
+print("Goodnight, Moon.")
 ```
-this means it will be an *infinite loop*, **don't forget to put in the colon**.
 
-Everything inside the loop should be *indented* (we recommend 2 spaces for each indentation).
+The phrase "Hello, World!" will be printed indefinitely, while "Goodnight, Moon." will never be reached.
 
-### Using the buttons
+In addition, in both the above loops, since `True` is always `True`, the above code will repeat forever. It is an *infinite loop*.
+
+We can also write a loop that will terminate once a certain action has taken place. For example, in the following code:
+
+```python
+i = 0
+while i < 5:
+    print("The number was: " + str(i))
+    i += 1
+print("Done")
+```
+
+the condition `i < 5` is true until i = 5, so this code will print:
+
+```
+The number was: 0
+The number was: 1
+The number was: 2
+The number was: 3
+The number was: 4
+Done
+```
+
+#### Buttons and if statements
 
 The `microbit` module gives us `button_a` and `button_b` objects to use the buttons.
 
@@ -174,26 +202,26 @@ To simply see if the button is pressed down right now, use the `is_pressed()` fu
 ```python
 from microbit import *
 
+# Show a heart while the button is pressed
 while True:
-  if button_a.is_pressed():
-    display.show(Image.HEART)
-  # code keeps executing if
+    display.clear()
+    if button_a.is_pressed():
+        display.show(Image.HEART)
+    sleep(1000)
 ```
 
-Notice the use of the `if` statement. Like the `while` loop, `if` checks if a condition is `True` or `False`.
+Notice the use of the `if` statement. Like the `while` loop, the `if` statement will check whether the condition is true, and run the indented code if it is. In the above code, `display.show(Image.HEART)` is run if `button_a.is_pressed()` is true. Since `sleep(1000)` isn't indented relative to the `if` statement, it will always be run.
 
-So if `button_a` is pressed down, the function `button_a.is_pressed()` returns `True`.
-
-We can connect an `if` statement with an `else` statement, and only *one* of them will run.
+We can connect an `if` statement with an `else` statement, which will run if the condition evaluates to 
 
 ```python
 from microbit import *
 
 while True:
-  if button_a.is_pressed():
-    display.show(Image.HEART)
-  else:
-    display.show(Image.GHOST)
+    if button_a.is_pressed():
+        display.show(Image.HEART)
+    else:
+        display.show(Image.GHOST)
 ```
 
 The `elif` statement lets us add more options!
@@ -202,32 +230,40 @@ The `elif` statement lets us add more options!
 from microbit import *
 
 while True:
-  if button_a.is_pressed() and button_b.is_pressed():
-    display.show(Image.HEART)
-  elif button_a.is_pressed():
-    display.show(Image.GHOST)
-  elif button_a.is_pressed():
-    display.show(Image.GHOST)
-  else:
-    display.clear()
+    if button_a.is_pressed() and button_b.is_pressed():
+        display.show(Image.HEART)
+    elif button_a.is_pressed():
+        display.show('A')
+    elif button_b.is_pressed():
+        display.show('B')
+    else:
+        display.clear()
 ```
 
-### Was it pressed?
+#### Was it pressed?
 
-Because the microbit moves so fast, often it's better to use `was_pressed()`.
+While the `is_pressed()` function will tell us whether a button is currently being pressed, often what we want to do is check whether a button was pressed at some point in the past. For this purpose we have the `was_pressed()` function
 
-`was_pressed` means between this time and the last time we checked, was the button pressed? The button needs to be released before `was_pressed` will return `True` again.
+The `was_pressed()` checks: between this time and the last time we checked, was the button pressed? One thing to remember: the `was_pressed()` function will return `True` ONCE for a button press. If we run it again without releasing the button, it will subsequently return `False`.
 
-So `was_pressed` makes the buttons work a bit more like buttons how we 'expect' them to work.
-
-We can use it in the same way we used `is_pressed`.
+For example, we can write a simple counter like so:
 
 ```python
-if button_a.was_pressed():
-  # do the thing
+count = 0
+while True:
+    # Show the current count, and increment it
+    display.show(count)
+    count += 1
+    # If button a was pressed at some point, reset the count
+    if button_a.was_pressed():
+        count = 0
+    # Wait 1 second before continuing
+    sleep(1000)
 ```
 
-### Working with the display
+If we were to replace `was_pressed` with `is_pressed`, we wouldn't be able to detect any button presses that occured during the sleep. In other words, we would have a pretty rubbish reset button....
+
+#### Working with the display
 
 The `display` module does more than just setting pre-built images. We can programmatically do this with the `display.set_pixel` function.
 
@@ -244,7 +280,7 @@ display.set_pixel(2, 3, 9)
 
 Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 3) to full brightness.
 
-### Writing for loops
+#### Writing for loops
 
 Some times the images we want don't exist, so we can set the pixel by writing a `for` loop.
 
