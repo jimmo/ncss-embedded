@@ -1,4 +1,16 @@
-## Chapter 3 -- micro:bit basics
+## Chapter 2 -- micro:bit basics
+
+The micro:bit is a small, handheld, embedded microcontroller, which we will be using for the duration of the camp. Apart from being very friendly, it has a huge number of peripherals that we can use: a compass, an accelerometer, a thermometer, a radio for chatting between 2 micro:bits, two buttons and a 5x5 display. More importantly, it can run Python! The aim of the next few days will be to get up to speed on the various features of the micro:bit. 
+
+To get started we're going to be working through the micro:bit crash course on the grok platform. For those of you who have done the challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
+
+The crash course will go through everything you need to play around with the micro:bit. In addition to the course, we give a brief description of the peripherals of the micro:bit below, which you can use as a reference if you ever get stuck.
+
+### Getting Started
+
+If you're using the microbit emulator on Grok, you don't need anything more to get started.
+
+If you're playing around with a real micro:bit, you'll need a couple of other things to get going. When you plug the micro:bit in to your computer, it will show up as a drive connected to your computer. The micro:bit expects a `.hex` file which contains the compiled program that you want to run. 
 
 ### Images and sleeping
 
