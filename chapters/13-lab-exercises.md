@@ -13,6 +13,7 @@ Some of the exercises are a quite open-ended and designed for you to explore the
 2. The Grok course will likely take most of the lab time, but here are some extension exercises:
     1. Write a program that can detect *both buttons* being pressed at the same time, but with the same behavior as `was_pressed`. Unlike the *ATV Controller* problem, where your program detected that both buttons were currently pressed, instead we want to know if a press has happened (whether or not they are still being held down). Use this to write a program that counts the number of times that A was pressed, B was pressed, and A+B were pressed together.
 For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+B** the program would print:
+
 ```
 1 0 0
 1 1 0
@@ -37,12 +38,11 @@ Use two of the LEDs in the display to represent the current state of the lights 
 3. Ask a tutor for some LEDs. Wire them up using a breadboard, some grove->breadboard cable (in the bottom drawer of the component kits), and some current limiting resistors (also in the component kits).
     1. Use `write_digital` (e.g. `pin0.write_digital(1)`) to control the LED.
     2. We also have some RGB LEDs. These need to be wired up using three separate current limiting resistors. Make a program that cycles between red, green and blue.
+    3. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
 
 The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb. They are "common cathode" which means they share a negative pin. Here's a picture from the datasheet that shows which pin is which.
 
 ![CC RGB LED](images/cc-rgb-led.png)
-
-    2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
 
 4. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?*
     1. Use this to get other colours from the RGB LED.
