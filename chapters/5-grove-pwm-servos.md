@@ -3,8 +3,8 @@
 Grove is just a plug and socket to plug in stuff (called modules) like sensors or buttons!
 
 They have 4 pins:
-1. Signal
-2. Signal
+1. Signal (yellow)
+2. Signal (white)
 3. Power
 4. Ground
 
@@ -48,7 +48,7 @@ The pin connections on each connector, from right to left, are:
 | LED Bar | Digital | LED Bar chart |
 | NeoPixels | Digital | RGB LED Strip |
 | Level Shifter | Digital | Allows you to connect and power 5V Grove modules |
-| Heatrate monitor | Digital | Attaches to a finger to measure heart rate |
+| Heart rate monitor | Digital | Attaches to a finger to measure heart rate |
 
 ### Grove components
 
@@ -165,6 +165,8 @@ Adds 10 neopixels to the edge of your micro:bit.
 #### micro:pixel
 
 Adds a 4x8 grid of neopixels to the micro:bit.
+
+![micro:pixel](images/micropixel.jpg)
 
 #### Ultrasonic distance sensor
 
