@@ -83,7 +83,7 @@ The voltage divider produces a smaller voltage using the ratio of resistors, whi
 
 You might have used one in a volume control like this:
 
-### volume control image here
+### TODO: volume control image here
 
 You can also use a voltage divider to produce a reference voltage from a known higher voltage source (assuming no load).
 
@@ -91,7 +91,7 @@ At NCSS, the main way we'll be using voltage dividers is to read in analog senso
 
 It's hard for us to read resistance directly, but the micro:bit is *really* good at measuring voltages. So by adding *another* resistor that is known and applying an input voltage that is known, by measuring the output voltage, we can calculate the resistance of the sensor with our voltage divider!
 
-### picture here
+### TODO: picture here
 
 ### How do we know what the resistance means in the real world?
 
@@ -136,7 +136,7 @@ Say we wanted to connect a button to a controller (we do want to do that, a lot)
 
 For starters, it's possible to wire it directly to the positive rail like this:
 
-### positive switch image here
+### TODO: positive switch image here
 
 But how do we want know what the voltage is at the `pin` when the switch is open (not pressed)?
 
@@ -144,13 +144,13 @@ We don't! The point is *floating*, which means we can't tell what the voltage at
 
 So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything. This is a pull **up** resistor circuit:
 
-### pull up resistor image here
+### TODO: pull up resistor image here
 
 When the switch is open, the resistor pulls the voltage at the pin to be 3.3V, and when it is closed, this connects the pin directly to ground (0V). So the button works now!
 
 A pull down resistor looks like this:
 
-### pull down resistor here.
+### TODO: pull down resistor here.
 
 In this case the opposite is true, when the switch is open the voltage at the pin is 0V, and when the switch is closed, the voltage is 3.3V.
 
