@@ -173,7 +173,7 @@ Today's lab focuses on closed-loop control. We're going to work on taking some o
 
     * You can use the skeleton provided above to implement this.
 
-3. *More Closed Loop Control*: We can also change the implementations for going straight and turning that we used in the previous lab to use closed loop control. This will allow our code to be far more portable than before.
+3. **More Closed Loop Control**: We can also change the implementations for going straight and turning that we used in the previous lab to use closed loop control. This will allow our code to be far more portable than before.
     1. Using the compass sensor on the micro:bit, make a program that travels straight, adjusting the left and right motor powers whenever the heading changes. 
         * *HINT*: The example code for the PI controller may be helpful here
     2. Modify your code so that it is able to drive straight for exactly 1, 2 and 4 seconds.
@@ -188,13 +188,14 @@ Once you've completed the above lab exercises, there are a couple of additional 
 We've set up two (hidden) courses somewhere in the building. Your challenges, should you choose to accept them, are given below...
 
 1. **The Obstacle Course**
-  Now that you've got your line following robots working it's time to deploy them in the field. Of course, the real world is never as neat as the lab, so you'll have to make sure your robot can handle a bit of noise.... Your robot will have to handle the following things:
+    Now that you've got your line following robots working it's time to deploy them in the field. Of course, the real world is never as neat as the lab, so you'll have to make sure your robot can handle a bit of noise.... Your robot will have to handle the following things:
 
     * angular turns
     * steep curves
     * overlapping lines
     * rough surfaces
 
-  Finally at the end of the course, your bit:bot will drive into a box. Your robot should detect that this has occured using the top-mounted light sensors and stop at the end.
+    Finally at the end of the course, your bit:bot will drive into a box. Your robot should detect that this has occured using the top-mounted light sensors and stop at the end.
+    
 2. **The Time Trial**
-  One advantage of moving from a bang-bang controller to a PI style controller is that we spend a lot more time driving forwards. The better our control algorithm, the faster we can go! Unfortunately, as you will soon discover, speed does come at the expense of stability, so your challenge here will be to push your robot to complete our obstacle course as fast as you can. Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
+    One advantage of moving from a bang-bang controller to a PI style controller is that we spend a lot more time driving forwards. The better our control algorithm, the faster we can go! Unfortunately, as you will soon discover, speed does come at the expense of stability, so your challenge here will be to push your robot to complete our obstacle course as fast as you can. Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
