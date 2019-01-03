@@ -50,26 +50,6 @@ The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb
 
 ## Lab 3 -- Sunday morning
 
-
-
-## Lab 4 -- Sunday afternoon
-
-## Lab 5 -- Monday morning
-
-## Lab 6 -- Monday afternoon
-
-## Lab 7 -- Tuesday morning
-
-## Lab 8 -- Thursday morning
-
-
-
-
-## Chapter 4 -- States, Classes, Dictionaries
-## Chapter 5 -- Grove, PWM, Servos
-
-### Grove
-
 #### Part 1 - Switches
 
 For these tasks you will need:
@@ -138,7 +118,7 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 !!Show your work to a tutor before continuing!!
 
 
-### PWM
+### Part 4 -- PWM
 
 1. Make an LED pulse on and off by smoothly changing the brightness up and down.
 1.1. Try different pulsing patterns (e.g. sinusoidal).
@@ -146,14 +126,19 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 2.1. Generate a rainbow sequence, smoothly changing through the spectrum.
 
 
-### Servo motors
+### Part 5 -- Servo motors
 
 1. Use a standard servo to make a boom-gate style barrier that open and closes based on a signal from the micro:bit (e.g. when a button is pressed).
 2. TODO more
 
 
-## Chapter 6 -- Radio, Files, Plotting
-## Chapter 7 -- bit:bots, NeoPixels
+## Lab 4 -- Sunday afternoon
+
+1. Complete the Grok *micro:bit Crash Course* up to the end of the course.
+
+2. TODO: Advanced micro:bit problems
+
+## Lab 5 -- Monday morning
 
 ### bit:bot line following
 
@@ -203,6 +188,10 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 2. Experiment with some ways to improve the reliability of the sensor:
   * Calibrate the sensor with a ruler and update the tof->cm factor.
   * Try creating a moving average of the sensor readings to reduce noise.
+
+
+
+## Lab 6 -- Monday afternoon
 
 ### Line following
 
@@ -260,6 +249,8 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
     Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
 
 
-## Chapter 8 -- Filtering, Control
-## Chapter 9 -- ICs, Datasheets, Signalling, Drivers
-## Chapter 10 -- Pyboard, Quokka
+## Lab 8 -- Thursday morning
+
+TODO: Plotting data
+
+TODO: Quokka lab
