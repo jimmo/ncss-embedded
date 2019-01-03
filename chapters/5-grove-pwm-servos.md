@@ -252,9 +252,11 @@ A motors speed is determined by the voltage, and the torque by the amount of cur
 
 To drive a motor from a microcontroller, you need a circuit that can switch on or off the motors power supply based on input from the microcontroller. This can be done with a transistor, which acts as an *amplifier* -- allowing a small current & voltage from the microcontroller to control a large current & voltage in the motor.
 
-In order to make the motor spin in both directions, you need four transistors, in an arrangement called an H-bridge.
+![motor driver](images/motor-driver.png)
 
-#### TODO: h-bridge diagram.
+In order to make the motor spin in both directions, you need four transistors, in an arrangement called an H-bridge. In the diagram below, the transistors are shown as switches, but you can see that turning on S1 and S4 will cause current to flow through the motor in one direction (forwards spin), and turning on S2 and S3 will cause it to flow in the opposite direction (reverse spin).
+
+![h bridge](images/h-bridge.png)
 
 ### Continuous rotation servo motors
 
