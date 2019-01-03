@@ -190,7 +190,7 @@ Use the student number that you use when counting off in your groups.
 
 ### Ultrasonic distance sensor
 
-1. Try out the example above. How accurate and precise are the measurements?
+1. Try out the example from the notes in chapter 7. How accurate and precise are the measurements?
 2. Experiment with some ways to improve the reliability of the sensor:
 2.1. Calibrate the sensor with a ruler and update the speed of sound conversion factor and possibly add an offset.
 2.2. Try creating a moving average of the sensor readings to reduce noise.
@@ -219,7 +219,7 @@ Today's lab focuses on closed-loop control. We're going to work on taking some o
 
     By doing this, we can make the robot make small corrections at first, and make larger and larger corrections if it comes to a sharp corner.
 
-    * You can use the skeleton provided above to implement this.
+    * You can use the skeleton provided in the notes in chapter 7 to implement this.
 
 3. **More Closed Loop Control**: We can also change the implementations for going straight and turning that we used in the previous lab to use closed loop control. This will allow our code to be far more portable than before.
     1. Using the compass sensor on the micro:bit, make a program that travels straight, adjusting the left and right motor powers whenever the heading changes.
