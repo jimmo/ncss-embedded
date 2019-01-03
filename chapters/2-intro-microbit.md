@@ -471,6 +471,63 @@ but that's pretty boring to write (and more error-prone). So use a `for` loop in
 
 **Note**: The range function can actually do a whole lot more than count from `0` to `n`, you can set start, and step values too. If you're curious, the full documentation is available here: https://docs.python.org/3.4/library/stdtypes.html#range
 
+#### Functions
+So far we've been using lots of functions in Python like `sleep` or `print`. These functions are *defined* by someone else, and we can just call that function to use it.
+
+But you can also write your own functions just like these ones!
+
+Say we just wanted to show the `HAPPY` image, sleep for 1 second, the clear the display.
+
+```python
+from microbit import *
+def happy():
+    display.show(Image.HAPPY)
+    sleep(1000)
+    display.clear()
+
+happy() # call the function
+```
+
+The `def` keyword *defines* the function `happy`, and calling the function by using the name and parentheses (in this case `happy()`), runs the lines of code inside the function.
+
+It's possible to send information into a function, via a *parameter* or *argument* (sometimes we abbreviate this and call it an **arg**). Let's look at an example:
+
+```python
+from microbit import *
+def happy(ms):
+    display.show(Image.HAPPY)
+    sleep(ms)
+    display.clear()
+
+happy(300) # call the function, sleep for 300 ms
+happy(500) # call it again, sleep for 500 ms this time
+```
+
+Here we defined that there is a parameter to the function `happy` called `ms`, and each time we call this function, we use the value of that is passed for `ms`. In the above example, the first time we call `happy`, `ms` is set to `300`, the second time we call `happy`, `ms` is set to `500`.
+
+We can also get information back from functions by using the `return` statement. For example, we can write a function that converts from celcius to farenheit.
+
+```python
+from microbit import *
+
+# Conversion functions for C->F and F->C
+def celcius_to_fahrenheit(c):
+    farenheit = c * 9 / 5 + 32
+    return farenheit
+
+# Shows the current temperature in C and F
+def show_temperature():
+    c = temperature()
+    f = celcius_to_fahrenheit(c)
+    print("micro:bit temperature in celcius: " + str(c) + "C")
+    print("micro:bit temperature in farenheit: " + str(f) + "F")
+
+# Update the temperature once per second
+while True:
+    show_temperature()
+    sleep(1000)
+```
+
 #### Debugging Your Code
 
 Apart from being a great way to quickly test out the functionality of the micro:bit, the `REPL` also allows you to find errors in your code. For example, let's upload this buggy code to our micro:bit.
