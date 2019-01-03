@@ -10,6 +10,5 @@
 8. [Chapter 8 - Filtering, Control](chapters/8-filtering-control.md)
 9. [Chapter 9 - ICs, Datasheets, Signalling, Drivers](chapters/9-advanced-components.md)
 10. [Chapter 10 - Pyboard, Quokka](chapters/10-pyboard-quokka.md)
-11. [Chapter 11 - Transistors, Capacitors](chapters/11-transistors-capacitors.md)
-12. [Chapter 12 - Learn more](chapters/12-learn-more.md)
-13. [Chapter 13 - Lab Exercises](chapters/13-lab-exercises.md)
+12. [Chapter 11 - Learn more](chapters/11-learn-more.md)
+13. [Chapter 12 - Lab Exercises](chapters/12-lab-exercises.md)
