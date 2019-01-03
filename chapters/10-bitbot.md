@@ -5,7 +5,7 @@ Aside from working with sensors and screens, we can also hook up our micro:bits 
 * Line following sensors that detect the lightness of the surface that the bit:bot is driving on
 * Light sensors that allow it to detect the ambient light on either side
 * Two geared motors, allowing differential steering
-* A buzzer
+* A buzzer (which makes a buzz noise)
 * 12 programmable RGB LEDs
 * Optional accessories, including a distance sensor and a claw
 
