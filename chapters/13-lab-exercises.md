@@ -1,5 +1,23 @@
 ## Chapter 1 -- Introduction
 ## Chapter 2 -- micro:bit
+
+1. Complete the Grok *micro:bit Crash Course* up to the end of module four (i.e. up to the "Simple Snake" problem).
+
+2. The Grok course will likely take most of the lab time, but here are some extension exercises:
+
+2.1. Write a program that can detect *both buttons* being pressed at the same time, but with the same behavior as `was_pressed`. Unlike the *ATV Controller* problem, where your program detected that both buttons were currently pressed, instead we want to know if a press has happened (whether or not they are still being held down). Use this to write a program that counts the number of times that A was pressed, B was pressed, and A+B were pressed together.
+For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+B** the program would print:
+```
+1 0 0
+1 1 0
+2 1 0
+2 1 1
+2 2 1
+2 2 2
+```
+
+2.2. TODO
+
 ## Chapter 3 -- Electronics
 
 ### LEDs
@@ -16,6 +34,7 @@
 
 3. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?* (TODO: is this hint too strong?)
 3.1. Use this to get other colours from the RGB LED.
+
 
 
 ## Chapter 4 -- States, Classes, Dictionaries
@@ -108,26 +127,6 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 ## Chapter 6 -- Radio, Files, Plotting
 ## Chapter 7 -- bit:bots, NeoPixels
 
-### bit:bot neopixels
-
-1. Make your bit:bot indicate its left and right side like a boat or aeroplane. Turn on the front LED on the left to red, and the front LED on the right to green.
-2. TODO: flashing sequence (white, red, red)?
-3. TODO: Animation (forwards/backwards)
-4. TODO: Rainbow
- * Hint: Ask your tutors about how to convert a "hue" into an RGB colour.
-5. TODO: Gamma correction.
-6. TODO: Indicate line following state.
-
-
-
-### Ultrasonic distance sensor
-
-1. Try out the example above. How accurate and precise are the measurements?
-2. Experiment with some ways to improve the reliability of the sensor:
-  * Calibrate the sensor with a ruler and update the tof->cm factor.
-  * Try creating a moving average of the sensor readings to reduce noise.
-
-
 ### bit:bot line following
 
 0. **Getting Started**:
@@ -155,8 +154,27 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
     * **HINT**: You will need to use both of the line sensors to figure out which way your robot needs to turn when it hits an edge.
     * **EXTENSION**: Add colors to your bit:bot using the neopixels.
     * **EXTENSION**: Can you detect a rare corner-hit and play a sound if it happens?
-6. Let's combine the radio controller and the light sensors! Make a circular-ish fenced off area for your bit:bot using masking tape. Using the line sensors, modify your radio controlled bit:bot such that it can't be driven out of its area.
-    * **HINT**: you might want to make is spin around and move backwards whenever it hits the edge of the pen, otherwise it will just get stuck at the edge.
+6. Let's combine the radio controller and the line sensors! Make a circular-ish fenced off area for your bit:bot using masking tape. Using the line sensors, modify your radio controlled bit:bot such that it can't be driven out of its area.
+    * **HINT**: you might want to make it spin around and move backwards whenever it hits the edge of the pen, otherwise it will just get stuck at the edge.
+
+
+### bit:bot neopixels
+
+1. Make your bit:bot indicate its left and right side like a boat or aeroplane. Turn on the front LED on the left to red, and the front LED on the right to green.
+2. TODO: flashing sequence (white, red, red)?
+3. TODO: Animation (forwards/backwards)
+4. TODO: Rainbow
+ * Hint: Ask your tutors about how to convert a "hue" into an RGB colour.
+5. TODO: Gamma correction.
+6. TODO: Indicate line following state.
+
+
+### Ultrasonic distance sensor
+
+1. Try out the example above. How accurate and precise are the measurements?
+2. Experiment with some ways to improve the reliability of the sensor:
+  * Calibrate the sensor with a ruler and update the tof->cm factor.
+  * Try creating a moving average of the sensor readings to reduce noise.
 
 ### Line following
 
