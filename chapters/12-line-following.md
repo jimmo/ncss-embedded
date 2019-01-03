@@ -188,6 +188,7 @@ Once you've completed the above lab exercises, there are a couple of additional 
 We've set up two (hidden) courses somewhere in the building. Your challenges, should you choose to accept them, are given below...
 
 1. **The Obstacle Course**
+
     Now that you've got your line following robots working it's time to deploy them in the field. Of course, the real world is never as neat as the lab, so you'll have to make sure your robot can handle a bit of noise.... Your robot will have to handle the following things:
 
     * angular turns
@@ -196,6 +197,9 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
     * rough surfaces
 
     Finally at the end of the course, your bit:bot will drive into a box. Your robot should detect that this has occured using the top-mounted light sensors and stop at the end.
-    
+
 2. **The Time Trial**
-    One advantage of moving from a bang-bang controller to a PI style controller is that we spend a lot more time driving forwards. The better our control algorithm, the faster we can go! Unfortunately, as you will soon discover, speed does come at the expense of stability, so your challenge here will be to push your robot to complete our obstacle course as fast as you can. Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
+
+    One advantage of moving from a bang-bang controller to a PI style controller is that we spend a lot more time driving forwards. The better our control algorithm, the faster we can go! Unfortunately, as you will soon discover, speed does come at the expense of stability, so your challenge here will be to push your robot to complete our obstacle course as fast as you can. 
+
+    Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
