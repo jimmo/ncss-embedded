@@ -1,7 +1,14 @@
-## Chapter 1 -- Introduction
-## Chapter 2 -- micro:bit
+## About the labs
 
-1. Complete the Grok *micro:bit Crash Course* up to the end of module four (i.e. up to the "Simple Snake" problem).
+These lab exercises build on the concepts introduced in the lectures, and you can refer back to the chapters in this booklet for hints and more information. When you've finished a problem, sometimes it'll be really obvious that you've got it working, but many of them you might need to show a tutor.
+
+Try to complete the exercises in order as most of the problems build on concepts from the previous problem. They're *hard* problems! We encourae you to work through them in pairs or groups, and please let us know if you'd like clarifications or help.
+
+Some of the exercises are a quite open-ended and designed for you to explore the concepts and ask questions. Please take every opportunity to ask questions of the tutors and lecturers, and don't be afraid to ask questions about related concepts and ideas.
+
+## Lab 1 -- Saturday morning
+
+1. Complete the Grok *micro:bit Crash Course* up to the end of module **four** (i.e. up to the "Simple Snake" problem).
 
 2. The Grok course will likely take most of the lab time, but here are some extension exercises:
 
@@ -16,24 +23,43 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 2 2 2
 ```
 
-2.2. TODO
+2.2. We want to use the micro:bit as a remote controller for lights in our house. We want the **A** button to control the kitchen lights, and the **B** button to control the living room lights. But we also want to be able to dim the lights, so we come up with this scheme:
+ - Single press a button: turns on the lights if they're currently off, toggles between bright and dim if they're already on.
+ - Double press a button: turns off the lights.
+Use two of the LEDs in the display to represent the current state of the lights (off, dim, bright).
 
-## Chapter 3 -- Electronics
+## Lab 2 -- Saturday afternoon
 
-### LEDs
+1. Complete the Grok *micro:bit Crash Course* up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
 
-1. Wire up some LEDs using the breadboards and the grove jumper wires.
-1.1. Experiment with different resistor values.
-1.2. Make a program that animates some resistors in a row.
-2. Wire up an RGB LED. These contain three individual LEDs (red, green, and blue) and are wired up like this:
+2. In the crash course we saw how connect an external button. As a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
+2.1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
+
+3. Ask a tutor for some LEDs. Wire them up using a breadboard, some grove->breadboard cable (in the bottom drawer of the component kits), and some current limiting resistors (also in the component kits).
+3.1. Use `write_digital` (e.g. `pin0.write_digital(1)`) to control the LED.
+3.2. We also have some RGB LEDs. These need to be wired up using three separate current limiting resistors. Make a program that cycles between red, green and blue.
 
 #### TODO: RGB LED diagram.
 
-2.1. Make a program that cycles between red, green and blue.
-2.2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
+3.2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
 
-3. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?* (TODO: is this hint too strong?)
-3.1. Use this to get other colours from the RGB LED.
+4. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?*
+4.1. Use this to get other colours from the RGB LED.
+
+## Lab 3 -- Sunday morning
+
+
+
+## Lab 4 -- Sunday afternoon
+
+## Lab 5 -- Monday morning
+
+## Lab 6 -- Monday afternoon
+
+## Lab 7 -- Tuesday morning
+
+## Lab 8 -- Thursday morning
+
 
 
 
