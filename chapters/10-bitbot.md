@@ -26,7 +26,7 @@ Each function on the bit:bot is accessible on a pin through the micro:bit. The b
 | Left Motor Direction | Pin 8 | Access using `write_digital`<br>`0 - Forward`<br>`1 - Backwards` |
 | Left Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog` |
 | Right Motor Direction | Pin 12 | Access using `write_digital`<br>`0 - Forward`<br>`1 - Backwards` |
-| Right Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog` |
+| Right Motor Speed | Pin 1 | Speed `0 - 1023` with `write_analog` |
 | Left Line Sensor | Pin 11 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
 | Right Line Sensor | Pin 5 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
 | Neopixels | Pin 13 | RGB LEDs around the edge of the bit:bot.<br>Access using the `neopixel` module |
