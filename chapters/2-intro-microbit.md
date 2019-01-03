@@ -180,7 +180,7 @@ while True:
     display.clear()
 ```
 
-### was it pressed?
+### Was it pressed?
 
 Because the microbit moves so fast, often it's better to use `was_pressed()`.
 
@@ -205,10 +205,12 @@ The display works on a grid with (0, 0) at the top left:
 
 ```python
 from microbit import *
-display.set_pixel(2, 2, 9)
+
+#set_pixel(x,y,amount)  3rd light across and 4th down because we count from 0
+display.set_pixel(2, 3, 9)
 ```
 
-Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 2) to full brightness.
+Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 3) to full brightness.
 
 ### Writing for loops
 
@@ -217,6 +219,7 @@ Some times the images we want don't exist, so we can set the pixel by writing a 
 ```python
 from microbit import *
 
+#faster than writing out each set_pixel
 while True:
   if button_a.was_pressed():
     for x in range(5):
@@ -229,6 +232,8 @@ The for loop `for x in range(5):` will loop 5 times, where `x` is a variable tha
 The equivalent code is:
 
 ```python
+from microbit import *
+
 display.set_pixel(0, 4, 9)
 display.set_pixel(1, 4, 9)
 display.set_pixel(2, 4, 9)
