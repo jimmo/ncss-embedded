@@ -1,6 +1,8 @@
-## Electronics
+## Chapter 12 -- Learn more
 
-### Websites / Tutorials
+### Electronics
+
+#### Websites / Tutorials
 * [All About Circuits](https://www.allaboutcircuits.com/)
 * [Contextual Electronics](https://contextualelectronics.com/)
 * [Hackaday](https://hackaday.com/)
@@ -8,7 +10,7 @@
 * [OSH Park Blog](http://blog.oshpark.com/)
 * [Visual 6502](http://visual6502.org/)
 
-### Youtube Channels
+#### Youtube Channels
 
 * [Ben Eater](https://www.youtube.com/channel/UCS0N5baNlQWJCUrhCEo8WlA)
 * [Chris Gammell](https://www.youtube.com/channel/UCsBkR5o25dIPeSmwVcU8YOQ)
@@ -26,21 +28,21 @@
 * [The Signal Path](https://www.youtube.com/channel/UCKxRARSpahF1Mt-2vbPug-g)
 * [w2aew](https://www.youtube.com/channel/UCiqd3GLTluk2s_IBt7p_LjA)
 
-### Videos
+#### Videos
 
 * [The Atari 2600 Video Computer System: The Ultimate Talk](https://www.youtube.com/watch?v=qvpwf50a48E)
 * [The Ultimate Apollo Guidance Computer Talk](https://www.youtube.com/watch?v=xx7Lfh5SKUQ)
 * [The Ultimate Commodore 64 Talk](https://www.youtube.com/watch?v=ZsRRCnque2E)
 * [The Ultimate Game Boy Talk](https://www.youtube.com/watch?v=HyzD8pNlpwI)
 
-### Podcasts
+#### Podcasts
 
 * [The Amp Hour](https://theamphour.com/)
 * [embedded.fm](https://www.embedded.fm/)
 
-## Mathematics
+### Mathematics
 
-### Youtube Channels
+#### Youtube Channels
 
 * [3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw)
 * [Mathologer](https://www.youtube.com/channel/UC1_uAIS3r8Vu6JjXWvastJg)
@@ -48,14 +50,14 @@
 * [singingbanana](https://www.youtube.com/channel/UCMpizQXRt817D0qpBQZ2TlA)
 * [standupmaths](https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A)
 
-### Podcasts
+#### Podcasts
 
 * [The Numberphile Podcast](https://www.numberphile.com/podcast/)
 * [Ben Ben Blue](https://www.benbenandblue.com/)
 
-## Other
+### Other
 
-### Youtube Channels
+#### Youtube Channels
 
 * [Acapella Science](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw)
 * [Applied Science](https://www.youtube.com/channel/UCivA7_KLKWo43tFcCkFvydw)
@@ -85,7 +87,7 @@
 * [Veritasium](https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA)
 * [Vsauce](https://www.youtube.com/channel/UC6nSFpj9HTCZ5t-N3Rm3-HA)
 
-### Podcasts
+#### Podcasts
 
 * [Ask a Spaceman](http://www.pmsutter.com/shows/askaspaceman/)
 * [Dr Karl (various)](https://drkarl.com/podcasts/)

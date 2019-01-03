@@ -1,6 +1,6 @@
-## Chapter 6 -- Grove
+## Chapter 5 -- Grove
 
-Grove is just a plug and socket to plug in stuff (called modules) like sensors or buttons!
+Grove is just a plug and socket to plug in stuff (called modules) like sensors or buttons! It was developed by Seeed Studios -- they sell a range of different devices and modules that connect to eachother using the Grove sockets.
 
 They have 4 pins:
 1. Signal (yellow)
@@ -12,13 +12,13 @@ The important thing to remember is **P3** is *always* power and **P4** is *alway
 
 ![Grove button](images/grove-button.jpg)
 
-Pin 1 is the `SIG`, so that is the pin that sends the button signal on. Pin 2 in `NC` which stands for *not connected*. `VCC` means *power*, and `GND` is *ground*.
+Pin 1 is the `SIG`, so that is the pin that sends the button signal on. Pin 2 in `NC` which stands for *not connected*. `VCC` means *power*, and `GND` is *ground*. *These pins refer to the pin on the plug/socket. Once you plug it into a micro:bit, you'll need to figure out which micro:bit pin they're connected to.*
 
 We have made micro:bit adapters for NCSS, which have 4 grove connectors and a speaker.
 
 ![Grove adapter](images/grove-adapter.png)
 
-The pin connections on each connector, from right to left, are:
+The micro:bit pin connections on each connector, from right to left, are:
 
 - 0 and 13
 - 1 and 14

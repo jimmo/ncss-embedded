@@ -1,4 +1,4 @@
-## Integrated circuits
+## Chapter 9 -- Integrated circuits
 
 Integrated circuits (ICs), are chips that perform a specific function in electronics.
 
@@ -67,7 +67,7 @@ Let's take a look at exactly what happens, the entire sequence of bits sent to s
 3. At a regular time interval, the next bits in the byte are read
 4. There is an optional `parity` bit at the end, which is used for error-checking
 5. The line is pulled high, this is the **stop bit**
-6. The line stays high until the next frame.  
+6. The line stays high until the next frame.
 
 For this to work, a few things need to be agreed by both devices before communication occurs:
 - Data rate (also called baudrate), the micro:bit defaults to `115200`
@@ -177,4 +177,4 @@ To communicate you can use `i2c.read` and `i2c.write` to communicate with the de
 
 It's important to connect the `SDA` to `pin20` and `SCL` to `pin19`, and the grounds of each device should be shared. It's possible to change these pins, but the accelerometer and compass use the `i2c` bus and they will stop working if the pins are changed. There are internal pull-up resistors on the micro:bit, but you may need to add these separately if the connection wires are long.
 
-As always, the [documentation](https://microbit-micropython.readthedocs.io/en/latest/i2c.html) is very helpful when using the `i2c` module. 
+As always, the [documentation](https://microbit-micropython.readthedocs.io/en/latest/i2c.html) is very helpful when using the `i2c` module.
