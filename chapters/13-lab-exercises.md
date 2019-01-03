@@ -22,7 +22,7 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 2 2 2
 ```
 
-2.2. We want to use the micro:bit as a remote controller for lights in our house. We want the **A** button to control the kitchen lights, and the **B** button to control the living room lights. But we also want to be able to dim the lights, so we come up with this scheme:
+    2. We want to use the micro:bit as a remote controller for lights in our house. We want the **A** button to control the kitchen lights, and the **B** button to control the living room lights. But we also want to be able to dim the lights, so we come up with this scheme:
  - Single press a button: turns on the lights if they're currently off, toggles between bright and dim if they're already on.
  - Double press a button: turns off the lights.
 Use two of the LEDs in the display to represent the current state of the lights (off, dim, bright).
@@ -42,7 +42,7 @@ The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb
 
 ![CC RGB LED](images/cc-rgb-led.png)
 
-3.2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
+    2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
 
 4. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?*
     1. Use this to get other colours from the RGB LED.
