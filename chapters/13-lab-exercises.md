@@ -39,7 +39,9 @@ Use two of the LEDs in the display to represent the current state of the lights 
 3.1. Use `write_digital` (e.g. `pin0.write_digital(1)`) to control the LED.
 3.2. We also have some RGB LEDs. These need to be wired up using three separate current limiting resistors. Make a program that cycles between red, green and blue.
 
-#### TODO: RGB LED diagram.
+The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb. They are "common cathode" which means they share a negative pin. Here's a picture from the datasheet that shows which pin is which.
+
+![CC RGB LED](images/cc-rgb-led.png)
 
 3.2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
 
