@@ -151,5 +151,25 @@ The example above is using the number of times we've detected the line as an app
 
 ## Lab exercises:
 
-1. Experiment with the bang bang controller above and see what sort of lines it can and can't follow.
-2. Improve on the counting controller by adjusting the motor speed proportionally to the counts. So the higher the count goes, the faster the bit:bot will turn in that direction.
+Today's lab focuses on closed-loop control. We're going to work on taking some of the tasks that we did yesterday with hard coded values and improve them to use feedback from the micro:bit and bit:bot sensors. Not only does that allow our code to be ported between different bit:bots, which might need different times/powers to move backwards and forwards at the same speed, but it will also mean our code runs a bit more reliably than before.
+
+0. **Getting Started**:
+    * If you didn't get around to it last lab, get your bit:bot working, make sure that the line following sensors work as you expect (use a small strip of masking tape on the floor).
+    * Make sure that you are able to drive straight-ish, and make smooth curves to the left and right.
+1. Let's start of with a simple line follower. Follow the bang-bang controller skeleton that's given in this chapter to follow a line on the floor.
+    * When the *left* line sensor detects the masking tape, turn to the left.
+    * When the *right* line sensor detects the masking tape, turn to the right.
+    * When *both* or *none* of the line sensors detect masking tape, go straight.
+  How well does this program do at following the line?
+    * Change your program to arc to the left and the right, rather than turning sharply. Does this do any better?
+    * Is there a situation where this approach will fail?
+2. The simple bang-bang implementation, although effective, is not the fastest way we could follow the line. We can improve on this by counting the number of times the line sensor detects the masking tape and using this as an approximation for how far over the line we've gone. By doing this, we can make the robot make small corrections at first, and make larger and larger corrections if it comes to a sharp corner.
+    * You can use the skeleton provided above to implement this.
+3. *More Closed Loop Control*: We can also change the implementations for going straight and turning that we used in the previous lab to use closed loop control. This will allow our code to be far more portable than before.
+    1. Using the compass sensor on the micro:bit, make a program that travels straight, adjusting the left and right motor powers whenever the heading changes. 
+        * *HINT*: The example code for the PI controller may be helpful here
+    2. Write some code to turn 90 degrees clockwise/counterclockwise.
+        * *HINT*: You may have to slow down when you approach the correct heading to ensure you don't overshoot. Can you use the difference between the current heading and target heading to select a speed? What sort of control algorithm would this be?
+
+#### Bit:Bot Challenge
+
