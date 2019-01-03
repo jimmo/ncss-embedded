@@ -184,23 +184,16 @@ Use the student number that you use when counting off in your groups.
 
 ### bit:bot neopixels
 
-1. Make your bit:bot indicate its left and right side like a boat or aeroplane. Turn on the front LED on the left to red, and the front LED on the right to green.
-2. TODO: flashing sequence (white, red, red)?
-3. TODO: Animation (forwards/backwards)
-4. TODO: Rainbow
- * Hint: Ask your tutors about how to convert a "hue" into an RGB colour.
-5. TODO: Gamma correction.
-6. TODO: Indicate line following state.
-
+1. Make your bit:bot indicate its left and right side like a boat or aeroplane. Turn on the front LED on the left to red, and the front neopixel on the right to green.
+2. Update your line following program to add "indicators" to the bit:bot. Flash the left or right sides orange when turining left or right.
+3. Make a rainbow pattern with the neopixels. Ask your tutors about HSV colour and how to convert to RGB.
 
 ### Ultrasonic distance sensor
 
 1. Try out the example above. How accurate and precise are the measurements?
 2. Experiment with some ways to improve the reliability of the sensor:
-  * Calibrate the sensor with a ruler and update the tof->cm factor.
-  * Try creating a moving average of the sensor readings to reduce noise.
-
-
+2.1. Calibrate the sensor with a ruler and update the speed of sound conversion factor and possibly add an offset.
+2.2. Try creating a moving average of the sensor readings to reduce noise.
 
 ## Lab 6 -- Monday afternoon
 
