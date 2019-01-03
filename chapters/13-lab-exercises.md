@@ -22,7 +22,6 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 2 2 1
 2 2 2
 ```
-
     2. We want to use the micro:bit as a remote controller for lights in our house. We want the **A** button to control the kitchen lights, and the **B** button to control the living room lights. But we also want to be able to dim the lights, so we come up with this scheme:
  - Single press a button: turns on the lights if they're currently off, toggles between bright and dim if they're already on.
  - Double press a button: turns off the lights.
