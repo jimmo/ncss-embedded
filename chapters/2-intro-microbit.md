@@ -24,7 +24,7 @@ Alternatively, you can use the `Mu` editor -  a simple editor for python that in
 
 Plug your micro:bit into the computer with a USB cable, open up `Mu` and let's start coding!
 
-#### Our first program (the micro:bit display and sleep)
+#### Our first program (variables, the micro:bit display and sleep)
 
 Let's turn on the display!
 
@@ -55,9 +55,58 @@ sleep(1000)
 display.show(Image.SAD)
 sleep(1000)
 display.show(Image.SKULL)
+sleep(1000)
+display.clear()
 ```
 
-#### Show and scrolling text
+In the above code, we are sleeping for 1 second after each image. If we wanted to change this time, we would have to change our code in 3 different places. Rather than write our code like this, we can store the amount of time we want to sleep in a variable, and reuse that value multiple times in our code:
+
+```python
+from microbit import *
+
+# Set the wait time
+wait_time = 2000
+
+#show an image on the 5 x 5 display
+display.show(Image.HAPPY)
+#wait for a number of milliseconds
+sleep(wait_time)
+display.show(Image.SAD)
+sleep(wait_time)
+display.show(Image.SKULL)
+sleep(wait_time)
+display.clear()
+```
+
+Now, we can change all of the the delay after each of the images while only changing a single number in our code!
+
+#### Working with the display
+
+The `display` module does more than just setting pre-built images. We can programmatically do this with the `display.set_pixel` function.
+
+The display works on a grid with (0, 0) at the top left:
+
+![Grid source:microbit docs](https://microbit-micropython.readthedocs.io/en/latest/_images/happy.png)
+
+```python
+from microbit import *
+
+#set_pixel(x,y,amount)  3rd light across and 4th down because we count from 0
+display.set_pixel(2, 3, 9)
+```
+
+Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 3) to full brightness.
+
+The code below will turn off the previous pixel, and light up the middle pixel at half brightness instead:
+
+```python
+from microbit import *
+
+display.set_pixel(2, 3, 0)
+display.set_pixel(3, 3, 5)
+```
+
+#### Working with Text
 
 We can use the same command to show text:
 
@@ -76,6 +125,52 @@ from microbit import *
 #scroll text on the 5 x 5 display 
 display.scroll('Hello there, this text is scroooooooling')
 ```
+
+Much like with numbers above, we can also store **strings** (that is text data) in variables as well.
+
+```python
+from microbit import *
+
+text_data = 'Hello there, this text is scroooooooling'
+#scroll text on the 5 x 5 display 
+display.scroll(text_data)
+```
+
+Whenever we want to store text data, we need to wrap it in either `'`, or `"` characters. This tells Python that the data that follows should be stored as text and not interpreted. We can also add different strings together in order to make longer strings. For example, to print our name we might write code that looks like:
+
+```python
+name = "Sebastian"
+display.scroll("Hi " + name + ". Welcome to NCSS!")
+```
+
+This code will scroll `Hi Sebastian. Welcome to NCSS!` across the screen.
+
+One final caveat to keep in mind, text and numbers behave differently. By wrapping strings in `'` or `"` characters, we're telling python that values stored there should be treated as text.
+
+For example, in the below code:
+```python
+text_data_1 = "1"
+text_data_2 = "2"
+final_value = text_data_1 + text_data_2
+```
+the value stored in `final_value` will be `"12"`, and not `3`, since we've told Python that both of those values are strings.
+
+We can convert from strings into numbers by running the `int` function on the text. If our code was instead:
+```python
+final_value = int(text_data_1) + int(text_data_2)
+```
+the values stored in `text_data_1` and `text_data_2` are converted to numbers before being added, so final value after runnning this code will be `3` as expected.
+
+We can also do the opposite conversion, taking a number variable and turning it into text. For example:
+```python
+number_data_1 = 1
+number_data_2 = 2
+
+final_value = str(number_data_1) + str(number_data_2)
+```
+In this case, final value will be `"12"` as before.
+
+#### More scrolling
 
 To scroll integers, we need to convert them to a string using the `str` function before scrolling:
 
@@ -136,10 +231,9 @@ That will print messages to the serial console so you can get an actual output, 
 
 ![REPL_Print](images/REPL_print.PNG)
 
-Printing is the same as `display.scroll` (and in python), where we need to convert to `str` before printing numbers.
+If we want to print a number inside of a string, we need to convert that number into a string:
 
 ```python
-#displaying joined text to the console  
 answer = 42
 print('The answer to life the universe and everything is ' + str(answer))
 ```
@@ -263,39 +357,103 @@ while True:
 
 If we were to replace `was_pressed` with `is_pressed`, we wouldn't be able to detect any button presses that occured during the sleep. In other words, we would have a pretty rubbish reset button....
 
-#### Working with the display
+#### Lists
 
-The `display` module does more than just setting pre-built images. We can programmatically do this with the `display.set_pixel` function.
+So far, we've stored both strings and numbers in variables, in Python we can also store lists of values. To create a list, just as we wrap strings in quotes (`"`), we wrap lists in square brackets (`[`). Let's create a list of the first 10 prime numbers:
 
-The display works on a grid with (0, 0) at the top left:
+```python
+primes = [2,3,5,7,11,13,17,19,23,29]
+```
 
-![Grid source:microbit docs](https://microbit-micropython.readthedocs.io/en/latest/_images/happy.png)
+We can access values inside a list by indicating its position inside square brackets. Note that in Python, and indeed in almost all programming languages, the positions of values starts from 0. To add the first two prime numbers together we can write:
+
+```python
+first_two_primes = primes[0] + primes[1]
+display.scroll(str(first_two_primes))
+```
+
+We can also add and remove items from a list. To add a few more primes into our list we can use the `append` function:
+
+```python
+primes.append(31)
+primes.append(37)
+```
+
+To remove primes from the list, we can use the `remove` function if we know which value we want to remove, or the `pop` function if we know its position.
+
+```python
+primes.pop(0) # Remove the first prime number
+primes.remove(11)
+```
+
+After these two lines, our list will contain: `[3,5,7,13,17,19,23,29,31,37]`. If we're ever in any doubt, we can print the list to the console, which will give you the contents of the list:
+
+```python
+print(primes)
+```
+
+We can also always get the length of a list using the `len` function, which will return the number of items in a given list as a number:
+
+```python
+list_length = len(primes)
+print("The number of primes I know is: " + str(list_length))
+```
+
+There are more things that we can do with lists that are documented in the python language. When you have a chance you can find this documentation at: https://docs.python.org/3.4/tutorial/datastructures.html. Note that this also includes some additional data structures that you might find helpful later on.
+
+#### The for loop
+
+Aside from `while` loops, Python also allows us to loop over lists of things. For those of you that have done some programming before, this is a `for-each` type loop, that is different from the `for` loops you may have seen in other languages.
+
+The syntax for a for loop is:
+```python
+for <variable> in <list>:
+    # do something with each value
+```
+
+This loop will loop over each value in the given list, and put the value into the variable given.
+
+For example, if we are working with the list of primes we made before, we can do something like:
+```python
+for prime in primes:
+    print("One of the primes I know is: " + str(prime))
+```
+This will print out each of the primes that is in the list.
+
+#### The `range` function - counting in a loop
+
+One of the really common patterns that we run into when we're coding is we want to loop up to a certain number of times. In the above code, we used a while loop to accomplish this.
+
+```python
+i = 0
+while i < 5:
+    print("The number was: " + str(i))
+    i += 1
+print("Done")
+```
+
+Now that we know about the `for` loop, we can simplify this code quite a bit by using a list and a `for` loop:
+```python
+for i in [0,1,2,3,4]:
+    print("The number was: " + str(i))
+print("Done")
+```
+
+This will print out exactly the same count as before, but we can do even better using the `range` function, which creates a list of numbers for us, rather than requiring us to do it manually:
+```python
+for i in range(5):
+    print("The number was: " + str(i))
+print("Done")
+```
+
+We can use these loops like this to replace most code that requires a range of values to be used. For example, if we wanted to turn on the fourth row of the micro:bit display we can write:
 
 ```python
 from microbit import *
 
-#set_pixel(x,y,amount)  3rd light across and 4th down because we count from 0
-display.set_pixel(2, 3, 9)
+for x in range(5):
+    display.set_pixel(x, 4, 9)
 ```
-
-Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 3) to full brightness.
-
-#### Writing for loops
-
-Some times the images we want don't exist, so we can set the pixel by writing a `for` loop.
-
-```python
-from microbit import *
-
-#faster than writing out each set_pixel
-while True:
-  if button_a.was_pressed():
-    for x in range(5):
-      display.set_pixel(x, 4, 9)
-  elif button_b.was_pressed():
-    display.clear()
-```
-The for loop `for x in range(5):` will loop 5 times, where `x` is a variable that goes from 0 through to 4.
 
 The equivalent code is:
 
@@ -309,7 +467,9 @@ display.set_pixel(3, 4, 9)
 display.set_pixel(4, 4, 9)
 ```
 
-that's pretty boring to write. So use a `for` loop instead.
+but that's pretty boring to write (and more error-prone). So use a `for` loop instead.
+
+**Note**: The range function can actually do a whole lot more than count from `0` to `n`, you can set start, and step values too. If you're curious, the full documentation is available here: https://docs.python.org/3.4/library/stdtypes.html#range
 
 #### Debugging Your Code
 
@@ -329,3 +489,13 @@ This above code has an error in it, we've forgotten to put quotes around the str
 We can get the same information by opening the `REPL` and restarting our program, either by pressing the "reset" button on the micro:bit, or by pressing `<Ctrl-D>` in the `REPL` window. Once we run into the error, the full error message will be output to the console.
 
 ![REPL_Error](images/REPL_Error.PNG)
+
+### Where to go from here
+
+Although we've covered a heap of content here, there are far more features available in both Python and micro:bit than we can cover here. If you would like more information, you can:
+
+* The micro:bit documentation for features of the micro:bit https://microbit-micropython.readthedocs.io/en/latest/index.html
+* The micropython documentation http://docs.micropython.org/en/latest/
+* The Python documentation https://docs.python.org/3.4/reference/index.html
+    
+    Note that although micropython is based on Python 3.4, there are a number of differences. The python documentation is excellent at describing the built-in functions, and most of what you will find there is valid for micropython as well, there are some differences, that you can read about here: http://docs.micropython.org/en/latest/genrst/index.html
