@@ -10,8 +10,9 @@ Some of the exercises are a quite open-ended and designed for you to explore the
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **four** (i.e. up to the "Simple Snake" problem).
 
-2. The Grok course will likely take most of the lab time, but here are some extension exercises:
-    1. Write a program that can detect *both buttons* being pressed at the same time, but with the same behavior as `was_pressed`. Unlike the *ATV Controller* problem, where your program detected that both buttons were currently pressed, instead we want to know if a press has happened (whether or not they are still being held down). Use this to write a program that counts the number of times that A was pressed, B was pressed, and A+B were pressed together.
+The Grok course will likely take most of the lab time, but here are some extension exercises:
+
+1. Write a program that can detect *both buttons* being pressed at the same time, but with the same behavior as `was_pressed`. Unlike the *ATV Controller* problem, where your program detected that both buttons were currently pressed, instead we want to know if a press has happened (whether or not they are still being held down). Use this to write a program that counts the number of times that A was pressed, B was pressed, and A+B were pressed together.
 For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+B** the program would print:
 
 ```
@@ -22,10 +23,12 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 2 2 1
 2 2 2
 ```
-    2. We want to use the micro:bit as a remote controller for lights in our house. We want the **A** button to control the kitchen lights, and the **B** button to control the living room lights. But we also want to be able to dim the lights, so we come up with this scheme:
- - Single press a button: turns on the lights if they're currently off, toggles between bright and dim if they're already on.
- - Double press a button: turns off the lights.
-Use two of the LEDs in the display to represent the current state of the lights (off, dim, bright).
+
+2. We want to use the micro:bit as a remote controller for lights in our house. We want the **A** button to control the kitchen lights, and the **B** button to control the living room lights. But we also want to be able to dim the lights, so we come up with this scheme:
+    * Single press a button: turns on the lights if they're currently off, toggles between bright and dim if they're already on.
+    * Double press a button: turns off the lights.
+
+    Use two of the LEDs in the display to represent the current state of the lights (off, dim, bright).
 
 ## Lab 2 -- Saturday afternoon
 
@@ -34,7 +37,7 @@ Use two of the LEDs in the display to represent the current state of the lights 
 2. In the crash course we saw how connect an external button. As a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
     1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
 
-3. Ask a tutor for some LEDs. Wire them up using a breadboard, some grove->breadboard cable (in the bottom drawer of the component kits), and some current limiting resistors (also in the component kits).
+3. Ask a tutor for some LEDs. Wire them up using a breadboard, some Grove->breadboard cable (in the bottom drawer of the component kits), and some current limiting resistors (also in the component kits).
     1. Use `write_digital` (e.g. `pin0.write_digital(1)`) to control the LED.
     2. We also have some RGB LEDs. These need to be wired up using three separate current limiting resistors. Make a program that cycles between red, green and blue.
     3. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
@@ -51,8 +54,8 @@ The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb
 #### Part 1 - Switches
 
 For these tasks you will need:
-- Grove button sensor
-- magnet and Grove hall effect (magnet) sensor
+- Grove Button Sensor
+- Magnet and Grove Magnet Sensor
 
 1. Test that the button module works -- write a program to display a different image on the screen depending on whether a button module is currently pressed or not.
 2. Try our your code from the [Dead Man's Switch](https://groklearning.com/learn/microbit-crash-course/6/2/) problem in Module 6 from the Grok Crash Course.
@@ -62,7 +65,7 @@ For these tasks you will need:
 5. Add a "lock" mode to your automatic door by adding a button module that disables the sensor if it has been pressed, press again to unlock.
 6. Add a "card reader" that uses a magnet as a key-card to open the door even when locked.
 
-!!Show your work to a tutor before continuing!!
+*Show your work to a tutor before continuing*
 
 #### Optional extension tasks
 Most of these sensors behave a lot like the micro:bit buttons (especially the button module!). It'd be great if we could use the `is_pressed()` and `was_pressed()` functions like we can on the built-in buttons.
@@ -87,7 +90,7 @@ display.show(Image.HEART/1.5)
 3. Write a program so scale the brightness of each pixel of *anything currently displayed* proportional to the volume detected by the sound sensor. *Hint* you should use `display.get_pixel` to get each pixel value and adjust the brightness by creating an *image string*.
    1. **Bonus**: write a function to turn one of your image strings into an `Image` object, so you can use divides like in your solution to the previous problem.
 
-!!Show your work to a tutor before continuing!!
+*Show your work to a tutor before continuing*
 
 #### Part 3 - Rotary encoder
 
@@ -113,7 +116,7 @@ The rotary encoder works by having 2 signals. The relative phase of the two sign
 
 Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the micro:bit. If the number is greater than 9, it should be set to 0, similarly if it becomes less than 0, it should be set to 9.
 
-!!Show your work to a tutor before continuing!!
+*Show your work to a tutor before continuing*
 
 
 ### Part 4 -- PWM

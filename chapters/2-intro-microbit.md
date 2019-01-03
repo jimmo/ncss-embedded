@@ -1,6 +1,6 @@
 ## Chapter 2 -- micro:bit basics
 
-The micro:bit is a small, handheld, embedded microcontroller, which we will be using for the duration of the camp. Apart from being very friendly, it has a huge number of peripherals that we can use: a compass, an accelerometer, a thermometer, a radio for chatting between 2 micro:bits, two buttons and a 5x5 display. More importantly, it can run Python! The aim of the next few days will be to get up to speed on the various features of the micro:bit. 
+The micro:bit is a small, handheld, embedded microcontroller, which we will be using for the duration of the camp. Apart from being very friendly, it has a huge number of peripherals that we can use: a compass, an accelerometer, a thermometer, a radio for chatting between 2 micro:bits, two buttons and a 5x5 display. More importantly, it can run Python! The aim of the next few days will be to get up to speed on the various features of the micro:bit.
 
 To get started we're going to be working through the micro:bit crash course on the grok platform. For those of you who have done the challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
 
@@ -127,7 +127,7 @@ But that flashes letters and it ends up being a bit hard to read. Much better to
 ```python
 from microbit import *
 
-# Scroll text on the 5 x 5 display 
+# Scroll text on the 5 x 5 display
 display.scroll('Hello there, this text is scroooooooling')
 ```
 
@@ -137,7 +137,7 @@ Much like with numbers above, we can also store **strings** (that is text data) 
 from microbit import *
 
 text_data = 'Hello there, this text is scroooooooling'
-# Scroll text on the 5 x 5 display 
+# Scroll text on the 5 x 5 display
 display.scroll(text_data)
 ```
 
@@ -228,7 +228,7 @@ Note, you won't be able to upload code to the micro:bit while the `REPL` window 
 It's annoying to try and look at a scrolling error message on the LED display. Instead of printing to the display, we can output straight to the `REPL` window. Upload the following code to your micro:bit.
 
 ```python
-# Output text to the console 
+# Output text to the console
 print('Hello, World!')
 ```
 
@@ -311,7 +311,7 @@ while True:
 
 Notice the use of the `if` statement. Like the `while` loop, the `if` statement will check whether the condition is true, and run the indented code if it is. In the above code, `display.show(Image.HEART)` is run if `button_a.is_pressed()` is true. Since `sleep(1000)` isn't indented relative to the `if` statement, it will always be run.
 
-We can connect an `if` statement with an `else` statement, which will run if the condition evaluates to 
+We can connect an `if` statement with an `else` statement, which will run if the condition evaluates to
 
 ```python
 from microbit import *
@@ -404,7 +404,7 @@ list_length = len(primes)
 print("The number of primes I know is: " + str(list_length))
 ```
 
-There are more things that we can do with lists that are documented in the python language. When you have a chance you can find this documentation at: https://docs.python.org/3.4/tutorial/datastructures.html. Note that this also includes some additional data structures that you might find helpful later on.
+There are more things that we can do with lists that are documented in the Python language. When you have a chance you can find this documentation at: https://docs.python.org/3.4/tutorial/datastructures.html. Note that this also includes some additional data structures that you might find helpful later on.
 
 #### The for loop
 
@@ -546,7 +546,7 @@ for i in range(10):
 display.show(done)
 ```
 
-This above code has an error in it, we've forgotten to put quotes around the string `done`. As a result it will crash once it finishes counting to `10`. The micro:bit will scroll the error message across the display, however this is usually slow and difficult to read. 
+This above code has an error in it, we've forgotten to put quotes around the string `done`. As a result it will crash once it finishes counting to `10`. The micro:bit will scroll the error message across the display, however this is usually slow and difficult to read.
 
 We can get the same information by opening the `REPL` and restarting our program, either by pressing the "reset" button on the micro:bit, or by pressing `<Ctrl-D>` in the `REPL` window. Once we run into the error, the full error message will be output to the console.
 
@@ -557,7 +557,7 @@ We can get the same information by opening the `REPL` and restarting our program
 Although we've covered a heap of content here, there are far more features available in both Python and micro:bit than we can cover here. If you would like more information, you can:
 
 * The micro:bit documentation for features of the micro:bit https://microbit-micropython.readthedocs.io/en/latest/index.html
-* The micropython documentation http://docs.micropython.org/en/latest/
+* The MicroPython documentation http://docs.micropython.org/en/latest/
 * The Python documentation https://docs.python.org/3.4/reference/index.html
-    
-    Note that although micropython is based on Python 3.4, there are a number of differences. The python documentation is excellent at describing the built-in functions, and most of what you will find there is valid for micropython as well, there are some differences, that you can read about here: http://docs.micropython.org/en/latest/genrst/index.html
+
+    Note that although MicroPython is based on Python 3.4, there are a number of differences. The Python documentation is excellent at describing the built-in functions, and most of what you will find there is valid for MicroPython as well, there are some differences, that you can read about here: http://docs.micropython.org/en/latest/genrst/index.html

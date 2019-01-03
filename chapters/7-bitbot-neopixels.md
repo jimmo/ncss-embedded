@@ -1,4 +1,4 @@
-## Robotics with the Micro:Bit
+## Robotics with the micro:Bit
 
 Aside from working with sensors and screens, we can also hook up our micro:bits to various types of robot. For our labs we are going to be working with the bit:bot. The bit:bot is a robot designed specifically for the micro:bit, and interfaces with the micro:bit via the edge connector. It has the following features:
 
