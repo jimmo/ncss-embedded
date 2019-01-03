@@ -35,7 +35,6 @@ The pin connections on each connector, from right to left, are:
 | Tilt Switch | Digital | Detects when module is tilted beyond a certain point |
 | Magnetic Switch | Digital | Detects presence of a magnetic field |
 | Hall Effect Switch | Digital | Detects polarity of a magnetic field |
-| Potentiometer | Analog | Turnable Knob |
 | Rotary Encoder | Digital | Turnable Knob in Discrete Steps |
 | Joystick | Analog | X/Y potentiometer with Z-button |
 | Continuous Rotation Servo | Digital PWM | Continuouly rotates at a given speed |
@@ -47,13 +46,16 @@ The pin connections on each connector, from right to left, are:
 | Loudness Sensor | Analog | Detects loudness with adjustable gain |
 | Ultrasonic Distance | Digital | Distance Sensor |
 | Multi Colour Flash LED | Digital | Flashes between colours |
-| Circular LED | Digital | 24 programmable LEDS |
+| Circular LED | Digital | 24 LEDs in a ring |
 | LED Bar | Digital | LED Bar chart |
 | Flex Sensor | Analog | Detects bending |
+| NeoPixels | Digital | RGB LED Strip |
+| Level Shifter | Digital | Allows you to connect and power 5V Grove modules |
+| Heatrate monitor | Digital | Attaches to a finger to measure heart rate |
 
 ### Grove components
 
-A non-exhaustive list of grove components that we have available, as well as a short description of each is given below.
+A non-exhaustive list of Grove components that we have available, as well as a short description of each is given below.
 
 #### Infrared reflective sensor
 This is a proximity and colour sensor. In other words, it can detect the presence of close by objects and distinguish the difference between light and dark colored objects. Meaning you could get the robot to avoid crashes by detecting the walls first!
@@ -117,6 +119,44 @@ Tilting the switch different directions causes the sensor to give output as eith
 Connecting other components to servos allows them to be moved and rotated,
 
 ![servo](images/servo.jpg)
+
+#### NeoPixels
+A strip of LEDs where each LED can be controlled individually. Needs the level shifter.
+
+![neopixels](images/neopixels.jpg)
+
+#### Heart rate monitor
+
+![heart rate](images/grove-heart-rate.jpg)
+
+### Other non-Grove components:
+
+We also have some other components that you can use in the labs and in your project. Some of them will require a breadboard to connect to, otherwise you can ask a tutor to solder some Grove cables onto them.
+
+#### RGB LEDs
+
+![rgb led](images/rgb-led.jpg)
+
+Datasheet here: [](https://cdn.sparkfun.com/datasheets/Components/General/YSL-R1047CR4G3BW-F8.pdf)
+
+#### Potentiometer
+
+This is a variable resistor that changes based on the angle you turn it to (like a volume knob).
+
+#### GPS Receiver
+
+Allows you to receive latitude/longitude/time.
+
+#### micro:pixel edge
+
+Adds 10 neopixels to the edge of your micro:bit.
+
+![micro:pixel edge](images/micropixel-edge.jpg)
+
+#### micro:pixel
+
+Adds a 4x8 grid of neopixels to the micro:bit.
+
 ## Pulse Width Modulation
 
 We've seen how to control an LED connected to a pin by using `write_digital` to turn the pin on or off. Once we choose a value for the current limiting resistor however, the brightness is fixed.
