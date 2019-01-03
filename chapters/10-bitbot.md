@@ -174,7 +174,7 @@ pin14.write_digital(0)
 1. Speed Control
     * Now that the bit:bot works, let's play around with the motors and speed controls a bit. First let's try making the bit:bot drive in a straight line. Does it work when both motors are set to the same power? Why or why not? Can you find some values that do make it move in a straight line? Write a function that makes the bit:bot drive forward with these speed values, it will be useful later on.
     * Write a three functions that make the bit:bot turn 90-degrees clockwise, 90-degrees counter-clockwise and 180-degrees around.
-    * Write a program that uses the previous functions you wrote and makes the bit:bot drive forwards for one second, spin around, and drive back to where it started. Did it work as you expected?
+    * Write a program that uses the previous functions you wrote and makes the bit:bot drive forwards for one second, spin around, and drive back to where it started. Did it work as you expected? What about if you upload the same code with no modifications to abother bit:bot.
 2. Make your bit:bot detect when it's driven into a "garage" and stop automatically. i.e. the ambient light decreases
 3. Make a simple radio-controlled car using the micro:bit radio and two micro:bits. When a button is pressed on the controller, toggle between two modes:
     * Driving forward at 100% speed.
