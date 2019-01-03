@@ -4,7 +4,7 @@ The micro:bit is a small, handheld, embedded microcontroller, which we will be u
 
 To get started we're going to be working through the micro:bit crash course on the grok platform. For those of you who have done the challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
 
-The crash course will go through everything you need to play around with the micro:bit. In addition to the course, we give a brief description of the peripherals of the micro:bit below, which you can use as a reference if you ever get stuck.
+The crash course will go through everything you need to play around with the micro:bit, as well as getting you up to speed on Python. In addition to the course, we give a brief description of the peripherals of the micro:bit below, and go through some key Python concepts, which you can use as a reference if you ever get stuck.
 
 ### Getting Started
 
@@ -31,11 +31,13 @@ Let's turn on the display!
 ```python
 from microbit import *
 
-#show an image on the 5 x 5 display
+# Show an image on the 5 x 5 display
 display.show(Image.HAPPY)
 ```
 
 What's happening here? The first line is to `import` the microbit module, which gives us all the functions we're going to use.
+
+The third lins is a comment line. In Python, all comments start with a `#` character and allow us to add some descriptive text to our code.
 
 `display.show` is a function that displays an image, `Image.HAPPY`. It looks like a happy face :)
 
@@ -43,14 +45,14 @@ There are a long list of in-built images [on the microbit documentation](https:/
 
 To show multiple images, we need to `sleep` in between instructions, because the micro:bit runs so fast that the images will flash faster than our eyes can see them if we don't do this.
 
-The parameter of `sleep` is in *milliseconds*, so `sleep(1000)` means *sleep for 1 second*. So someone's life story told in 2 seconds might look like this:
+The parameter of `sleep` is in *milliseconds*, so `sleep(1000)` means *sleep for 1 second*. So someone's life story told in 3 seconds might look like this:
 
 ```python
 from microbit import *
 
-#show an image on the 5 x 5 display
+# Show an image on the 5 x 5 display
 display.show(Image.HAPPY)
-#wait for a number of milliseconds
+# Wait for a number of milliseconds
 sleep(1000)
 display.show(Image.SAD)
 sleep(1000)
@@ -67,9 +69,9 @@ from microbit import *
 # Set the wait time
 wait_time = 2000
 
-#show an image on the 5 x 5 display
+# Show an image on the 5 x 5 display
 display.show(Image.HAPPY)
-#wait for a number of milliseconds
+# Wait for a number of milliseconds
 sleep(wait_time)
 display.show(Image.SAD)
 sleep(wait_time)
@@ -82,47 +84,50 @@ Now, we can change all of the the delay after each of the images while only chan
 
 #### Working with the display
 
-The `display` module does more than just setting pre-built images. We can programmatically do this with the `display.set_pixel` function.
+The `display` module does more than just setting pre-built images. It's also possible to individually control each LED, including making them brighter and darker. We can programmatically do this with the `display.set_pixel` function.
 
-The display works on a grid with (0, 0) at the top left:
+The display works on a grid with `(0, 0)` at the top left of the display:
 
 ![Grid source:microbit docs](https://microbit-micropython.readthedocs.io/en/latest/_images/happy.png)
+
+For example, to control a single pixel we can write:
 
 ```python
 from microbit import *
 
-#set_pixel(x,y,amount)  3rd light across and 4th down because we count from 0
+display.clear()
+#set_pixel(x,y,brightness)  3rd light across and 4th down because we count from 0
 display.set_pixel(2, 3, 9)
 ```
 
-Each pixel has a brightness from `0` to `9`, so the code above sets pixel (2, 3) to full brightness.
+The above code will do two things. First it clears the display, getting rid of any previously displayed image. Then, since each pixel has a brightness from `0` to `9`, the code above sets pixel (2, 3) to full brightness.
 
-The code below will turn off the previous pixel, and light up the middle pixel at half brightness instead:
+As another example the code below will turn off the previous pixel, and light up the middle pixel at half brightness instead:
 
 ```python
 from microbit import *
 
 display.set_pixel(2, 3, 0)
-display.set_pixel(3, 3, 5)
+display.set_pixel(2, 2, 5)
 ```
 
 #### Working with Text
 
-We can use the same command to show text:
+We can also use the `display.show` function to print out some text:
 
 ```python
 from microbit import *
 
-#show text on the 5 x 5 display one letter at a time
+# Show text on the 5 x 5 display one letter at a time
 display.show('Hi NCSS')
 ```
 
-But that flashes letters and it's a bit weird. Much better of `scroll` text instead:
+But that flashes letters and it ends up being a bit hard to read. Much better to `scroll` text instead:
 
 ```python
 from microbit import *
 
-#scroll text on the 5 x 5 display 
+# Scroll text on the 5 x 5 display 
 display.scroll('Hello there, this text is scroooooooling')
 ```
 
@@ -132,7 +137,7 @@ Much like with numbers above, we can also store **strings** (that is text data) 
 from microbit import *
 
 text_data = 'Hello there, this text is scroooooooling'
-#scroll text on the 5 x 5 display 
+# Scroll text on the 5 x 5 display 
 display.scroll(text_data)
 ```
 
@@ -159,7 +164,7 @@ We can convert from strings into numbers by running the `int` function on the te
 ```python
 final_value = int(text_data_1) + int(text_data_2)
 ```
-the values stored in `text_data_1` and `text_data_2` are converted to numbers before being added, so final value after runnning this code will be `3` as expected.
+the values stored in `text_data_1` and `text_data_2` are converted to numbers before being added, so final value after runnning this code will be `3`.
 
 We can also do the opposite conversion, taking a number variable and turning it into text. For example:
 ```python
@@ -178,7 +183,7 @@ To scroll integers, we need to convert them to a string using the `str` function
 from microbit import *
 
 num = 50
-#scrolling text with joining
+# Scrolling text with joining
 display.scroll('The answer is: ' + str(num))
 ```
 
@@ -187,7 +192,7 @@ We might want to repeatedly scroll text:
 ```python
 from microbit import *
 
-#scrolling text with repetition
+# Scrolling text with repetition
 display.scroll('LOLOLOLOLOLOLO', loop=True)
 ```
 
@@ -196,7 +201,7 @@ That text will keep repeating, to speed it up we can use the `delay` *key word a
 ```python
 from microbit import *
 
-#scrolling text with repetition and change of speed
+# Scrolling text with repetition and change of speed
 display.scroll('LOLOLOLOLOLOLO', delay=50, loop=True)
 ```
 
@@ -223,7 +228,7 @@ Note, you won't be able to upload code to the micro:bit while the `REPL` window 
 It's annoying to try and look at a scrolling error message on the LED display. Instead of printing to the display, we can output straight to the `REPL` window. Upload the following code to your micro:bit.
 
 ```python
-#displaying to the console 
+# Output text to the console 
 print('Hello, World!')
 ```
 
@@ -245,7 +250,7 @@ Embedded systems, we generally don't want them to stop. So we really want them t
 ```python
 from microbit import *
 
-#first while loop
+# Run this animation forever
 while True:
     display.show(Image.HEART)
     sleep(500)
@@ -253,7 +258,7 @@ while True:
     sleep(500)
 ```
 
-The `while` loop is what does this. It comes in the form `while <condition>:`, when the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues. The code that we want to run is indented to indicate that it is all part of the `while` loop. Unindented code will not be run as part of the loop. For example, in the following code:
+The `while` loop is a language feature we can use to do this. It comes in the form `while <condition>:`, when the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues. The code that we want to run is indented to indicate that it is all part of the `while` loop. Unindented code will not be run as part of the loop. For example, in the following code:
 
 ```python
 while True:
@@ -264,7 +269,7 @@ print("Goodnight, Moon.")
 
 The phrase "Hello, World!" will be printed indefinitely, while "Goodnight, Moon." will never be reached.
 
-In addition, in both the above loops, since `True` is always `True`, the above code will repeat forever. It is an *infinite loop*.
+In addition, in both the above loops, since `True` is always `True` (duh...), the above code will repeat forever. It is an *infinite loop*.
 
 We can also write a loop that will terminate once a certain action has taken place. For example, in the following code:
 
@@ -318,21 +323,21 @@ while True:
         display.show(Image.GHOST)
 ```
 
-The `elif` statement lets us add more options!
+The `elif` statement lets us add even more options!
 
 ```python
 from microbit import *
 
 while True:
-    if button_a.is_pressed() and button_b.is_pressed():
-        display.show(Image.HEART)
-    elif button_a.is_pressed():
+    if button_a.is_pressed():
         display.show('A')
     elif button_b.is_pressed():
         display.show('B')
     else:
         display.clear()
 ```
+
+What would happen here is both `button_a` and `button_b` are pressed?
 
 #### Was it pressed?
 
@@ -485,7 +490,7 @@ def happy():
     sleep(1000)
     display.clear()
 
-happy() # call the function
+happy() # Call the function
 ```
 
 The `def` keyword *defines* the function `happy`, and calling the function by using the name and parentheses (in this case `happy()`), runs the lines of code inside the function.
@@ -499,8 +504,8 @@ def happy(ms):
     sleep(ms)
     display.clear()
 
-happy(300) # call the function, sleep for 300 ms
-happy(500) # call it again, sleep for 500 ms this time
+happy(300) # Call the function, sleep for 300 ms
+happy(500) # Call it again, sleep for 500 ms this time
 ```
 
 Here we defined that there is a parameter to the function `happy` called `ms`, and each time we call this function, we use the value of that is passed for `ms`. In the above example, the first time we call `happy`, `ms` is set to `300`, the second time we call `happy`, `ms` is set to `500`.
