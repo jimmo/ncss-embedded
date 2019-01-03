@@ -162,14 +162,15 @@ Today's lab focuses on closed-loop control. We're going to work on taking some o
     * When the *right* line sensor detects the masking tape, turn to the right.
     * When *both* or *none* of the line sensors detect masking tape, go straight.
 
-  How well does this program do at following the line?
+    How well does this program do at following the line?
 
     * Change your program to arc to the left and the right, rather than turning sharply. Does this do any better?
         * Is there a situation where this approach will fail?
 
 2. The simple bang-bang implementation, although effective, is not the fastest way we could follow the line. We can improve on this by counting the number of times the line sensor detects the masking tape and using this as an approximation for how far over the line we've gone. 
 
-  By doing this, we can make the robot make small corrections at first, and make larger and larger corrections if it comes to a sharp corner.
+    By doing this, we can make the robot make small corrections at first, and make larger and larger corrections if it comes to a sharp corner.
+
     * You can use the skeleton provided above to implement this.
 
 3. *More Closed Loop Control*: We can also change the implementations for going straight and turning that we used in the previous lab to use closed loop control. This will allow our code to be far more portable than before.
