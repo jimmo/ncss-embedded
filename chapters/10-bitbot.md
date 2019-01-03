@@ -167,7 +167,7 @@ pin14.write_digital(0)
 ```
 
 ## Lab exercises
-0. Getting Started:
+0. **Getting Started**:
     * Put some batteries in the compartment and plug in a micro:bit using the right-angle adaptor. As we have SONAR distance sensors installed on the fronts of these robots, you won't be able to plug them in directly.
     * Ensure that the power LED comes on, and that the micro:bit is powered by the batteries. You may have to write a short program that outputs something on the display to ensure this work, as we don't want to rely on the USB cable for this exercise.
     * Make the robot drive forwards.
