@@ -10,7 +10,27 @@ The crash course will go through everything you need to play around with the mic
 
 If you're using the microbit emulator on Grok, you don't need anything more to get started.
 
-If you're playing around with a real micro:bit, you'll need a couple of other things to get going. When you plug the micro:bit in to your computer, it will show up as a drive connected to your computer. The micro:bit expects a `.hex` file which contains the compiled program that you want to run. 
+If you're playing around with a real micro:bit, you'll need a couple of other things to get going. When you plug the micro:bit in to your computer, it will show up as a drive connected to your computer. The micro:bit expects you to copy a `.hex` file which contains the compiled program that you want to run.
+
+There's a couple of ways to get this file. If you are using the Grok interface to write your programs, you can hit the "Download" button in the top right corner of the editor to download the hex file that corresponds to your written program. Then, copy and paste that file onto the micro:bit drive that appears.
+![GrokInterface](images/GrokDownload.png)
+
+Alternatively, you can use the `Mu` editor -  a simple editor for python that interfaces directly with the micro:bit, and is able to upload code directly to the micro:bit. During the micro:bit labs, this will be the main editor we use. The editor can be downloaded from https://codewith.mu/en/. By pressing the `Flash` button in the editor, we can upload the code to the micro:bit. Once the upload is completed, the micro:bit will automatically reset and start running your new program.
+![MuInterface](images/mu_buttons.png)
+
+**Note**: If this set of buttons doesn't appear in your copy of `Mu`, you may not be running in the "micro:bit" mode. You can change the target in `Mu` by pressing the `Mode` button in the top left corner of the editor.
+
+#### The REPL
+
+In addition to uploading scripts to the micro:bit and running them, we can also interactively run single lines of python code on the micro:bit. The easiest way to access the REPL on the micro:bit is using the `Mu` editor, where we can press the `REPL` button in the menu bar. This will stop the currently running program and bring up a prompt, into which you can type Python expressions.
+
+For example, try bringing up the `REPL` and type the following lines:
+
+```pycon
+>>> display.show(Image.HAPPY)
+```
+
+Opening the `REPL` causes whatever code is uploading to stop, however we can also restart our running code, either by pressing the "reset" button on the micro:bit, or pressing `<Ctrl-D>` in the `REPL` window. Any `print` statements in our program will also be show up here.
 
 ### Images and sleeping
 
@@ -254,3 +274,22 @@ display.set_pixel(4, 4, 9)
 ```
 
 that's pretty boring to write. So use a `for` loop instead.
+
+#### Debugging Your Code
+
+Apart from being a great way to quickly test out the functionality of the micro:bit, the `REPL` also allows you to find errors in your code. For example, let's upload this buggy code to our micro:bit.
+
+```python
+from microbit import *
+
+for i in range(10):
+    display.show(i)
+    sleep(1000)
+display.show(done)
+```
+
+This above code has an error in it, we've forgotten to put quotes around the string `done`. As a result it will crash once it finishes counting to `10`. The micro:bit will scroll the error message across the display, however this is usually slow and difficult to read. 
+
+We can get the same information by opening the `REPL` and restarting our program, either by pressing the "reset" button on the micro:bit, or by pressing `<Ctrl-D>` in the `REPL` window. Once we run into the error, the full error message will be output to the console.
+
+![REPL_Error](images/REPL_Error.PNG)
