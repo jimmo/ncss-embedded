@@ -147,11 +147,13 @@ while True
   # ... etc
 ```
 
-#### TODO: State machine diagram for linear states.
+![linear modes](images/linear-modes.png)
 
-What if we need to be able to move between states? For example, mode 1 might be a menu system, and depending on which button we press, we need to move to one of modes 2, 3 or 4. At the moment, when a mode finishes, the inner loop `breaks` and it just goes onto the next mode. We need a way to signal which mode to go to next.
+What if we need to be able to move between states? For example, mode 1 might be a menu system, and depending on which button we press, we need to move to one of modes 2, 3 or 4. Then mode 2 goes to mode 5, etc. At the moment, when a mode finishes, the inner loop `breaks` and it just goes onto the next mode. We need a way to signal which mode to go to next.
 
-One way to do this is to have a mode (state) variable:
+![nonlinear modes](images/nonlinear-modes.png)
+
+One way to do this is to have a mode (state) variable which any part of the code can set and will tell the code what to do next.
 
 ```python
 mode = 1
@@ -162,21 +164,20 @@ while True
       # Do stuff for mode 1
       if something:
         mode = 2
-	break
-      if something_else:
+        break
+      elif something_else:
         mode = 3
-	break
+        break
+      elif something_else_again:
+        mode = 4
+        break
 
   elif mode == 2:
     while True:
-      # Do stuff for mode 1
-      if something:
-        mode = 2
-	break
-      if something_else:
-        mode = 3
-	break
       # Do stuff for mode 2
+      if something:
+        mode = 5
+	break
 
   elif mode == 3:
     # ... etc
@@ -196,3 +197,9 @@ mode = MODE_MENU
 if mode == MODE_PLAYING:
   # etc
 ```
+
+This is such a common pattern that it has a name -- a **state machine**. It's also common to extend this pattern to add code than runs for specific state transitions.
+
+## Classes
+
+TODO

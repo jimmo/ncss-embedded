@@ -43,7 +43,6 @@ The pin connections on each connector, from right to left, are:
 | PIR Motion Sensor | Digital | Detects movement |
 | Sound Pressure Sensor | Analog | Detects loudness |
 | Loudness Sensor | Analog | Detects loudness with adjustable gain |
-| Ultrasonic Distance | Digital | Distance Sensor |
 | Multi Colour Flash LED | Digital | Flashes between colours |
 | Circular LED | Digital | 24 LEDs in a ring |
 | LED Bar | Digital | LED Bar chart |
@@ -167,6 +166,10 @@ Adds 10 neopixels to the edge of your micro:bit.
 
 Adds a 4x8 grid of neopixels to the micro:bit.
 
+#### Ultrasonic distance sensor
+
+Measures how far away an object is using ultrasound (SONAR). These are much easier to use from the bit:bot as the necessary circuitry is provided by the bit:bot.
+
 ## Pulse Width Modulation
 
 We've seen how to control an LED connected to a pin by using `write_digital` to turn the pin on or off. Once we choose a value for the current limiting resistor however, the brightness is fixed.
@@ -205,14 +208,14 @@ while True:
 
 *Note: there are no sleeps in this code, but we're relying on the fact that `write_digital` takes about 1 ms to run.*
 
-TODO: Waveform diagram
+![PWM](images/pwm.png)
 
 This is called "Pulse Width Modulation" or PWM. Our code is generating pulses, and modulating their width. (Modulation is one thing controlling another thing). Some terminology:
 
 * The **pulse length** is how long the pin is on for. In the first example, it's approximately 1 ms.
 * The **period** is the length of time from the start of one pulse to the next. In the first example, this is approximately 2 ms, in the second it is `ON + OFF` ms.
 * The **frequency** is how many pulses per second. It is calculated as `1 / period`, so in the first example, `1 / 0.002 = 500 Hz`.
-* The duty cycle is the ratio of the pulse length to the period, expressed as a percentage. So the first example is 50%, the second example is 25%. The duty cycle will correspond to the brightness (or the motor speed, etc).
+* The **duty cycle** is the ratio of the pulse length to the period, expressed as a percentage. So the first example is 50%, the second example is 25%. The duty cycle will correspond to the brightness (or the motor speed, etc).
 
 ### Built-in PWM support
 
@@ -268,7 +271,19 @@ This is the more common type of servo, where the PWM input is used to set the mo
 
 The way they work internally is they contain a *potentiometer*, connected to the output. This is a device that changes resistance depending on how far it has been rotated. The servo contains a small circuit that measures the resistance of the potetiometer, and turns on the motor until it sees the resistance increase or decrease to match the desired angle.
 
-#### TODO: diagram
+The logic inside a servo motor is roughly equivalent to the following code:
+
+```python
+while True:
+  current_angle = get_angle_from_potentiometer()
+  desired_angle = get_angle_from_pwm_input()
+  if current_angle < desired_angle:
+    set_motor_speed(1)  # Turn right.
+  elif current_angle > desired_angle:
+    set_motor_speed(-1) # Turn left.
+  else:
+    set_motor_speed(0)
+```
 
 ### Controlling a servo motor
 

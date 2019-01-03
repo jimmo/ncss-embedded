@@ -11,9 +11,7 @@ Aside from working with sensors and screens, we can also hook up our micro:bits 
 
 <span style="color:red">**Warning!!**</span> The gearboxes on the bit:bot are a little fragile, and the teeth on the gears can break if too much torque is applied. Don't try to hold the wheels from spinning while the motors are on.
 
-[comment]: # (The below should be reworded... Don't like how this turned out)
-
-Over the course of the next two labs, we are going to start off by playing with the features of the bit:bot, before getting into some algorithms for controlling the bit:bot a bit more intelligently.
+We'll start with exploring the features of the bit:bots, then learning about some algorithms for making the bit:bots perform various line following tasks.
 
 ### Getting Started
 
@@ -169,7 +167,7 @@ pin14.write_digital(0)
 
 As well as the line following and light sensors, the bit:bots also have 12 programmable RGB LEDs. These are commonly known as "Neopixels", however their real part name is `WS2812B`.
 
-On the bit:bot, the 12 LEDs are arranged in two strips of 6. You can also buy them in pre-made flexible strips.
+On the bit:bot, the 12 LEDs are arranged in two strips of 6, connected to pin 13. You can also buy them in pre-made flexible strips.
 
 ### Programmable LEDs
 We've seen how to control an LED and change its brightness using PWM on the micro:bit. To recap, we connect the LED to the pin, use a current limiting resistor to set the maximum brightness, then use PWM to control how much time the LED spends turned on (which is effectively the brightness).
@@ -180,13 +178,15 @@ The problem is that this takes a lot of pins on our micro:bit, and needs a lot o
 
 Programmable LEDs, on the other hand, have tiny integrated circuits inside of them, and we can send digital messages to them to set the colour and brightness. They also chain together, so by having our micro:bit connected to just the first one, they will send the messages along the chain to control all of them.
 
-### TODO: Neopixel wiring diagram here
+Here's an example of four WS2812Bs wired together (this is adapted from the Quokka circuit diagram -- you'll see the Quokka later in the week).
+
+![neopixel chain](images/neopixel-chain.png)
 
 ### Programming
 
 ```python
 import neopixel
-leds = neopixel.Neopixel(12, pin14)  # TODO, arg order, pin number.
+leds = neopixel.Neopixel(pin13, 12)
 
 for i in range(12):
   leds[i] = (128, 0, 0,)
@@ -210,28 +210,38 @@ COLOUR_RED = (255, 0, 0,)
 COLOUR_GREEN = (0, 255, 0,)
 COLOUR_BLUE = (0, 0, 255,)
 COLOUR_PINK = (255, 0, 255,)
-COLOUR_YELLOW = (0, 0, 0,)  # TODO
-COLOUR_ORANGE = (0, 0, 0,)  # TODO
+COLOUR_YELLOW = (255, 255, 0,)
+COLOUR_CYAN = (0, 255, 255,)
+COLOUR_ORANGE = (255, 128, 0,)
+COLOUR_PURPLE = (204, 0, 255,)
 ```
 
-### Other types of programmable LED
+### Extra: Other types of programmable LED
 
 The main alternative to the WS2812B is the APA102C (commonly known as "Dotstars"). These have two distinct advantages over the WS2812B:
  * They are much easier to program, as they use SPI communications.
  * They have a much higher refresh rate, allowing for video and persistence-of-vision effects.
 
-At NCSS we use WS2812B because of the built-in `neopixel` module, but it's also fairly straightforward to use APA102Cs via SPI. Like the WS2812B, they also run at 5 volts, so will require a level shifter to use from the micro:bit and pyboard/Quokka.
+At NCSS we use WS2812B because of the built-in `neopixel` module, but it's also possible to use APA102Cs via SPI. Like the WS2812B, they also run at 5 volts, so will require a level shifter to use from the micro:bit and pyboard/Quokka.
 
 ```python
 from microbit import *
 
-# TODO
-data = bytearray(4 + NUM_LEDS * 4 + 4)
-spi.init(mosi=pin0, sclk=pin13, baudrate=1000000)
-spi.send(data)
+spi.init(mosi=pin0, sclk=pin13, baudrate=1000000, mode=1)
+data = bytearray([0]*4) + bytearray(NUM_LEDS * 4) + bytearray([0xff]*4)
+
+def show():
+  spi.send(data)
+
+def set_colour(n, r, g, b):
+  data[n * 4 + 4] = 0b11100100
+  data[n * 4 + 5] = b
+  data[n * 4 + 6] = g
+  data[n * 4 + 7] = r
 ```
 
 There are also variations of the WS2812B and APA102C that add things like a fourth "colour" which is an extra white LED.
+
 ## Line following
 
 We've already seen how we can use the sensors on the bottom of the bit:bot to detect masking tape. In Python, we read the current state of these sensors with `pin11` and `pin5`. We can make a very simple line following program by reading whether the sensors are over the masking tape and applying a correcting rotation when they are:
@@ -289,10 +299,6 @@ Here are some examples from the bit:bot:
 
 The main challenge with closed-loop control is getting good results from the sensors, and figuring out how to translate the sensor inputs (`pv`) into control outputs (`op`).
 
-[comment]: # (TODO: Move the below definitions somewhere else, as this does not flow)
-[comment]: # ( * accuracy: does the sensor reflect the true value of what it's measuring)
-[comment]: # ( * precision: how noisy is the sensor)
-
 ### Control Algorithms
 
 Although it does add an additional bit of complexity, for any system that needs to operate for any length of time, some form of closed-loop control is generally necessary. The difficulty then becomes how does one translate a control input
@@ -337,13 +343,11 @@ The temperature of the fridge using this sort of control will then look somethin
 
 The simplest possible line following algorithm works in much the same way, however there's a key difference. In a fridge, we can measure the PV (current temperature) extremely well, but only have very crude control over the OP (compressor on/off). On a bit:bot we have very good control over the OP (motor speed), but a very limited way to measure the PV (are we currently over a line).
 
-[comment]: # (*Note*: Some modern fridges have a VFD variable frequency drive compressor that allows much finer control over the compressor power. This lets you use a much more efficient control algorithm, resulting in a quieter and more energy efficient fridge.* Commented out as simething of interest, but not particularly instructive at this point...)
-
 #### Proportional control
 
-TODO
+To continue with the fridge example, wouldn't it be great if we could instead adjust the power to the compressor to match the temperature difference. In fact, modern fridges have a VFD (variable frequency drive) compressor that allows it to run at different power levels, instead of just on or off.
 
-*Note: this is the first part of a commonly used control algorithm called a PID Controller. PID stands for proportional-integral-derivative.*
+When a control algorithm drives the output as a function of the difference between the PV and SP, this is called *proportional control*. This is the first part of a commonly used control algorithm called a PID Controller. PID stands for *proportional-integral-derivative*.
 
 #### Line following
 
@@ -391,7 +395,7 @@ These ultrasonic sensors work by measuring the echo time ("time of flight") of a
 
 *This is how you can measure approximately how far away lightning is by measuring the time between the flash and the boom and multiplying by 1000/340 (which is ~3).*
 
-#### TODO: diagram
+The sensors on the bit:bot are called *HC-SR04*. You can read more about them in [the HC-SR04 datasheet](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf).
 
 These sensors have four pins:
  * Power (5V)
@@ -399,33 +403,34 @@ These sensors have four pins:
  * Trig
  * Echo
 
-### TODO: waveform
-
 *Note: although the distance sensors require 5V, the bit:bot takes care of this for us. If you were connecting an ultrasonic sensor directly to the micro:bit, you'd need additional circuitry.*
 
-To start a pulse, you send a brief pulse on the trig line, then measure how long until there's a pulse on the echo line. Because we want the timing to be accurate, we used a special built-in MicroPython function to time the pulse for us.
+![hc-sr04](images/hc-sr04.png)
 
-# TODO: we can also use the length of hte pulse rather than the delay to the pulse? Which is better?
+To measure distance, you send a brief pulse on the trig line, then measure how long the pulse on the echo line lasts for. Because we want the timing to be accurate, we used a special built-in MicroPython function to time the pulse for us named `machine.time_pulse_us`. This function takes a pin and a pulse level. In this case we're looking for a "high" pulse, so we set the level to `1`.
 
-```
-from microbit import *
-import machine
-# TODO
-machine.time_pulse_us(pinN, 0, 1)
-```
+To calculate the distance, we multipy the length of the pulse by the speed of sound, divided by two.
 
-Confusingly, on the bit:bot, the `echo` and `trig` lines are connected together into a single micro:bit pin, so you need to first send the trigger, then switch the pin back to input, then time the pulse.
+![us timing](http://mathurl.com/yc2u5ouq.png)
+
+Because the pulse is measured in microseconds, and we want the distance in centimetres, we use 0.034 centimetres/microsecond as the speed of sound. The divide by two is required because it's the time taken for the ultrasound to travel to the target and echo back again.
+
+Confusingly, on the bit:bot, the `echo` and `trig` lines are connected together into a single micro:bit pin (pin 15), so you need to first send the trigger, then switch the pin back to input, then time the pulse.
 
 ```
 from microbit import *
 import machine
 
 def distance_cm():
-  pinN.write_digital(1)
-  pinN.write_digital(0)
-  pinN.read_digital()
-  tof = machine.time_pulse_us(pinN, 0, 1)
-  return tof / 29.4
+  # Send a pulse on pin 15
+  pin15.write_digital(1)
+  pin15.write_digital(0)
+  # Read from the pin to turn it back to an input.
+  pin15.read_digital()
+  pulse_time = machine.time_pulse_us(pin15, 0, 1)
+  if pulse_time < 0:
+    return 0
+  return pulse_time * 0.034 / 2
 
 while True:
   print(distance_cm())

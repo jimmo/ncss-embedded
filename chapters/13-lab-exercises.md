@@ -129,14 +129,25 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 ### Part 5 -- Servo motors
 
 1. Use a standard servo to make a boom-gate style barrier that open and closes based on a signal from the micro:bit (e.g. when a button is pressed).
-2. TODO more
-
 
 ## Lab 4 -- Sunday afternoon
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of the course.
 
-2. TODO: Advanced micro:bit problems
+**Channel selection**: To ensure that everyone's using a different channel for their micro:bit, use the following formula to select a channel number for your programs.
+
+![radio channel](http://mathurl.com/ycn82kxx.png)
+
+Use the student number that you use when counting off in your groups.
+
+2. Use a micro:bit as a remote control to activate the boom gate from the previous lab.
+
+3. Experiment with the micro:bit radio. Build a test program to measure how far away you can reliably receive a signal.
+3.1. Use the `radio.receive_full` method to get the RSSI (Received signal strength indication). This will give you an idea of how well the micro:bit is receving the signal. How does this value change with distance, relative orientation of the two micro:bits, or if the signal has to travel through walls.
+3.2. How can you make your transmissions more reliable if some messages are lost? Try writing a program that sends messages multiple times and see if that improves the radio reliability?
+3.3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
+
+4. Most computer networks have a concept of a router, which is a device that can forward network messages to other devices. Write a program for a micro:bit that will act as a simple relay router that will resend any messages that it receives. See if you can use this to improve the range in your earlier experiments.
 
 ## Lab 5 -- Monday morning
 
@@ -251,6 +262,14 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
 
 ## Lab 8 -- Thursday morning
 
-TODO: Plotting data
+This is the final lab before the project. You can also use this time to catch up on any previous labs that you haven't finished.
 
-TODO: Quokka lab
+1. Use the Mu plotting mode to plot the data from one of the axes of the accelerometer.
+1.1. With one battery powered micro:bit, read the data from the accelerometer and send it via radio to another micro:bit that is connected to Mu. Use this to plot the accelerometer data as you walk around the room, or do various activities such as jumping or running. What patterns can you see?
+
+2. Update the reaction time game from chapter 4 to save the best time to a file on the filesystem. Print out `"Time to beat: "` and the time when the program starts up.
+
+3. Explore the features on the Quokka board.
+3.1. Use the display to show some text and show which button is currently being pressed.
+3.2. Make the neopixels show a scrolling rainbow pattern (or pattern of your choice!).
+3.3. Use a micro:bit talking to the Quokka via radio to control the neopixels.
