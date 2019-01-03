@@ -144,7 +144,7 @@ An example configuration of a `spi` device might look like this:
 spi.init(baudrate=1000000, bits=8, mode=0, sclk=pin13, mosi=pin15, miso=pin14)
 ```
 
-Once that is configured, `spi.read()` and `spi.write` functions can be used to read and write data. The `SS` pin should be configured separately.
+Once that is configured, use `spi.read` and `spi.write` functions can be used to read and write data. The `SS` pin should be configured separately.
 
 More information can be [found in the documentation](https://microbit-micropython.readthedocs.io/en/latest/spi.html)
 
@@ -175,4 +175,6 @@ which returns a list of addresses that the devices are connected on.
 
 To communicate you can use `i2c.read` and `i2c.write` to communicate with the desired device.
 
-It's important to connect the `SDA` to `pin20` and `SCL` to `pin19`, and the grounds of each device should be shared. There are internal pull-up resistors on the micro:bit, but you may need to add these separately if the connection wires are long.
+It's important to connect the `SDA` to `pin20` and `SCL` to `pin19`, and the grounds of each device should be shared. It's possible to change these pins, but the accelerometer and compass use the `i2c` bus and they will stop working if the pins are changed. There are internal pull-up resistors on the micro:bit, but you may need to add these separately if the connection wires are long.
+
+As always, the [documentation](https://microbit-micropython.readthedocs.io/en/latest/i2c.html) is very helpful when using the `i2c` module. 
