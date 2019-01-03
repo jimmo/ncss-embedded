@@ -6,20 +6,15 @@ Since there is such a large number of topics to cover, don't worry if this doesn
 
 ### Voltages and Currents
 
+To build any electronic device, we need to have a way of sending power and signals between controllers, sensors and outputs. The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called *current*.
 
+The way create a current is to apply a *voltage*, a difference in voltage between two points in a circuit will cause current to flow. 
 
-To build any electronic device, we need to have a way of sending signals between controllers, sensors and outputs. The
-The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called *current*.
+We can draw an analogy between voltages and currents, and water pressures and flows. A voltage is like a water pressure. If there is a pressure difference between two points, water will flow (like current) between those two points to try and equalize those pressures.
 
-The way create a current is to apply a *voltage*, a difference in voltage between two points in a circuit will cause current to flow.
-
-So there are two things we want to keep track of in electronic circuits: **voltage** and **current**.
-
-Two things to remember:
+So there are two things we want to keep track of in our electronic circuits: **voltage** and **current**. Two handy things to keep in mind are:
 * **Voltage is _across_ things**
 * **Current flows _through_ things**
-
-The voltage at any point in the circuit generally means **the potential difference between that point and ground**.
 
 ### Relating voltage and current: resistors
 
