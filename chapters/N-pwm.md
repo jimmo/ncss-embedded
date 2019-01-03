@@ -67,10 +67,3 @@ This has two big advantages over toggling the pins manually:
 * The timing is more precise and can run at a higher speed.
 
 The default period is 20 ms (50 Hz), however this can be adjusted using `set_analog_period` or `set_analog_period_microseconds`.
-
-## Lab exercises
-
-1. Make an LED pulse on and off by smoothly changing the brightness up and down.
-1.1. Try different pulsing patterns (e.g. sinusoidal).
-2. Use an RGB LED to experiment with colours.
-2.1. Generate a rainbow sequence, smoothly changing through the spectrum.

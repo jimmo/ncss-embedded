@@ -46,10 +46,3 @@ while True:
   print(distance_cm())
   sleep(500)
 ```
-
-## Lab exercises
-
-1. Try out the example above. How accurate and precise are the measurements?
-2. Experiment with some ways to improve the reliability of the sensor:
-  * Calibrate the sensor with a ruler and update the tof->cm factor.
-  * Try creating a moving average of the sensor readings to reduce noise.

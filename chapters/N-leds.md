@@ -41,18 +41,3 @@ Resistors only come in specific values, so just round *up* to the nearest one (e
 * Sometimes you might choose to "invert" the LED by connecting it to VCC instead, then when you turn *off* the pin, the LED will turn on.
 * The micro:bit also has current limiting resistors for its built-in LED grid. *They're really tiny! Can you find them and measure their resistance?*
 * Blue LEDs typically have a higher forward voltage drop, so will usually require a lower-value resistor for the same brightness.
-
-## Lab exercises
-
-1. Wire up some LEDs using the breadboards and the grove jumper wires.
-1.1. Experiment with different resistor values.
-1.2. Make a program that animates some resistors in a row.
-2. Wire up an RGB LED. These contain three individual LEDs (red, green, and blue) and are wired up like this:
-
-#### TODO: RGB LED diagram.
-
-2.1. Make a program that cycles between red, green and blue.
-2.2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
-
-3. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?* (TODO: is this hint too strong?)
-3.1. Use this to get other colours from the RGB LED.

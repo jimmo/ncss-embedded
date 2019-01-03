@@ -65,13 +65,3 @@ spi.send(data)
 ```
 
 There are also variations of the WS2812B and APA102C that add things like a fourth "colour" which is an extra white LED.
-
-## Lab exercises
-
-1. Make your bit:bot indicate its left and right side like a boat or aeroplane. Turn on the front LED on the left to red, and the front LED on the right to green.
-2. TODO: flashing sequence (white, red, red)?
-3. TODO: Animation (forwards/backwards)
-4. TODO: Rainbow
- * Hint: Ask your tutors about how to convert a "hue" into an RGB colour.
-5. TODO: Gamma correction.
-6. TODO: Indicate line following state.
