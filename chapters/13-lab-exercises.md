@@ -11,8 +11,7 @@ Some of the exercises are a quite open-ended and designed for you to explore the
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **four** (i.e. up to the "Simple Snake" problem).
 
 2. The Grok course will likely take most of the lab time, but here are some extension exercises:
-
-2.1. Write a program that can detect *both buttons* being pressed at the same time, but with the same behavior as `was_pressed`. Unlike the *ATV Controller* problem, where your program detected that both buttons were currently pressed, instead we want to know if a press has happened (whether or not they are still being held down). Use this to write a program that counts the number of times that A was pressed, B was pressed, and A+B were pressed together.
+    1. Write a program that can detect *both buttons* being pressed at the same time, but with the same behavior as `was_pressed`. Unlike the *ATV Controller* problem, where your program detected that both buttons were currently pressed, instead we want to know if a press has happened (whether or not they are still being held down). Use this to write a program that counts the number of times that A was pressed, B was pressed, and A+B were pressed together.
 For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+B** the program would print:
 ```
 1 0 0
@@ -33,11 +32,11 @@ Use two of the LEDs in the display to represent the current state of the lights 
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
 
 2. In the crash course we saw how connect an external button. As a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
-2.1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
+    1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
 
 3. Ask a tutor for some LEDs. Wire them up using a breadboard, some grove->breadboard cable (in the bottom drawer of the component kits), and some current limiting resistors (also in the component kits).
-3.1. Use `write_digital` (e.g. `pin0.write_digital(1)`) to control the LED.
-3.2. We also have some RGB LEDs. These need to be wired up using three separate current limiting resistors. Make a program that cycles between red, green and blue.
+    1. Use `write_digital` (e.g. `pin0.write_digital(1)`) to control the LED.
+    2. We also have some RGB LEDs. These need to be wired up using three separate current limiting resistors. Make a program that cycles between red, green and blue.
 
 The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb. They are "common cathode" which means they share a negative pin. Here's a picture from the datasheet that shows which pin is which.
 
@@ -46,7 +45,7 @@ The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb
 3.2. What if you turn on the colours at the same time, figure out which combinations give you pink, cyan, yellow, and white. You might need to adjust the resistors to balance the brightness of the different colours.
 
 4. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?*
-4.1. Use this to get other colours from the RGB LED.
+    1. Use this to get other colours from the RGB LED.
 
 ## Lab 3 -- Sunday morning
 
@@ -121,9 +120,9 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 ### Part 4 -- PWM
 
 1. Make an LED pulse on and off by smoothly changing the brightness up and down.
-1.1. Try different pulsing patterns (e.g. sinusoidal).
+    1. Try different pulsing patterns (e.g. sinusoidal).
 2. Use an RGB LED to experiment with colours.
-2.1. Generate a rainbow sequence, smoothly changing through the spectrum.
+    1. Generate a rainbow sequence, smoothly changing through the spectrum.
 
 
 ### Part 5 -- Servo motors
@@ -143,9 +142,9 @@ Use the student number that you use when counting off in your groups.
 2. Use a micro:bit as a remote control to activate the boom gate from the previous lab.
 
 3. Experiment with the micro:bit radio. Build a test program to measure how far away you can reliably receive a signal.
-3.1. Use the `radio.receive_full` method to get the RSSI (Received signal strength indication). This will give you an idea of how well the micro:bit is receving the signal. How does this value change with distance, relative orientation of the two micro:bits, or if the signal has to travel through walls.
-3.2. How can you make your transmissions more reliable if some messages are lost? Try writing a program that sends messages multiple times and see if that improves the radio reliability?
-3.3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
+    1. Use the `radio.receive_full` method to get the RSSI (Received signal strength indication). This will give you an idea of how well the micro:bit is receving the signal. How does this value change with distance, relative orientation of the two micro:bits, or if the signal has to travel through walls.
+    2. How can you make your transmissions more reliable if some messages are lost? Try writing a program that sends messages multiple times and see if that improves the radio reliability?
+	3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
 
 4. Most computer networks have a concept of a router, which is a device that can forward network messages to other devices. Write a program for a micro:bit that will act as a simple relay router that will resend any messages that it receives. See if you can use this to improve the range in your earlier experiments.
 
@@ -192,8 +191,8 @@ Use the student number that you use when counting off in your groups.
 
 1. Try out the example from the notes in chapter 7. How accurate and precise are the measurements?
 2. Experiment with some ways to improve the reliability of the sensor:
-2.1. Calibrate the sensor with a ruler and update the speed of sound conversion factor and possibly add an offset.
-2.2. Try creating a moving average of the sensor readings to reduce noise.
+    1. Calibrate the sensor with a ruler and update the speed of sound conversion factor and possibly add an offset.
+    2. Try creating a moving average of the sensor readings to reduce noise.
 
 ## Lab 6 -- Monday afternoon
 
@@ -258,11 +257,11 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
 This is the final lab before the project. You can also use this time to catch up on any previous labs that you haven't finished.
 
 1. Use the Mu plotting mode to plot the data from one of the axes of the accelerometer.
-1.1. With one battery powered micro:bit, read the data from the accelerometer and send it via radio to another micro:bit that is connected to Mu. Use this to plot the accelerometer data as you walk around the room, or do various activities such as jumping or running. What patterns can you see?
+    1. With one battery powered micro:bit, read the data from the accelerometer and send it via radio to another micro:bit that is connected to Mu. Use this to plot the accelerometer data as you walk around the room, or do various activities such as jumping or running. What patterns can you see?
 
 2. Update the reaction time game from chapter 4 to save the best time to a file on the filesystem. Print out `"Time to beat: "` and the time when the program starts up.
 
 3. Explore the features on the Quokka board.
-3.1. Use the display to show some text and show which button is currently being pressed.
-3.2. Make the neopixels show a scrolling rainbow pattern (or pattern of your choice!).
-3.3. Use a micro:bit talking to the Quokka via radio to control the neopixels.
+    1. Use the display to show some text and show which button is currently being pressed.
+    2. Make the neopixels show a scrolling rainbow pattern (or pattern of your choice!).
+    3. Use a micro:bit talking to the Quokka via radio to control the neopixels.
