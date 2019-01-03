@@ -202,4 +202,60 @@ This is such a common pattern that it has a name -- a **state machine**. It's al
 
 ## Classes
 
-TODO
+We've seen how to use *functions* to organise our code into re-usable pieces of functionality. This can make our code easier to understand, and also less repeditive.
+
+Classes (or *object oriented programming*) are way to group together functions with the data that they operate on. When a function is used in a class, we call it a *method*.
+
+We've already used classes when we use the `microbit` module -- for example button_a is an instance of the MicroBitButton class. When we write
+
+```python
+if button_a.was_pressed():
+  # do stuff
+```
+
+the `was_pressed` method belongs to the MicroBitButton class, and `button_a` is an *instance* of that class. Similarly `button_b` is a different instance of the same class.
+
+In Python, we write classes using the `class` keyword, and put methods inside them. Methods take a special argument named `self` that refers to the instance that this method is being invoked on. i.e. in the example from before, when you write `button_a.was_pressed()` then the was_pressed method's `self` argument will be equal to `button_a`.
+
+You can set *properties* on `self` -- this allows the class to store data for that particular instance.
+
+Classes have a special method called `__init__` that is invoked when the object is created. Here's an example of how the `is_pressed` method could be implemented. *Note: MicroBitButton is actually provided by the MicroPython runtime, what we're showing here is just an example of what it would look like if it were written in Python. You could use something like this though if you were using an external button and you wanted to make it work like one of the two internal buttons.*
+
+```python
+class MicroBitButton:
+  def __init__(self, pin):
+    self.pin = pin
+
+  def is_pressed(self):
+    return self.pin.read_digital() == 0
+
+# Somewhere inside the microbit module...
+button_a = MicroBitButton(pin7)
+button_b = MicroBitButton(pin13)
+```
+
+Here's a simple example of a class to represent a person:
+
+```python
+class Person:
+  def __init__(self):
+    self.name = 'No name'
+    self.age = 0
+
+  def set_age(self, age):
+    self.age = age
+
+  def set_name(self, name):
+    self.name = name
+
+  def say_hello(self):
+    print('My name is "{}" and I am {}.'.format(self.name, self.age))
+
+p = Person()
+p.say_hello()
+p.set_name('NCSS Student')
+p.set_age(16)
+p.say_hello()
+```
+
+Whenever you have multiple identical things plugged into the micro:bit you might want to write a class, and then create one instance for each one that is plugged in (similar to the button example above, where each instance knows which pin it's connected to).
