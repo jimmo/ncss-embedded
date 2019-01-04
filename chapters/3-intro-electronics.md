@@ -96,7 +96,7 @@ So what value resistor should we pick for any given sensor? Well the aim of the 
 
 In practice, this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
 
-![Voltage divider source:Wikipedia](figures/Vdiv.png)
+![Voltage divider source:Wikipedia](images/Vdiv.png)
 
 ### How do we know what the resistance means in the real world?
 
@@ -135,7 +135,7 @@ Say we wanted to connect a button to a controller (we do want to do that, a lot)
 
 For starters, it's possible to wire it directly to the positive rail like this:
 
-![Floating Switch](figures/floating_switch.png)
+![Floating Switch](images/floating_switch.png)
 
 But how do we want know what the voltage is at the `pin` when the switch is open (not pressed)?
 
@@ -143,13 +143,13 @@ We don't! The point is *floating*, which means we can't tell what the voltage at
 
 So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything.
 
-![PullDown Switch](figures/pulldown_switch.png)
+![PullDown Switch](images/pulldown_switch.png)
 
 When the switch is open, the resistor pulls the voltage at the pin to 0V, and when it is closed, this connects the pin directly to *high* (3.3V), so we never have an undefined voltage. This is called a *pull-down* resistor since it pulls the voltage down to `0V`
 
 We can also invert the behavious of the switch by changing around the order of the switch and the resistor.
 
-![PullUp Switch](figures/pullup_switch.png)
+![PullUp Switch](images/pullup_switch.png)
 
 In this case the opposite is true, when the switch is open the voltage at the pin is `3.3V`, and when the switch is closed, the voltage is `0V`. For this reason it is called a *pull-up* resistor.
 
@@ -197,7 +197,7 @@ Diodes are *"non-linear"* or *"non-ohmic"* devices, which means that Ohm's law d
 
 Something with a very low resistance effectively looks like a short circuit, which means that a lot of current will flow and potentially damage the LED or the thing that is powering it (e.g. the micro:bit pin). So what we need is a way to ensure that only a specific current flows, which is why every time we use an LED, we also need a *current-limiting resistor*.
 
-![led current limiting](figures/led_res.png)
+![led current limiting](images/led_res.png)
 
 *Note that in the symbol for an LED, the bar points towards the cathode (which should be connected to the lower voltage, i.e. ground).
 
