@@ -235,7 +235,7 @@ And to read the encoder, just use this line:
 ```python
 rot = rotor.read_rotor()
 ```
-All the underlying functionality lives in the driver class, and the just *use* the device, we only need those to lines: create the object, and read the information.
+All the underlying functionality lives in the `RotaryEncoder` class, and to just *use* the device, we only need those two lines: create the object, and read the information.
 
 It depends on the sensors we want to use, but drivers should capture the full functionality of the device and be as simple to use as possible.
 
