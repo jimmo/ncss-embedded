@@ -105,7 +105,14 @@ Since ground is just a point we choose, we have to make sure that whenever we ar
 
 A voltage divider is one of the most common circuits that exist! It looks like this:
 
-![Voltage divider source:Wikipedia](images/Resistive_divider2.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.2\linewidth]{images/Resistive_divider2.png}
+\caption{A voltage divider} 
+\label{fig:v_div} 
+\end{figure}
+```
 
 Given a voltage input, it produces a fraction of the input as the output.
 
@@ -133,7 +140,14 @@ R_{opt} = \sqrt{R_{min} \times R_{max}}
 
 In practice this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
 
-![Voltage divider source:Wikipedia](images/Vdiv.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{images/Vdiv.png}
+\caption{Optimizing the sensitivity of a voltage divider} 
+\label{fig:v_div_sens}
+\end{figure}
+```
 
 ### Calibrating Sensors
 
@@ -174,7 +188,14 @@ Say we wanted to connect a button to a controller (we do want to do that, a lot)
 
 For starters, it's possible to wire it directly to the positive rail like this:
 
-![Floating Switch](images/floating_switch.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.15\linewidth]{images/floating_switch.png}
+\caption{A floating switch. This probably won't work!} 
+\label{fig:float_switch}
+\end{figure}
+```
 
 But how do we know what the voltage is at the `pin` when the switch is open (not pressed)?
 
@@ -182,13 +203,27 @@ We don't! The pin is *floating*, which means we can't tell what the voltage at t
 
 So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything.
 
-![PullDown Switch](images/pulldown_switch.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.15\linewidth]{images/pulldown_switch.png}
+\caption{A pull-down resistor on a switch} 
+\label{fig:pull_down}
+\end{figure}
+```
 
 When the switch is open, the resistor pulls the voltage at the pin to 0V, and when it is closed, this connects the pin directly to *high* (3.3V), so we never have an undefined voltage. This is called a *pull-down* resistor since it pulls the voltage down to `0V`
 
 We can also invert the behavior of the switch by changing around the order of the switch and the resistor.
 
-![PullUp Switch](images/pullup_switch.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.15\linewidth]{images/pullup_switch.png}
+\caption{A pull-up resistor on a switch} 
+\label{fig:pull_up}
+\end{figure}
+```
 
 In this case the opposite is true, when the switch is open the voltage at the pin is `3.3V`, and when the switch is closed, the voltage is `0V`. For this reason it is called a *pull-up* resistor.
 
@@ -208,7 +243,14 @@ So what we do in this case, is use a level-shifter to transform the waveform.
 
 Rather than building a circuit to do this ourselves (which you could do using a few transistors), we use an *integrated circuit* (or chip) designed for this purpose. One example is the 74AHCT125, which converts a `3.3V` input signal to a `5V` output signal (as shown in the diagram below).
 
-![Level shifting](images/level-shifter.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{images/level-shifter.png}
+\caption{Level shifting a signal from 3.3V to 5V} 
+\label{fig:lvl_shift}
+\end{figure}
+```
 
 Level shifting can be generalised in that it is shifting from *any* voltage level to *any other* voltage level. It is quite common the shift the other way (`5V`→`3.3V` where you might use `74LVC245` chip to do this).
 
@@ -238,7 +280,14 @@ Diodes are *"non-linear"* or *"non-ohmic"* devices, which means that Ohm's law d
 
 Something with a very low resistance effectively looks like a short circuit, which means that a lot of current will flow and potentially damage the LED or the thing that is powering it (e.g. the micro:bit pin). So what we need is a way to ensure that only a specific current flows, which is why every time we use an LED, we also need a *current-limiting resistor*.
 
-![led current limiting](images/led_res.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.1\linewidth]{images/led_res.png}
+\caption{A current limiting resistor on an LED} 
+\label{fig:led_curr}
+\end{figure}
+```
 
 *Note that in the symbol for an LED, the bar points towards the cathode (which should be connected to the lower voltage, i.e. ground).
 
