@@ -1,4 +1,4 @@
-## Chapter 1 -- Intro to embedded
+# Chapter 1 -- Intro to embedded
 
 Electronic devices are everywhere in modern life. From light bulbs to toasters to computers and cellphones, we rely on the principles of electronics to survive in modern society. As technology develops, perhaps the more surprising development is that even seemingly simple tools are no longer just simple electronic devices, but rather are becoming embedded devices, incorporating small microcontrollers to make them operate in increasingly smart ways. A *simple* light bulb is no longer just a wire that glows, it's a complicated circuit that includes a computer to monitor the brightness and power consumption of the light. Toasters and kettles contain little microcontrollers to allow fine adjustment of temperature and cooking time. Even a phone or a laptop charger contains a little computer to ensure safe charging of your device and to improve the efficiency with which it can operate. And this is **WAY** before we even start to consider the proliferation of internet enabled devices that are permeating our households.
 
@@ -8,7 +8,7 @@ And this is exactly what the focus of this course is going to be! Learning how t
 
 But ultimately, that's why we love embedded development so much. As painful as it is to deal with the real world, making devices that we can touch, see and hear, whether it's for a specific purpose, or art, or fun, brings along with it a huge amount of satisfaction. We're super excited to get started!
 
-### The Project
+## The Project
 
 By the end of the camp, you and a group of 3/4 other team members will have developed:
 
@@ -19,7 +19,7 @@ In order to successfully accomplish these tasks you will learn not only about pr
 
 As the course progresses, you will get more information about exactly what sort of game you will be working on.
 
-### Too Much Information!!!
+## Too Much Information!!!
 
 Given the amount of material that we need to cover in a very limited amount of time, the academic portion of the camp is going to be quite jam packed. There will be two 30-minute-to-1-hour lectures per day, as well as two 3-hour lab sessions to put theory into practice. Since there is so much to cover, the lectures will move through the content quite quickly, however this year, we are also going to have some in-lab lectures that will go through some of the key concepts in a bit more detail.
 

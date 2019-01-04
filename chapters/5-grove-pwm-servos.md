@@ -1,4 +1,4 @@
-## Chapter 5 -- Grove
+# Chapter 5 -- Grove
 
 Grove is just a plug and socket to plug in stuff (called modules) like sensors or buttons! It was developed by Seeed Studios -- they sell a range of different devices and modules that connect to eachother using the Grove sockets.
 
@@ -180,7 +180,7 @@ We've seen how to control an LED connected to a pin by using `write_digital` to 
 
 The most obvious way to make the brightness change would be to change the pin voltage, as you can see in the formula:
 
-![LED current](http://mathurl.com/y8vbxndb.png)
+![LED current](images/led_curr.png)
 
 If the pin voltage decreases, then the current will decrease correspondingly, which will lower the brightness of the LED. Unfortunately, most microcontrollers do not have a way to set a pin voltage to anything other than *digital low* (0V) and *digital high* (often 3.3V or 5V), whereas we'd need some way to set an *analog voltage*. Some microcontrollers may have a device called a "Digital to Analog Converter" (DAC), but typically this will only be connected to one or two pins, and the micro:bit does not have one.
 

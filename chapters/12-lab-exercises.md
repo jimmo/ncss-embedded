@@ -1,6 +1,6 @@
-## Chapter 12 - Lab Exercises
+# Chapter 12 - Lab Exercises
 
-### About the labs
+## About the labs
 
 These lab exercises build on the concepts introduced in the lectures, and you can refer back to the chapters in this booklet for hints and more information. When you've finished a problem, sometimes it'll be really obvious that you've got it working, but many of them you might need to show a tutor.
 
@@ -16,7 +16,7 @@ Download the "PortaMu" editor from: https://codewith.mu/en/download and unzip it
 
 **Note**: Make sure that you save all your work onto the network drives, as we will be switching between labs and computers over the course of the camp. Anything that you save to "My Documents" or the local computer will become inaccessible and may be automatically wiped.
 
-### Lab 1 -- Saturday morning
+## Lab 1 -- Saturday morning
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **four** (i.e. up to the "Simple Snake" problem).
 
@@ -40,7 +40,7 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 
     Use two of the LEDs in the display to represent the current state of the lights (off, dim, bright).
 
-### Lab 2 -- Saturday afternoon
+## Lab 2 -- Saturday afternoon
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
 
@@ -59,7 +59,7 @@ The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb
 4. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?*
     1. Use this to get other colours from the RGB LED.
 
-### Lab 3 -- Sunday morning
+## Lab 3 -- Sunday morning
 
 #### Part 1 - Switches
 
@@ -141,7 +141,7 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 
 1. Use a standard servo to make a boom-gate style barrier that open and closes based on a signal from the micro:bit (e.g. when a button is pressed).
 
-### Lab 4 -- Sunday afternoon
+## Lab 4 -- Sunday afternoon
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of the course.
 
@@ -160,7 +160,7 @@ Use the student number that you use when counting off in your groups.
 
 4. Most computer networks have a concept of a router, which is a device that can forward network messages to other devices. Write a program for a micro:bit that will act as a simple relay router that will resend any messages that it receives. See if you can use this to improve the range in your earlier experiments.
 
-### Lab 5 -- Monday morning
+## Lab 5 -- Monday morning
 
 #### bit:bot line following
 
@@ -206,7 +206,7 @@ Use the student number that you use when counting off in your groups.
     1. Calibrate the sensor with a ruler and update the speed of sound conversion factor and possibly add an offset.
     2. Try creating a moving average of the sensor readings to reduce noise.
 
-### Lab 6 -- Monday afternoon
+## Lab 6 -- Monday afternoon
 
 #### Line following
 
@@ -264,7 +264,7 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
     Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
 
 
-### Lab 8 -- Thursday morning
+## Lab 8 -- Thursday morning
 
 This is the final lab before the project. You can also use this time to catch up on any previous labs that you haven't finished.
 

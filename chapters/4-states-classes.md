@@ -1,4 +1,4 @@
-## Chapter 4 -- Program state, Classes
+# Chapter 4 -- Program state, Classes
 
 Many of the programs we've written so far are *stateless* which means that the program acts only on its current input.
 
@@ -10,6 +10,7 @@ Some examples:
 * Keeping track of a mode (e.g. waiting for player, playing, showing score, etc).
 * Tracking a position in a sequence (i.e. entering a specific button sequence).
 * Remembering a high score.
+## Program States
 
 ### High scores
 

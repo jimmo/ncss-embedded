@@ -1,6 +1,6 @@
-## Chapter 6 -- Radio, Files, Plotting
+# Chapter 6 -- Radio, Files, Plotting
 
-### Radio
+## Radio
 
 The micro:bit includes a Bluetooth Low Energy (BLE) radio. From MicroPython, we don't have access to most of the BLE functionality, but we can use the radio to send and receive small *packets* of data.
 
@@ -36,11 +36,11 @@ The way receive works is a bit like a letter box. Once the radio is turned on, a
 
 See the micro:bit MicroPython documentation for more information at [https://microbit-micropython.readthedocs.io/en/latest/radio.html](https://microbit-micropython.readthedocs.io/en/latest/radio.html).
 
-#### Groups and addresses
+### Groups and addresses
 
 Because your micro:bits aren't transmitting all the time, it's possible to have multiple micro:bits sharing the same frequency. You can use the `address` and `group` optional arguments to `radio.config()` to filter out messages that don't match the same address and group.
 
-#### Unique IDs
+### Unique IDs
 
 If you need a unique ID to identify your micro:bit, you can use:
 

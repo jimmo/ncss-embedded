@@ -1,10 +1,10 @@
-## Chapter 3 -- Electronics
+# Chapter 3 -- Electronics
 
 Since we're learning all about embedded development, we need to spend some time learning about electronics. How do microcontrollers send information between sensors, displays and other microcontrollers? Electronics is a huge field, and encompasses a large number of topics, so it's impossible for us to cover every topic exhaustively. So, rather than trying to exhaustively cover the field of electronics, what we'll try and do is introduce enough topics that you can put together simple circuits, hook components together and start to understand what is going on with the embedded devices you see around you.
 
 Since there is such a large number of topics to cover, don't worry if this doesn't all make sense on your first read-through. Most of this is stuff that you will have a chance to learn along the way. But since we can't cover everything in the limited time we have, this section is meant to be a reference to come back to as the program progresses.
 
-### Voltages and Currents
+## Voltages and Currents
 
 To build any electronic device, we need to have a way of sending power and signals between controllers, sensors and outputs. The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called **current**. The units of current is amps (A), the more amps, the larger the number of electrons that are flowing.
 
@@ -16,13 +16,21 @@ So there are two things we want to keep track of in our electronic circuits: **v
 * **Voltage is _across_ things**
 * **Current flows _through_ things**
 
-### Relating voltage and current: resistance
+## Relating voltage and current: resistance
 
 Now that we've established that an electron flow is current and that electrons flow from regions of high voltage to low voltage, the next question you might ask is: how much current (how many electrons) will flow when I connect these two regions together.
 
 From the start there is one intuitive relation that we expect to hold true. A higher voltage different should probably cause a higher current to flow (or reversing that statement, a higher current means a higher voltage difference). What if they were just related by a simple constant. The relation might look like:
 
-![Ohm's Law](http://mathurl.com/ybteqj8m.png)
+```{=latex}
+\begin{equation}
+\begin{split}
+V &= I \times R \\
+I &= \frac{V}{R} \\
+R &= \frac{V}{I}
+\end{split}
+\end{equation}
+```
 
 And in fact, this is Ohm's famous law: The voltage across device will be the current through the device times the resistance of the device. Or equivalently, the current through the device is equal to the voltage divided by the resistance. We've had to introduce a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an ohm (Ω).
 
@@ -33,16 +41,17 @@ So what do we expect the resistance of various objects to be? Well again, there 
 Once again, the *voltage* is the *resistance* times the *current*.
 **Remember this equation!** Seriously. It's the foundation of everything.
 
-### Series and parallel
+## Series and parallel
 
 The next question we might ask is what do resistors do when we start connecting them together. There are two ways that we can connect them together:
+
  * back to back, such that current passes through each of the resistors in **series**:
 
-    ![Resistors](https://upload.wikimedia.org/wikipedia/commons/1/11/Resistors_in_series.svg)
+![Series Resistors](images/res_series.png)
 
  * in **parallel**, such that the current can choose between multiple paths:
 
-    ![Parallel resistors](https://upload.wikimedia.org/wikipedia/commons/0/09/Resistors_in_parallel.svg)
+![Parallel Resistors](images/res_parallel.png)
 
 Before we start dropping equations, lets again try and figure out what they should do intuitively.
  * If we put two resistors back to back, in *series*, they will both oppose the flow of electrons, so the current should drop. In other words the resistance of the circuit should go *up*.
@@ -50,18 +59,31 @@ Before we start dropping equations, lets again try and figure out what they shou
 
 The simplest way we might think about implementing the series case is to have all the resistances add together, and this is indeed what happens. The total series resistance is given by:
 
-![Series equation](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20R_1%20&plus;%20R_2%20&plus;%20...%20&plus;%20R_n)
+```{=latex}
+\begin{equation}
+V_{tot} = V_1 + V_2 + \cdots + V_N
+\end{equation}
+```
 
 In parallel, the situation is slightly more difficult, we have to take into account the multiple different paths that current can flow. The equation becomes:
-![Parallel equation](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Cfrac%7B1%7D%7BR_1%7D%20&plus;%20%5Cfrac%7B1%7D%7BR_2%7D%20&plus;%20...%20&plus;%20%5Cfrac%7B1%7D%7BR_n%7D%7D)
+
+```{=latex}
+\begin{equation}
+V_{tot} = \frac{1}{\frac{1}{V_1} + \frac{1}{V_2} + \cdots + \frac{1}{V_N}}
+\end{equation}
+```
 
 Although this looks like a complicated equation, you can still draw some intuitive conclusions. If we have a two parallel resistors with equal resistance, then since we've doubled the number of paths that electrons can take through equal resistances, the total resistance halves:
 
-![Two Parallel Resistors](https://latex.codecogs.com/svg.latex?R_{tot}%20%3D%20\frac{R_{each}}{2})
+```{=latex}
+\begin{equation}
+V_{tot} = \frac{V}{2}
+\end{equation}
+```
 
 Try plug 2 resistors into the above formula and see if you can get the same result...
 
-### Analog and Digital
+## Analog and Digital
 
 Now that we've defined and explained the key terms that we need to understand simple electronics, let's investigate what the signalling for sensors and microcontrollers actually looks like. We can break the world of sensors down into two types: *analog* and *digital* sensors.
 
@@ -83,13 +105,17 @@ Since ground is just a point we choose, we have to make sure that whenever we ar
 
 A voltage divider is one of the most common circuits that exist! It looks like this:
 
-![Voltage divider source:Wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/21/Resistive_divider2.svg)
+![Voltage divider source:Wikipedia](images/Resistive_divider2.png)
 
 Given a voltage input, it produces a fraction of the input as the output.
 
 The equation for the output is:
 
-![Voltage divider equation](https://latex.codecogs.com/svg.latex?V_%7Bout%7D%20%3D%20V_%7Bin%7D%5Cfrac%7BR_2%7D%7BR_1%20+%20R_2%7D)
+```{=latex}
+\begin{equation}
+V_{out} = V_{in} \frac{R_2}{R_1 + R_2}
+\end{equation}
+```
 
 The voltage divider produces a smaller voltage using the ratio of resistors, which we can calculate from the equation above. For example we can make a simple volume control by changing the ratios of `R1`, `R2` such that the output voltage being fed to our headphones is reduced.
 
@@ -99,7 +125,11 @@ It's hard for us to read resistance directly, but the micro:bit is *really* good
 
 So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximize the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to:
 
-![Voltage divider value](https://latex.codecogs.com/svg.latex?R_{1}%20%3D%20\sqrt{R_{min}%20\times%20R_{max}})
+```{=latex}
+\begin{equation}
+R_{opt} = \sqrt{R_{min} \times R_{max}}
+\end{equation}
+```
 
 In practice, this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
 
@@ -160,7 +190,7 @@ We can also invert the behavior of the switch by changing around the order of th
 
 In this case the opposite is true, when the switch is open the voltage at the pin is `3.3V`, and when the switch is closed, the voltage is `0V`. For this reason it is called a *pull-up* resistor.
 
-#### Does it matter if I use pull-up or down?
+### Does it matter if I use pull-up or down?
 
 No, it's just a matter of preference. It's much more important to know what each of them means (and write your code accordingly), and that you need to use one of them when you're connecting a button (or basically anything) to a digital input.
 
@@ -194,7 +224,7 @@ Almost every electronic device has an LED in it. Whether it's just the power lig
 
 Although there are many types of lights that can be used in circuits, we almost exclusively use LEDs because of their excellent power efficiency, small size, and ease of use.
 
-#### Theory
+### Theory
 LEDs are a type of diode, which is a semiconductor device that contains a special junction that only allows current to pass in one direction. The semiconductor junction in an LED is specially built such that when current is flowing, the *band gap* of the semiconductor results in electron transitions that emit photons of specific wavelengths. This is how LEDs have different colours, red LEDs produce photons that have a wavelength of approximately 650nm, green are 520nm, etc. By combining different colours (usually the primary colours, red, green, and blue) we can produce a whole rainbow of different colours.
 
 There also exist LEDs that produce light outside the visible range, for example, ultraviolet (~300nm) and infrared (~900nm). Infrared LEDs are used in television remote controls or night vision, and ultraviolet has a wide range of uses from skin therapy to sterilization and even in the production of white light using phosphors. This is how LED light bulbs you use in your house work, they are often UV LEDs which cause a phosphor to glow.
@@ -212,13 +242,26 @@ Typically we choose a desired brightness for our LED, and look up the LED's *dat
 
 Here's the formula to figure out what resistor to use for a desired current:
 
-![LED current](http://mathurl.com/y8vbxndb.png)
+```{=latex}
+\begin{equation}
+\begin{split}
+V_{res} &= V_{pin} - V_{led} \\
+R &= \frac{V_{res}}{I} \\
+R &= \frac{V_{pin} - V_{led}}{I}
+\end{split}
+\end{equation}
+```
 
 The *V<sub>led<sub>* is the *forward voltage drop* across the LED. This is a property of the LED and it will be in the data sheet. Typically it's around 2 volts for a red LED.
 
 So if we have an LED that is rated for 20mA at full brightness and has a forward drop of 2 volts, then we get:
 
-![LED current calculation](http://mathurl.com/y7adcb93.png)
+```{=latex}
+\begin{alignat}{3}
+&V_{res} \qquad &=& \qquad 3.3 - 2 \qquad &=& \qquad 1.3V \\
+&R \qquad &=& \qquad \frac{1.3V}{0.02A} \qquad &=& \qquad 65\Omega
+\end{alignat}
+```
 
 If we wanted it to be less bright, then for 10mA, the same calculations would yield 130 ohms.
 
@@ -226,7 +269,7 @@ Resistors only come in specific values, so just round *up* to the nearest one (e
 
 **Summary: If you want to use an LED, you must use a current limiting resistor. In almost all cases, a 330 ohm resistor will do the trick.**
 
-#### More notes on current limiting resistors
+### More notes on current limiting resistors
 
 * Each LED requires its own resistor. *Can you see why?*
 * The resistor can be on either side of the LED, it doesn't matter.

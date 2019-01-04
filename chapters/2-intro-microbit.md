@@ -1,32 +1,49 @@
-## Chapter 2 -- micro:bit basics
+# Chapter 2 -- micro:bit basics
 
 The BBC micro:bit is a small, handheld, embedded microcontroller, which we will be using for the duration of the camp. Apart from being very friendly, it has a huge number of peripherals that we can use: a compass, an accelerometer, a thermometer, a radio for chatting between 2 micro:bits, two buttons and a 5x5 display. More importantly, it can run Python! The aim of the next few days will be to get up to speed on the various features of the micro:bit.
 
-![front](images/microbit-front.jpg) ![back](images/microbit-back.jpg)
+```{=latex}
+\begin{figure}
+\centering
+\subfloat[]{\includegraphics[width=0.4\linewidth]{images/microbit-front.jpg}} 
+\subfloat[]{\includegraphics[width=0.4\linewidth]{images/microbit-back.jpg}}
+\caption{A micro:bit} 
+\label{fig:microbit} 
+\end{figure}
+```
 
-To get started we're going to be working through the [micro:bit Crash Course](https://groklearning.com/course/microbit-crash-course/) on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
+To get started we're going to be working through the [micro:bit Crash Course](https://groklearning.com/course/microbit-crash-course/): https://groklearning.com/course/microbit-crash-course/, on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
 
 The crash course will go through everything you need to play around with the micro:bit, as well as getting you up to speed on Python. In addition to the course, we give a brief description of the peripherals of the micro:bit below, and go through some key Python concepts, which you can use as a reference if you ever get stuck.
 
-### Getting Started
+## Getting Started
 
 If you're using the micro:bit emulator on Grok, you don't need anything more to get started.
 
 If you're playing around with a real micro:bit, you'll need a couple of other things to get going. When you plug the micro:bit in to your computer, it will show up as a drive connected to your computer. The micro:bit expects you to copy a `.hex` file which contains the compiled program that you want to run.
 
 There's a couple of ways to get this file. If you are using the Grok interface to write your programs, you can hit the "Download" button in the top right corner of the editor to download the hex file that corresponds to your written program. Then, copy and paste that file onto the micro:bit drive that appears.
-![GrokInterface](images/GrokDownload.png)
+
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{images/GrokDownload.png}
+\caption{The Grok Learning Interface} 
+\label{fig:grok} 
+\end{figure}
+```
 
 Alternatively, you can use the `Mu` editor -  a simple editor for Python that interfaces directly with the micro:bit, and is able to upload code directly to the micro:bit. During the micro:bit labs, this will be the main editor we use. The editor can be downloaded from https://codewith.mu/en/. By pressing the `Flash` button in the editor, we can upload the code to the micro:bit. Once the upload is completed, the micro:bit will automatically reset and start running your new program.
-![MuInterface](images/mu_buttons.png)
+
+![The micro:bit buttons in the Mu editor](images/mu_buttons.png)
 
 **Note**: If this set of buttons doesn't appear in your copy of `Mu`, you may not be running in the "micro:bit" mode. You can change the target in `Mu` by pressing the `Mode` button in the top left corner of the editor.
 
-### Using the micro:bit
+## Using the micro:bit
 
 Plug your micro:bit into the computer with a USB cable, open up `Mu` and let's start coding!
 
-#### Our first program (variables, the micro:bit display and sleep)
+### Our first program (variables, the micro:bit display and sleep)
 
 Let's turn on the display!
 
@@ -43,7 +60,7 @@ The third lins is a comment line. In Python, all comments start with a `#` chara
 
 `display.show` is a function that displays an image, `Image.HAPPY`. It looks like a happy face :)
 
-There are a long list of in-built images [on the microbit documentation](https://microbit-micropython.readthedocs.io/en/latest/tutorials/images.html).
+There are a long list of in-built images in the microbit documentation: [https://microbit-micropython.readthedocs.io/en/latest/tutorials/images.html](https://microbit-micropython.readthedocs.io/en/latest/tutorials/images.html).
 
 To show multiple images, we need to `sleep` in between instructions, because the micro:bit runs so fast that the images will flash faster than our eyes can see them if we don't do this.
 
@@ -84,13 +101,13 @@ display.clear()
 
 Now, we can change all of the the delay after each of the images while only changing a single number in our code!
 
-#### Working with the display
+### Working with the display
 
 The `display` module does more than just setting pre-built images. It's also possible to individually control each LED, including making them brighter and darker. We can programmatically do this with the `display.set_pixel` function.
 
 The display works on a grid with `(0, 0)` at the top left of the display:
 
-![Grid source:microbit docs](https://microbit-micropython.readthedocs.io/en/latest/_images/happy.png)
+![A happy micro:bit](images/happy.png)
 
 For example, to control a single pixel we can write:
 
@@ -113,7 +130,7 @@ display.set_pixel(2, 3, 0)
 display.set_pixel(2, 2, 5)
 ```
 
-#### Working with Text
+### Working with Text
 
 We can also use the `display.show` function to print out some text:
 
@@ -177,7 +194,7 @@ final_value = str(number_data_1) + str(number_data_2)
 ```
 In this case, final value will be `"12"` as before.
 
-#### More scrolling
+### More scrolling
 
 To scroll integers, we need to convert them to a string using the `str` function before scrolling:
 
@@ -209,9 +226,9 @@ display.scroll('LOLOLOLOLOLOLO', delay=50, loop=True)
 
 The `delay` specifies the delay in *milliseconds* between each frame.
 
-Find more info on scrolling text in the [docs](https://microbit-micropython.readthedocs.io/en/latest/display.html?highlight=scroll#microbit.display.scroll). Lots of those options are available in `display.show` too!
+Find more info on scrolling text in the [docs](https://microbit-micropython.readthedocs.io/en/latest/display.html?highlight=scroll#microbit.display.scroll): https://microbit-micropython.readthedocs.io/en/latest/display.html?#microbit.display.scroll. Lots of those options are available in `display.show` too!
 
-#### The REPL
+### The REPL
 
 In addition to uploading scripts to the micro:bit and running them, we can also interactively run single lines of Python code on the micro:bit. The easiest way to access the REPL on the micro:bit is using the `Mu` editor, where we can press the `REPL` button in the menu bar. This will stop the currently running program and bring up a prompt, into which you can type Python expressions.
 
@@ -227,7 +244,7 @@ Opening the `REPL` causes whatever code is uploading to stop, however we can als
 
 Note, you won't be able to upload code to the micro:bit while the `REPL` window is open. If you want to upload a new program, you will have to close the `REPL` window first.
 
-#### Printing to the console
+### Printing to the console
 
 It's annoying to try and look at a scrolling error message on the LED display. Instead of printing to the display, we can output straight to the `REPL` window. Upload the following code to your micro:bit.
 
@@ -247,7 +264,7 @@ answer = 42
 print('The answer to life the universe and everything is ' + str(answer))
 ```
 
-#### Using loops
+### Using loops
 
 Embedded systems, we generally don't want them to stop. So we really want them to do things *forever*. Let's take a look a program that does this:
 
@@ -296,7 +313,7 @@ The number was: 4
 Done
 ```
 
-#### Buttons and if statements
+### Buttons and if statements
 
 The `microbit` module gives us `button_a` and `button_b` objects to use the buttons.
 
@@ -343,7 +360,7 @@ while True:
 
 What would happen here is both `button_a` and `button_b` are pressed?
 
-#### Was it pressed?
+### Was it pressed?
 
 While the `is_pressed()` function will tell us whether a button is currently being pressed, often what we want to do is check whether a button was pressed at some point in the past. For this purpose we have the `was_pressed()` function
 
@@ -366,7 +383,7 @@ while True:
 
 If we were to replace `was_pressed` with `is_pressed`, we wouldn't be able to detect any button presses that occurred during the sleep. In other words, we would have a pretty rubbish reset button....
 
-#### Lists
+### Lists
 
 So far, we've stored both strings and numbers in variables, in Python we can also store lists of values. To create a list, just as we wrap strings in quotes (`"`), we wrap lists in square brackets (`[`). Let's create a list of the first 10 prime numbers:
 
@@ -410,7 +427,7 @@ print("The number of primes I know is: " + str(list_length))
 
 There are more things that we can do with lists that are documented in the Python language. When you have a chance you can find this documentation at: https://docs.python.org/3.4/tutorial/datastructures.html. Note that this also includes some additional data structures that you might find helpful later on.
 
-#### The for loop
+### The for loop
 
 Aside from `while` loops, Python also allows us to loop over lists of things. For those of you that have done some programming before, this is a `for-each` type loop, that is different from the `for` loops you may have seen in other languages.
 
@@ -429,7 +446,7 @@ for prime in primes:
 ```
 This will print out each of the primes that is in the list.
 
-#### The `range` function - counting in a loop
+### The `range` function - counting in a loop
 
 One of the really common patterns that we run into when we're coding is we want to loop up to a certain number of times. In the above code, we used a while loop to accomplish this.
 
@@ -480,7 +497,7 @@ but that's pretty boring to write (and more error-prone). So use a `for` loop in
 
 **Note**: The range function can actually do a whole lot more than count from `0` to `n`, you can set start, and step values too. If you're curious, the full documentation is available here: https://docs.python.org/3.4/library/stdtypes.html#range
 
-#### Functions
+### Functions
 So far we've been using lots of functions in Python like `sleep` or `print`. These functions are *defined* by someone else, and we can just call that function to use it.
 
 But you can also write your own functions just like these ones!
@@ -537,7 +554,7 @@ while True:
     sleep(1000)
 ```
 
-#### Debugging Your Code
+## Debugging Your Code
 
 Apart from being a great way to quickly test out the functionality of the micro:bit, the `REPL` also allows you to find errors in your code. For example, let's upload this buggy code to our micro:bit.
 
@@ -556,7 +573,7 @@ We can get the same information by opening the `REPL` and restarting our program
 
 ![REPL_Error](images/REPL_Error.PNG)
 
-### Where to go from here
+## Where to go from here
 
 Although we've covered a heap of content here, there are far more features available in both Python and micro:bit than we can cover here. If you would like more information, you can:
 

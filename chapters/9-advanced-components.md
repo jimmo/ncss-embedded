@@ -1,4 +1,4 @@
-## Integrated circuits
+# Integrated circuits
 
 Integrated circuits (ICs), are chips that perform a specific function in electronics.
 
@@ -39,7 +39,7 @@ This includes information such as:
 
 **Datasheets are critical**, since they are the only way for us to find out all the information about a device that we are using.
 
-### Digital signalling
+## Digital signalling
 
 With microcontollers, it's very common to want to transmit more information that just a voltage level to a sensor or peripheral device. It is possible to use many wires with different analog voltages to transmit more information, but to minimise the number of wires needed, we use digital signalling protocols to achieve this instead.
 

@@ -1,4 +1,4 @@
-## Chapter 7 -- Robotics with the micro:Bit
+# Chapter 7 -- Robotics with the micro:bit
 
 Aside from working with sensors and screens, we can also hook up our micro:bits to various types of robot. For our labs we are going to be working with the bit:bot. The bit:bot is a robot designed specifically for the micro:bit, and interfaces with the micro:bit via the edge connector. It has the following features:
 
@@ -13,7 +13,7 @@ Aside from working with sensors and screens, we can also hook up our micro:bits 
 
 We'll start with exploring the features of the bit:bots, then learning about some algorithms for making the bit:bots perform various line following tasks.
 
-### Getting Started
+## Getting Started with bit:bots
 
 The bit:bots are controlled using a micro:bit via the edge connector. Unfortunately, when we have the front attachment installed the micro:bit does not fit into the robot, and the screen is partially obscured. For this reason, most of the time we would want to use the "angle:bit" connector that allows the micro:bit to stand vertically.
 
