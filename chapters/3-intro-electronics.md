@@ -41,7 +41,7 @@ The next question we might ask is what do resistors do when we start connecting 
  * in **parallel**, such that the current can choose between multiple paths:
     ![Parallel resistors](https://upload.wikimedia.org/wikipedia/commons/0/09/Resistors_in_parallel.svg)
 
-Before we start dropping equations, lets again try and figure out what they should do intuitively. 
+Before we start dropping equations, lets again try and figure out what they should do intuitively.
  * If we put two resistors back to back, in *series*, they will both oppose the flow of electrons, so the current should drop. In other words the resistance of the circuit should go *up*.
  * If we put two resistors in *parallel*, then the current can choose between two paths, so the total amount of current that can flow should go up. In other words, the resistance of the circuit should go *down*.
 
@@ -178,9 +178,8 @@ Level shifting can be a bit more general in that it is shifting from *any* volta
 
 Some devices are only designed to work at a certain voltage. A `1` might be defined as a voltage above a threshold, and if the logic level coming in is below that value, our device may not detect a `1` that we send.
 
-If a logic level is too high, it might be a value greater than a device will accept, so you could damage the components. It's important to send a value to a device that it expects, so it's important to know the voltage of your microcontroller (on the micro:bit it is `3.3V`), and the voltage the device you are talking to expects.
+If a logic level is too high, it might be a value greater than a device will accept, so you could damage the components. It's important to send a value to a device that it expects, so it's important to know the voltage of your microcontroller (on the micro:bit it is `3.3V`), and the voltage the device operates at.
 
-For example, neopixels (WS2812B is the name of the chip), are designed to run at 5V, the reason is because extra voltage is required to produce the full range of colours from the LED (if you supply less, some colours will not be as bright, so the white looks like an off-brown).
 
 ## Light Emitting Diodes (LEDs)
 
