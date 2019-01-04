@@ -24,7 +24,7 @@ Each function on the bit:bot is accessible on a pin through the micro:bit. The b
 | Left Motor Direction | Pin 8 | Access using `write_digital`<br>`0 - Forward`<br>`1 - Backwards` |
 | Left Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog` |
 | Right Motor Direction | Pin 12 | Access using `write_digital`<br>`0 - Forward`<br>`1 - Backwards` |
-| Right Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog` |
+| Right Motor Speed | Pin 1 | Speed `0 - 1023` with `write_analog` |
 | Left Line Sensor | Pin 11 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
 | Right Line Sensor | Pin 5 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
 | Neopixels | Pin 13 | RGB LEDs around the edge of the bit:bot.<br>Access using the `neopixel` module |
@@ -54,7 +54,7 @@ The direction pins can be set to `LOW` (forward) or `HIGH` (backward), by using 
 
 The speed pins can be set using PWM (pulse width modulation) by using `pin0/1.write_analog(speed)` where `speed` is a number between `0` and `1023`. To recap, PWM will turn the pin on for a fraction of the time, which has the effect of reducing the speed of the motor (just like how we used it to change the brightness of an LED).
 
-Confusingly the speeds moving in the **reverse** direction are reversed, so to run at quarter speed in the forward direction, we would write speed `256` and to move at quarter speed in the reverse direction, we would write `1024 - 256 = 768`.
+Confusingly the speeds moving in the **reverse** direction are reversed, so to run at quarter speed in the forward direction, we would write speed `256` and to move at quarter speed in the reverse direction, we would write `1023 - 256 = 767`.
 
 For example, to drive the bit:bot forward at 1/4 speed:
 
@@ -79,7 +79,7 @@ To move backwards:
 pin8.write_digital(0)
 pin12.write_digital(1)
 pin0.write_analog(256)
-pin1.write_analog(768)
+pin1.write_analog(767)
 ```
 
 To spin on the spot, you can drive the motors in opposite directions:
