@@ -37,8 +37,11 @@ Once again, the *voltage* is the *resistance* times the *current*.
 
 The next question we might ask is what do resistors do when we start connecting them together. There are two ways that we can connect them together:
  * back to back, such that current passes through each of the resistors in **series**:
+
     ![Resistors](https://upload.wikimedia.org/wikipedia/commons/1/11/Resistors_in_series.svg)
+
  * in **parallel**, such that the current can choose between multiple paths:
+
     ![Parallel resistors](https://upload.wikimedia.org/wikipedia/commons/0/09/Resistors_in_parallel.svg)
 
 Before we start dropping equations, lets again try and figure out what they should do intuitively.
@@ -46,13 +49,16 @@ Before we start dropping equations, lets again try and figure out what they shou
  * If we put two resistors in *parallel*, then the current can choose between two paths, so the total amount of current that can flow should go up. In other words, the resistance of the circuit should go *down*.
 
 The simplest way we might think about implementing the series case is to have all the resistances add together, and this is indeed what happens. The total series resistance is given by:
+
 ![Series equation](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20R_1%20&plus;%20R_2%20&plus;%20...%20&plus;%20R_n)
 
 In parallel, the situation is slightly more difficult, we have to take into account the multiple different paths that current can flow. The equation becomes:
 ![Parallel equation](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Cfrac%7B1%7D%7BR_1%7D%20&plus;%20%5Cfrac%7B1%7D%7BR_2%7D%20&plus;%20...%20&plus;%20%5Cfrac%7B1%7D%7BR_n%7D%7D)
 
 Although this looks like a complicated equation, you can still draw some intuitive conclusions. If we have a two parallel resistors with equal resistance, then since we've doubled the number of paths that electrons can take through equal resistances, the total resistance halves:
+
 ![Two Parallel Resistors](https://latex.codecogs.com/svg.latex?R_{tot}%20%3D%20\frac{R_{each}}{2})
+
 Try plug 2 resistors into the above formula and see if you can get the same result...
 
 ### Analog and Digital
@@ -92,6 +98,7 @@ At NCSS, the main way we'll be using voltage dividers is to read in analog senso
 It's hard for us to read resistance directly, but the micro:bit is *really* good at measuring voltages. So by adding *another* resistor that is known and applying an input voltage that is known, by measuring the output voltage, we can calculate the resistance of the sensor with our voltage divider!
 
 So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximise the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to:
+
 ![Voltage divider value](https://latex.codecogs.com/svg.latex?R_{1}%20%3D%20\sqrt{R_{min}%20\times%20R_{max}})
 
 In practice, this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
