@@ -1,4 +1,4 @@
-# Chapter 12 - Lab Exercises
+# Lab Exercises
 
 ## About the labs
 
