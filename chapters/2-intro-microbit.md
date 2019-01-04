@@ -166,7 +166,7 @@ We can convert from strings into numbers by running the `int` function on the te
 ```python
 final_value = int(text_data_1) + int(text_data_2)
 ```
-the values stored in `text_data_1` and `text_data_2` are converted to numbers before being added, so final value after runnning this code will be `3`.
+the values stored in `text_data_1` and `text_data_2` are converted to numbers before being added, so final value after running this code will be `3`.
 
 We can also do the opposite conversion, taking a number variable and turning it into text. For example:
 ```python
@@ -262,7 +262,7 @@ while True:
     sleep(500)
 ```
 
-The `while` loop is a language feature we can use to do this. It comes in the form `while <condition>:`, when the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues. The code that we want to run is indented to indicate that it is all part of the `while` loop. Unindented code will not be run as part of the loop. For example, in the following code:
+The `while` loop is a language feature we can use to do this. It comes in the form `while <condition>:`, when the `condition` evaluates to `True` then the loop repeats. At the beginning of each loop, the `condition` is checked to see if the loop continues. The code that we want to run is indented to indicate that it is all part of the `while` loop. Un-indented code will not be run as part of the loop. For example, in the following code:
 
 ```python
 while True:
@@ -364,7 +364,7 @@ while True:
     sleep(1000)
 ```
 
-If we were to replace `was_pressed` with `is_pressed`, we wouldn't be able to detect any button presses that occured during the sleep. In other words, we would have a pretty rubbish reset button....
+If we were to replace `was_pressed` with `is_pressed`, we wouldn't be able to detect any button presses that occurred during the sleep. In other words, we would have a pretty rubbish reset button....
 
 #### Lists
 

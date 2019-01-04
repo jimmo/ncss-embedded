@@ -4,9 +4,17 @@
 
 These lab exercises build on the concepts introduced in the lectures, and you can refer back to the chapters in this booklet for hints and more information. When you've finished a problem, sometimes it'll be really obvious that you've got it working, but many of them you might need to show a tutor.
 
-Try to complete the exercises in order as most of the problems build on concepts from the previous problem. They're *hard* problems! We encourae you to work through them in pairs or groups, and please let us know if you'd like clarifications or help.
+Try to complete the exercises in order as most of the problems build on concepts from the previous problem. They're *hard* problems! We encourage you to work through them in pairs or groups, and please let us know if you'd like clarifications or help.
 
 Some of the exercises are a quite open-ended and designed for you to explore the concepts and ask questions. Please take every opportunity to ask questions of the tutors and lecturers, and don't be afraid to ask questions about related concepts and ideas.
+
+### Installing Mu
+
+Once you get up to the micro:bit exercises that involve playing with hardware, you will need to install the Mu editor in order to upload your code.
+
+Download the "PortaMu" editor from: https://codewith.mu/en/download and unzip it into your network directory. Then, you can launch Mu by running the "Launch Mu.bat" script in the Mu folder.
+
+**Note**: Make sure that you save all your work onto the network drives, as we will be switching between labs and computers over the course of the camp. Anything that you save to "My Documents" or the local computer will become inaccessible and may be automatically wiped.
 
 ### Lab 1 -- Saturday morning
 
@@ -146,7 +154,7 @@ Use the student number that you use when counting off in your groups.
 2. Use a micro:bit as a remote control to activate the boom gate from the previous lab.
 
 3. Experiment with the micro:bit radio. Build a test program to measure how far away you can reliably receive a signal.
-    1. Use the `radio.receive_full` method to get the RSSI (Received signal strength indication). This will give you an idea of how well the micro:bit is receving the signal. How does this value change with distance, relative orientation of the two micro:bits, or if the signal has to travel through walls.
+    1. Use the `radio.receive_full` method to get the RSSI (Received signal strength indication). This will give you an idea of how well the micro:bit is receiving the signal. How does this value change with distance, relative orientation of the two micro:bits, or if the signal has to travel through walls.
     2. How can you make your transmissions more reliable if some messages are lost? Try writing a program that sends messages multiple times and see if that improves the radio reliability?
 	3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
 
@@ -163,7 +171,7 @@ Use the student number that you use when counting off in your groups.
 1. Speed Control
     * Now that the bit:bot works, let's play around with the motors and speed controls a bit. First let's try making the bit:bot drive in a straight line. Does it work when both motors are set to the same power? Why or why not? Can you find some values that do make it move in a straight line? Write a function that makes the bit:bot drive forward with these speed values, it will be useful later on.
     * Write three functions that make the bit:bot turn 90-degrees clockwise, 90-degrees counter-clockwise and 180-degrees around.
-    * Write a program that uses the previous functions you wrote and makes the bit:bot drive forwards for one second, spin around, and drive back to where it started. Did it work as you expected? What about if you upload the same code with no modifications to abother bit:bot.
+    * Write a program that uses the previous functions you wrote and makes the bit:bot drive forwards for one second, spin around, and drive back to where it started. Did it work as you expected? What about if you upload the same code with no modifications to another bit:bot.
 2. Make your bit:bot detect when it's driven into a "garage" and stop automatically. i.e. the ambient light decreases
 3. Make a simple radio-controlled car using the micro:bit radio and two micro:bits. When a button is pressed on the controller, toggle between two modes:
     * Driving forward at 100% speed.
@@ -188,7 +196,7 @@ Use the student number that you use when counting off in your groups.
 #### bit:bot neopixels
 
 1. Make your bit:bot indicate its left and right side like a boat or aeroplane. Turn on the front LED on the left to red, and the front neopixel on the right to green.
-2. Update your line following program to add "indicators" to the bit:bot. Flash the left or right sides orange when turining left or right.
+2. Update your line following program to add "indicators" to the bit:bot. Flash the left or right sides orange when turning left or right.
 3. Make a rainbow pattern with the neopixels. Ask your tutors about HSV colour and how to convert to RGB.
 
 #### Ultrasonic distance sensor
@@ -247,7 +255,7 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
     * overlapping lines
     * rough surfaces
 
-    Finally at the end of the course, your bit:bot will drive into a box. Your robot should detect that this has occured using the top-mounted light sensors and stop at the end.
+    Finally at the end of the course, your bit:bot will drive into a box. Your robot should detect that this has occurred using the top-mounted light sensors and stop at the end.
 
 2. **The Time Trial**
 
