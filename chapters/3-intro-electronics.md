@@ -91,7 +91,7 @@ At NCSS, the main way we'll be using voltage dividers is to read in analog senso
 
 It's hard for us to read resistance directly, but the micro:bit is *really* good at measuring voltages. So by adding *another* resistor that is known and applying an input voltage that is known, by measuring the output voltage, we can calculate the resistance of the sensor with our voltage divider!
 
-So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximise the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to: 
+So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximise the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to:
 ![Voltage divider value](https://latex.codecogs.com/svg.latex?R_{1}%20%3D%20\sqrt{R_{min}%20\times%20R_{max}})
 
 In practice, this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
@@ -169,7 +169,7 @@ So what we do in this case, is use a level-shifter. In order to do this to the w
 
 ![Level shifting](images/level-shifter.png)
 
-The chip that does this in the labs is the 74AHCT125, which converts a `3.3V` input signal to a `5V` output signal (as shown in the diagram above). Level shifting is converting a
+Rather than building a circuit to do this ourselves (which you could do using a few transistors), we use an *integrated circuit* (or chip) designed for this purpose. One example is the 74AHCT125, which converts a `3.3V` input signal to a `5V` output signal (as shown in the diagram above).
 
 Level shifting can be a bit more general in that it is shifting from *any* voltage level to *any other* voltage level, but this is a good example. It is quite common the shift the other way (`5V`→`3.3V` where you might use `74LVC245` chip to do this).
 
@@ -197,7 +197,9 @@ Diodes are *"non-linear"* or *"non-ohmic"* devices, which means that Ohm's law d
 
 Something with a very low resistance effectively looks like a short circuit, which means that a lot of current will flow and potentially damage the LED or the thing that is powering it (e.g. the micro:bit pin). So what we need is a way to ensure that only a specific current flows, which is why every time we use an LED, we also need a *current-limiting resistor*.
 
-![PullUp Switch](figures/led_res.png)
+![led current limiting](figures/led_res.png)
+
+*Note that in the symbol for an LED, the bar points towards the cathode (which should be connected to the lower voltage, i.e. ground).
 
 Typically we choose a desired brightness for our LED, and look up the LED's *data sheet* to find out what current it needs. Then we choose a resistor using Ohm's Law *(V=IR)* to make that work. Remember that devices in series will all have the same current flowing through them, so the current flowing through the LED will be the same as what flows through the resistor.
 
