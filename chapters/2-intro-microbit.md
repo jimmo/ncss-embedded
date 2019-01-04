@@ -1,21 +1,23 @@
 ## Chapter 2 -- micro:bit basics
 
-The micro:bit is a small, handheld, embedded microcontroller, which we will be using for the duration of the camp. Apart from being very friendly, it has a huge number of peripherals that we can use: a compass, an accelerometer, a thermometer, a radio for chatting between 2 micro:bits, two buttons and a 5x5 display. More importantly, it can run Python! The aim of the next few days will be to get up to speed on the various features of the micro:bit.
+The BBC micro:bit is a small, handheld, embedded microcontroller, which we will be using for the duration of the camp. Apart from being very friendly, it has a huge number of peripherals that we can use: a compass, an accelerometer, a thermometer, a radio for chatting between 2 micro:bits, two buttons and a 5x5 display. More importantly, it can run Python! The aim of the next few days will be to get up to speed on the various features of the micro:bit.
 
-To get started we're going to be working through the micro:bit crash course on the grok platform. For those of you who have done the challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
+![front](images/microbit-front.jpg) ![back](images/microbit-back.jpg)
+
+To get started we're going to be working through the [micro:bit Crash Course](https://groklearning.com/course/microbit-crash-course/) on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
 
 The crash course will go through everything you need to play around with the micro:bit, as well as getting you up to speed on Python. In addition to the course, we give a brief description of the peripherals of the micro:bit below, and go through some key Python concepts, which you can use as a reference if you ever get stuck.
 
 ### Getting Started
 
-If you're using the microbit emulator on Grok, you don't need anything more to get started.
+If you're using the micro:bit emulator on Grok, you don't need anything more to get started.
 
 If you're playing around with a real micro:bit, you'll need a couple of other things to get going. When you plug the micro:bit in to your computer, it will show up as a drive connected to your computer. The micro:bit expects you to copy a `.hex` file which contains the compiled program that you want to run.
 
 There's a couple of ways to get this file. If you are using the Grok interface to write your programs, you can hit the "Download" button in the top right corner of the editor to download the hex file that corresponds to your written program. Then, copy and paste that file onto the micro:bit drive that appears.
 ![GrokInterface](images/GrokDownload.png)
 
-Alternatively, you can use the `Mu` editor -  a simple editor for python that interfaces directly with the micro:bit, and is able to upload code directly to the micro:bit. During the micro:bit labs, this will be the main editor we use. The editor can be downloaded from https://codewith.mu/en/. By pressing the `Flash` button in the editor, we can upload the code to the micro:bit. Once the upload is completed, the micro:bit will automatically reset and start running your new program.
+Alternatively, you can use the `Mu` editor -  a simple editor for Python that interfaces directly with the micro:bit, and is able to upload code directly to the micro:bit. During the micro:bit labs, this will be the main editor we use. The editor can be downloaded from https://codewith.mu/en/. By pressing the `Flash` button in the editor, we can upload the code to the micro:bit. Once the upload is completed, the micro:bit will automatically reset and start running your new program.
 ![MuInterface](images/mu_buttons.png)
 
 **Note**: If this set of buttons doesn't appear in your copy of `Mu`, you may not be running in the "micro:bit" mode. You can change the target in `Mu` by pressing the `Mode` button in the top left corner of the editor.
@@ -128,7 +130,7 @@ But that flashes letters and it ends up being a bit hard to read. Much better to
 from microbit import *
 
 # Scroll text on the 5 x 5 display
-display.scroll('Hello there, this text is scroooooooling')
+display.scroll('Hello there, this text is scrooooooolling')
 ```
 
 Much like with numbers above, we can also store **strings** (that is text data) in variables as well.
@@ -136,7 +138,7 @@ Much like with numbers above, we can also store **strings** (that is text data) 
 ```python
 from microbit import *
 
-text_data = 'Hello there, this text is scroooooooling'
+text_data = 'Hello there, this text is scrooooooolling'
 # Scroll text on the 5 x 5 display
 display.scroll(text_data)
 ```
@@ -150,7 +152,7 @@ display.scroll("Hi " + name + ". Welcome to NCSS!")
 
 This code will scroll `Hi Sebastian. Welcome to NCSS!` across the screen.
 
-One final caveat to keep in mind, text and numbers behave differently. By wrapping strings in `'` or `"` characters, we're telling python that values stored there should be treated as text.
+One final caveat to keep in mind, text and numbers behave differently. By wrapping strings in `'` or `"` characters, we're telling Python that values stored there should be treated as text.
 
 For example, in the below code:
 ```python
@@ -211,11 +213,13 @@ Find more info on scrolling text in the [docs](https://microbit-micropython.read
 
 #### The REPL
 
-In addition to uploading scripts to the micro:bit and running them, we can also interactively run single lines of python code on the micro:bit. The easiest way to access the REPL on the micro:bit is using the `Mu` editor, where we can press the `REPL` button in the menu bar. This will stop the currently running program and bring up a prompt, into which you can type Python expressions.
+In addition to uploading scripts to the micro:bit and running them, we can also interactively run single lines of Python code on the micro:bit. The easiest way to access the REPL on the micro:bit is using the `Mu` editor, where we can press the `REPL` button in the menu bar. This will stop the currently running program and bring up a prompt, into which you can type Python expressions.
+
+*Note: REPL stands for "Read, Evaluate, Print, Loop"*
 
 For example, try bringing up the `REPL` and type the following lines:
 
-```pycon
+```python
 >>> display.show(Image.HAPPY)
 ```
 
