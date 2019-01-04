@@ -12,7 +12,7 @@ The BBC micro:bit is a small, handheld, embedded microcontroller, which we will 
 \end{figure}
 ```
 
-To get started we're going to be working through the [micro:bit Crash Course](https://groklearning.com/course/microbit-crash-course/): https://groklearning.com/course/microbit-crash-course/, on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
+To get started we're going to be working through the micro:bit Crash Course ([https://groklearning.com/course/microbit-crash-course/](https://groklearning.com/course/microbit-crash-course/)), on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
 
 The crash course will go through everything you need to play around with the micro:bit, as well as getting you up to speed on Python. In addition to the course, we give a brief description of the peripherals of the micro:bit below, and go through some key Python concepts, which you can use as a reference if you ever get stuck.
 
@@ -33,7 +33,7 @@ There's a couple of ways to get this file. If you are using the Grok interface t
 \end{figure}
 ```
 
-Alternatively, you can use the `Mu` editor -  a simple editor for Python that interfaces directly with the micro:bit, and is able to upload code directly to the micro:bit. During the micro:bit labs, this will be the main editor we use. The editor can be downloaded from https://codewith.mu/en/. By pressing the `Flash` button in the editor, we can upload the code to the micro:bit. Once the upload is completed, the micro:bit will automatically reset and start running your new program.
+Alternatively, you can use the `Mu` editor -  a simple editor for Python that interfaces directly with the micro:bit, and is able to upload code directly to the micro:bit. During the micro:bit labs, this will be the main editor we use. The editor can be downloaded from [https://codewith.mu/en/](https://codewith.mu/en/). By pressing the `Flash` button in the editor, we can upload the code to the micro:bit. Once the upload is completed, the micro:bit will automatically reset and start running your new program.
 
 ![The micro:bit buttons in the Mu editor](images/mu_buttons.png)
 
@@ -255,7 +255,14 @@ print('Hello, World!')
 
 That will print messages to the serial console so you can get an actual output, to do some debugging. In Grok, look at the "Output" tab to view the serial output in the simulator. In `Mu` to see what the output looks like, you can open the `REPL` window, and either hit the "reset" button on your micro:bit or press `<Ctrl-D>` in the `REPL` window to start your program going again. Your message will show up in the window:
 
-![REPL_Print](images/REPL_print.PNG)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{images/REPL_print.PNG}
+\caption{Printing to the REPL} 
+\label{fig:repl_print} 
+\end{figure}
+```
 
 If we want to print a number inside of a string, we need to convert that number into a string:
 
@@ -425,7 +432,7 @@ list_length = len(primes)
 print("The number of primes I know is: " + str(list_length))
 ```
 
-There are more things that we can do with lists that are documented in the Python language. When you have a chance you can find this documentation at: https://docs.python.org/3.4/tutorial/datastructures.html. Note that this also includes some additional data structures that you might find helpful later on.
+There are more things that we can do with lists that are documented in the Python language. When you have a chance you can find this documentation at: [https://docs.python.org/3.4/tutorial/datastructures.html](https://docs.python.org/3.4/tutorial/datastructures.html). Note that this also includes some additional data structures that you might find helpful later on.
 
 ### The for loop
 
@@ -571,7 +578,14 @@ This above code has an error in it, we've forgotten to put quotes around the str
 
 We can get the same information by opening the `REPL` and restarting our program, either by pressing the "reset" button on the micro:bit, or by pressing `<Ctrl-D>` in the `REPL` window. Once we run into the error, the full error message will be output to the console.
 
-![REPL_Error](images/REPL_Error.PNG)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{images/REPL_Error.PNG}
+\caption{A Python traceback in the REPL} 
+\label{fig:repl_error} 
+\end{figure}
+```
 
 ## Where to go from here
 
