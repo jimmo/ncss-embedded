@@ -13,6 +13,7 @@ The way to create a current is to apply a **voltage**, a difference in voltage b
 We can draw an analogy between voltages and currents, and water pressures and flows. A voltage is like a water pressure. If there is a pressure difference between two points, water will flow (like current) between those two points to try and equalize those pressures.
 
 There are two things we want to keep track of in our electronic circuits: **voltage** and **current**. Two handy things to keep in mind are:
+
 * **Voltage is _across_ things**
 * **Current flows _through_ things**
 
@@ -35,6 +36,7 @@ R &= \frac{V}{I}
 And in fact, this is Ohm's famous law: The voltage across a device will be the current through the device times the resistance of the device. Or equivalently, the current through the device is equal to the voltage divided by the resistance. We've had to introduce a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an Ohm (Ω).
 
 What do we expect the resistance of various objects to be? Well again, there are a couple of things we might guess:
+
  * A thinner wire should carry less current than a thicker wire. So the thinner wire should have a *higher* resistance, just like a thick pipe can carry more water than a thin pipe.
  * A longer wire should carry a smaller current than a shorter wire. So the long wire should have a *higher* resistance, just like it's easier to push water through a short hose than a long hose.
 
@@ -54,6 +56,7 @@ The next question we might ask is what do resistors do when we start connecting 
 ![Parallel Resistors](images/res_parallel.png)
 
 Before we start dropping equations, let's again try and figure out what they should do intuitively.
+
  * If we put two resistors back to back, in *series*, they will both oppose the flow of electrons, so the current should drop. The resistance of the circuit should go *up*.
  * If we put two resistors in *parallel*, then the current can choose between two paths, so the total amount of current that can flow should go up. The resistance of the circuit should go *down*.
 
