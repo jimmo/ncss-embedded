@@ -4,18 +4,20 @@ Integrated circuits (ICs), are chips that perform a specific function in electro
 
 So an IC is also a circuit made of wires, transistors, and other components, that are designed to make your life easier and do lots of the complicated electronics functions for you!
 
-ICs come is a variety of different standard packages:
+There are two general types of packages that ICs come in *surface mount* and *through-hole*. As the name would suggest, surface mount are designed to be soldered to the surface of a PCB, so no wiring needs to go
 
-### TODO: table images
+ICs come in [*lots of different types*](https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types), but here are some ones you might see at NCSS:
 
 | Package | Picture |
 | --- | --- |
 | DIP | ![DIP package](images/dip.svg) |
-| SOIC | ![SOIC](images/soic.png) |
-| QFN | ![] |
-| SOT | ![] |
+| TO-220 | ![TO-220](images/to-220.svg) |
+| SOIC | ![SOIC](images/soic.jpg) |
+| SOT | ![SOT](images/sot.svg) |
 
-(this is not an exhaustive list)
+The type of package may not make a big difference in performance, but it will make a big difference in terms of fitting the device onto your circuit board, and how the device is wired up on a PCB.
+
+If you're ordering ICs, they will come in a variety of packages with slightly different part-numbers that reflect the change, it's really easy to buy the write chip but the wrong package in a PCB you've designed, so it's important to be careful and check the datasheet.
 
 All of our chips at NCSS will be DIP (which stands for dual in-line package), so they can be used in breadboards, but take a look at the circular LEDs or the LED bar, and see if you can identify what the package is!
 
@@ -33,8 +35,9 @@ This includes information such as:
 - Pinouts (which means what pin does what)
 - Example circuits
 - Electrical characteristics
+- Package information
 
-### TODO: Example Here
+**Datasheets are critical**, since they are the only way for us to find out all the information about a device that we are using.
 
 ### Digital signalling
 
@@ -58,8 +61,6 @@ UART stands for Universal Asyncronous Receiver/Transmitter, **asyncronous** mean
 The signal looks like this:
 
 ![UART frame](images/uart.svg)
-
-### TODO: wavedrom instead
 
 Let's take a look at exactly what happens, the entire sequence of bits sent to send one byte is called a *frame*:
 1. The wire is held `HIGH`
@@ -103,7 +104,7 @@ uart.init(9600, tx=pin0, rx=pin1)
 while not uart.any():
   pass
 
-sleep(200)
+sleep(500)
 data_in = uart.readall()
 
 uart.init(115200)
@@ -127,7 +128,7 @@ It's a *master-slave* protocol, which means there is a `master` which initiates 
 
 `SCK`, `MOSI` and `MISO` are shared between all the devices, but `SS` is separate for each slave.
 
-### TODO: diagram of SPI
+![SPI](images/spi.png)
 
 There are several transmission modes, in general - use mode `0`, but it's important to check which mode your device is configured to before using it.
 
@@ -146,6 +147,10 @@ spi.init(baudrate=1000000, bits=8, mode=0, sclk=pin13, mosi=pin15, miso=pin14)
 
 Once that is configured, use `spi.read` and `spi.write` functions can be used to read and write data. The `SS` pin should be configured separately.
 
+The default pins can be found on the micro:bit pinout image:
+
+![pinout](images/spi-i2c-pins.png)
+
 More information can be [found in the documentation](https://microbit-micropython.readthedocs.io/en/latest/spi.html)
 
 ### I²C
@@ -156,7 +161,7 @@ It's also a master-slave protocol, and the micro:bit acts as the `master`.
 
 I²C works by using two wires, `SDA` - data wire, and `SCL` - clock. The difference is the *all* devices share the same two wires, so in a diagram it looks like this:
 
-### TODO: I²C diagram
+![I2C](images/i2c.png)
 
 Each device has it's own unique address, that is either fixed for the device or configured.
 
