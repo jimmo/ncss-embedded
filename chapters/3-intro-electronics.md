@@ -6,9 +6,9 @@ Since there is such a large number of topics to cover, don't worry if this doesn
 
 ### Voltages and Currents
 
-To build any electronic device, we need to have a way of sending power and signals between controllers, sensors and outputs. The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called *current*.
+To build any electronic device, we need to have a way of sending power and signals between controllers, sensors and outputs. The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called **current**. The units of current is amps (A), the more amps, the larger the number of electrons that are flowing.
 
-The way create a current is to apply a *voltage*, a difference in voltage between two points in a circuit will cause current to flow. 
+The way create a current is to apply a **voltage**, a difference in voltage between two points in a circuit will cause current to flow. Specifically, when we're talking about electronics (as opposed to chemistry), electrons flow along paths of positive voltage. The units of voltage are volts (V).
 
 We can draw an analogy between voltages and currents, and water pressures and flows. A voltage is like a water pressure. If there is a pressure difference between two points, water will flow (like current) between those two points to try and equalize those pressures.
 
@@ -16,43 +16,48 @@ So there are two things we want to keep track of in our electronic circuits: **v
 * **Voltage is _across_ things**
 * **Current flows _through_ things**
 
-### Relating voltage and current: resistors
+### Relating voltage and current: resistance
 
-The current *through* a device is proportional to the voltage *across* it.
+Now that we've established that an electron flow is current and that electrons flow from regions of high voltage to low voltage, the next question you might ask is: how much current (how many electrons) will flow when I connect these two regions together.
 
-This gives us the relationship called Ohm's Law, which is the most important equation in electronics.
+From the start there is one intuitive relation that we expect to hold true. A higher voltage different should probably cause a higher current to flow (or reversing that statement, a higher current means a higher voltage difference). What if they were just related by a simple constant. The relation might look like:
 
 ![Ohm's Law](https://latex.codecogs.com/svg.latex?V%20%3D%20IR)
 
-The *voltage* is the *resistance* times the *current*.
+And in fact, this is Ohm's famous law: `<Voltage across device> = <Current through device> * <Resistance of device>`. We've had to introduct a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an ohm (Ω).
+
+So what do we expect the resistance of various objects to be? Well again, there are a couple of things we might guess:
+ * A thinner wire should probably carry less current than a thicker wire. So the thinner wire should have a *higher* resistance, just like a thick pipe can carry more water than a thin pipe.
+ * A longer wire should probably carry a smaller current than a shorter wire. So the long wire should have a *higher* resistance, just like it's easier to push water through a short hose than a long hose.
+
+Once again, the *voltage* is the *resistance* times the *current*.
 **Remember this equation!** Seriously. It's the foundation of everything.
-
-### What is resistance?
-
-Like it's name would suggest, it resists current flow. Current can flow much easier through a circuit with lower resistance, but very little current will flow in a circuit with a large resistance. More resistance, less electrons flowing. The unit of resistance is an ohm (Ω).
 
 ### Series and parallel
 
-Resistors in series look like this:
+The next question we might ask is what do resistors do when we start connecting them together. There are two ways that we can connect them together:
+ * back to back, such that current passes through each of the resistors in **series**:
+    ![Resistors](https://upload.wikimedia.org/wikipedia/commons/1/11/Resistors_in_series.svg)
+ * in **parallel**, such that the current can choose between multiple paths:
+    ![Parallel resistors](https://upload.wikimedia.org/wikipedia/commons/0/09/Resistors_in_parallel.svg)
 
-![Resistors](https://upload.wikimedia.org/wikipedia/commons/1/11/Resistors_in_series.svg)
+Before we start dropping equations, lets again try and figure out what they should do intuitively. 
+ * If we put two resistors back to back, in *series*, they will both oppose the flow of electrons, so the current should drop. In other words the resistance of the circuit should go *up*.
+ * If we put two resistors in *parallel*, then the current can choose between two paths, so the total amount of current that can flow should go up. In other words, the resistance of the circuit should go *down*.
 
-To total resistance is just the sum of their resistances together.
+The simplest way we might think about implementing the series case is to have all the resistances add together, and this is indeed what happens. The total series resistance is given by:
+![Series equation](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20R_1%20&plus;%20R_2%20&plus;%20...%20&plus;%20R_n)
 
-![Resistors in series](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20R_1%20&plus;%20R_2%20&plus;%20...%20&plus;%20R_n)
-
-So when something is *in series*, it means that the only way for current to flow is through the device.
-
-When something is in *parallel*, it means there are *multiple paths for current to flow*.
-
-So parallel resistors look like this:
-
-![Parallel resistors](https://upload.wikimedia.org/wikipedia/commons/0/09/Resistors_in_parallel.svg)
-
-The equation, if you care about that sort of thing....
-
+In parallel, the situation is slightly more difficult, we have to take into account the multiple different paths that current can flow. The equation becomes:
 ![Parallel equation](https://latex.codecogs.com/svg.latex?R_%7Btot%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Cfrac%7B1%7D%7BR_1%7D%20&plus;%20%5Cfrac%7B1%7D%7BR_2%7D%20&plus;%20...%20&plus;%20%5Cfrac%7B1%7D%7BR_n%7D%7D)
 
+Although this looks like a complicated equation, you can still draw some intuitive conclusions. If we have a two parallel resistors with equal resistance, then since we've doubled the number of paths that electrons can take through equal resistances, the total resistance halves:
+![Two Parallel Resistors](https://latex.codecogs.com/svg.latex?R_{tot}%20%3D%20\frac{R_{each}}{2})
+Try plug 2 resistors into the above formula and see if you can get the same result...
+
+### Aside: Ground
+
+One potentially confusing point about voltages is that voltages are **relative**. You can sort of think about voltages as heights. We can talk about a height difference between two points on a mountain, but if we want to talk about a universal height, we need to define where zero sits. For heights, we choose sea level as our reference point, and call heights referenced to this point altitude. In electronics, things are usually a little bit harder, there isn't a universal point we can reference everything to. It's up to us to pick this point. Once we have, this point is called **ground** and is set to zero.
 
 ## Analog and Digital
 
