@@ -1,4 +1,4 @@
-# Chapter 4 -- Program state, Classes
+# Chapter 4 -- Program State, Classes
 
 Many of the programs we've written so far are *stateless* which means that the program acts only on its current input.
 
@@ -10,9 +10,10 @@ Some examples:
 * Keeping track of a mode (e.g. waiting for player, playing, showing score, etc).
 * Tracking a position in a sequence (i.e. entering a specific button sequence).
 * Remembering a high score.
+
 ## Program States
 
-### High scores
+### High Scores
 
 Often our program state is as simple as a single variable (e.g. a counter), for example the following program which counts the number of times a button has been pressed, and shows it when the other button is pressed.
 
@@ -81,7 +82,7 @@ while True:
   display.clear()
 ```
 
-### Detecting sequences.
+### Detecting Sequences
 
 Sometimes it's useful to remember where we are in a sequence of events. For example, detecting a specific sequence of button presses, e.g. 'A' 'B' 'A' 'A' 'B'. In this case a good way to do it is to have a list of expected events, and keep track of how far we've made it through the list.
 
@@ -129,7 +130,7 @@ while True:
 
 ### Program modes
 
-Some programs will need to operate in distinct modes at different times. When we move between these modes sequentially, this is fairly straightforward to implement:
+Some programs will need to operate in distinct modes at different times. To move between these modes sequentially:
 
 ```python
 while True
@@ -148,11 +149,11 @@ while True
   # ... etc
 ```
 
-![linear modes](images/linear-modes.png)
+![Linear Modes](images/linear-modes.png)
 
-What if we need to be able to move between states? For example, mode 1 might be a menu system, and depending on which button we press, we need to move to one of modes 2, 3 or 4. Then mode 2 goes to mode 5, etc. At the moment, when a mode finishes, the inner loop `breaks` and it just goes onto the next mode. We need a way to signal which mode to go to next.
+What if we need to be able to move between states? For example, mode 1 might be a menu system, and depending on which button we press, we need to move to one of modes 2, 3 or 4. Then mode 2 goes to mode 5, etc. At the moment, when a mode finishes, the inner loop `breaks` and it goes onto the next mode. We need a way to signal which mode to go to next.
 
-![nonlinear modes](images/nonlinear-modes.png)
+![Nonlinear Modes](images/nonlinear-modes.png)
 
 One way to do this is to have a mode (state) variable which any part of the code can set and will tell the code what to do next.
 
@@ -203,20 +204,20 @@ This is such a common pattern that it has a name -- a **state machine**. It's al
 
 ## Classes
 
-We've seen how to use *functions* to organise our code into re-usable pieces of functionality. This can make our code easier to understand, and also less repeditive.
+We've seen how to use *functions* to organise our code into re-usable pieces of functionality. This can make our code easier to understand, and also less repetitive.
 
 Classes (or *object oriented programming*) are way to group together functions with the data that they operate on. When a function is used in a class, we call it a *method*.
 
-We've already used classes when we use the `microbit` module -- for example button_a is an instance of the MicroBitButton class. When we write
+We've already used classes when we use the `microbit` module -- for example `button_a` is an instance of the MicroBitButton class. When we write
 
 ```python
 if button_a.was_pressed():
   # do stuff
 ```
 
-the `was_pressed` method belongs to the MicroBitButton class, and `button_a` is an *instance* of that class. Similarly `button_b` is a different instance of the same class.
+The `was_pressed` method belongs to the MicroBitButton class, and `button_a` is an *instance* of that class. Similarly `button_b` is a different instance of the same class.
 
-In Python, we write classes using the `class` keyword, and put methods inside them. Methods take a special argument named `self` that refers to the instance that this method is being invoked on. i.e. in the example from before, when you write `button_a.was_pressed()` then the was_pressed method's `self` argument will be equal to `button_a`.
+In Python, we write classes using the `class` keyword, and put methods inside them. Methods take a special argument named `self` that refers to the instance that this method is being invoked on. In the example from before, when you write `button_a.was_pressed()` then the `was_pressed` method's `self` argument will be equal to `button_a`.
 
 You can set *properties* on `self` -- this allows the class to store data for that particular instance.
 
@@ -235,6 +236,8 @@ button_a = MicroBitButton(pin7)
 button_b = MicroBitButton(pin13)
 ```
 
+### Example Class
+
 Here's a simple example of a class to represent a person:
 
 ```python
@@ -242,12 +245,16 @@ class Person:
   def __init__(self):
     self.name = 'No name'
     self.age = 0
+    self.murdered = false
 
   def set_age(self, age):
     self.age = age
 
   def set_name(self, name):
     self.name = name
+
+  def set_murdered(self, murdered):
+    self.murdered = murdered
 
   def say_hello(self):
     print('My name is "{}" and I am {}.'.format(self.name, self.age))
