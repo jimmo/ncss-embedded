@@ -12,6 +12,7 @@ Some examples:
 * Remembering a high score.
 
 ## Program States
+  
 
 ### High Scores
 
@@ -149,11 +150,25 @@ while True
   # ... etc
 ```
 
-![Linear Modes](images/linear-modes.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.3\linewidth]{images/linear-modes.png}
+\caption{Sequential States} 
+\label{fig:seq_states} 
+\end{figure}
+```
 
 What if we need to be able to move between states? For example, mode 1 might be a menu system, and depending on which button we press, we need to move to one of modes 2, 3 or 4. Then mode 2 goes to mode 5, etc. At the moment, when a mode finishes, the inner loop `breaks` and it goes onto the next mode. We need a way to signal which mode to go to next.
 
-![Nonlinear Modes](images/nonlinear-modes.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{images/nonlinear-modes.png}
+\caption{A more complicated, branched program} 
+\label{fig:nonseq_states} 
+\end{figure}
+```
 
 One way to do this is to have a mode (state) variable which any part of the code can set and will tell the code what to do next.
 
