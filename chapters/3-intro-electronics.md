@@ -55,19 +55,25 @@ Although this looks like a complicated equation, you can still draw some intuiti
 ![Two Parallel Resistors](https://latex.codecogs.com/svg.latex?R_{tot}%20%3D%20\frac{R_{each}}{2})
 Try plug 2 resistors into the above formula and see if you can get the same result...
 
+### Analog and Digital
+
+Now that we've defined and explained the key terms that we need to understand simple electronics, let's investigate what the signalling for sensors and microcontrollers actually looks like. We can break the world of sensors down into two types: *analog* and *digital* sensors.
+
+You may already be familiar with the concept of *digital* logic, this is what microcontrollers and computers use internally. **Digital** circuits are either *on* or *off*. We don't have ranges, it's a binary world. On or off. 0s or 1s. High or low. That's it.
+
+**Analog** deals with *continuous* values, or *ranges of values*. So when we want to measure ranges of, for example brightnesses, sound levels etc. we are often talking about analog sensors.
+
+The world is in analog, and digital is us making constraints on it. So if it's a thing like "pressing a button" or "turning on a light", it's digital. If we're *measuring a range*, it's analog.
+
+When we're dealing with communication between sensors and microcontrollers, we will almost always be signalling with voltages. Both digital and analog signals somehow need to map onto the voltages that our microcontroller uses. When using digital circuits, we usually define 0/*low* as ground: 0V, and 1/*high* as the supply voltage. For a micro:bit that's `3.3V`. All digital signals that our micro:bit can read or produce swing between these two ranges. For analog circuits, we still can usually only read voltages between these two ranges (`0V - 3.3V`), but now, any value in that range is valid. `0V` will represent the minimum value, for example absolute silence for a sound sensor, and `3.3V` will represent the maximum value, for example the loudest sound that the sensor can sense.
+
 ### Aside: Ground
 
 One potentially confusing point about voltages is that voltages are **relative**. You can sort of think about voltages as heights. We can talk about a height difference between two points on a mountain, but if we want to talk about a universal height, we need to define where zero sits. For heights, we choose sea level as our reference point, and call heights referenced to this point altitude. In electronics, things are usually a little bit harder, there isn't a universal point we can reference everything to. It's up to us to pick this point. Once we have, this point is called **ground** and is set to zero.
 
-## Analog and Digital
+Since ground is just a point we choose, we have to make sure that whenever we are working with grounds we are **consistent** with our chose. Once ground is connected to microcontrollers and sensors, those sensors will assume that the ground they see is the same ground that every other connected component sees. So it's important to connect all the different grounds together, otherwise our signalling won't work. With disconnected grounds, the definition of logic *high* that one chip has might be different to the definition of logic *high* that the other chip has, depending on each of their grounds.
 
-**Analog** (should be analogue but we're lazy) deals with *continuous* values, or *ranges of values*. So when we want to measure ranges of things, it will generally be an analog circuit.
-
-**Digital** circuits are either *on* or *off*. We don't do ranges anymore, it's a binary world. On or off. 0s or 1s. That's it.
-
-The world is in analog, and digital is us making constraints on it. So if it's a thing like "pressing a button" or "turning on a light", it's digital. If we're *measuring a range*, it's analog.
-
-## Chapter 5 -- Voltage Dividers
+## Voltage Dividers
 
 A voltage divider is one of the most common circuits that exist! It looks like this:
 
@@ -79,19 +85,18 @@ The equation for the output is:
 
 ![Voltage divider equation](https://latex.codecogs.com/svg.latex?V_%7Bout%7D%20%3D%20V_%7Bin%7D%5Cfrac%7BR_2%7D%7BR_1%20+%20R_2%7D)
 
-The voltage divider produces a smaller voltage using the ratio of resistors, which we can calculate from the equation above.
-
-You might have used one in a volume control like this:
-
-### TODO: volume control image here
-
-You can also use a voltage divider to produce a reference voltage from a known higher voltage source (assuming no load).
+The voltage divider produces a smaller voltage using the ratio of resistors, which we can calculate from the equation above. For example we can make a simple volume control by changing the ratios of `R1`, `R2` such that the output voltage being fed to our headphones is reduced.
 
 At NCSS, the main way we'll be using voltage dividers is to read in analog sensors, like a joystick, flex sensor, or any sensor that *changes its own resistance*.
 
 It's hard for us to read resistance directly, but the micro:bit is *really* good at measuring voltages. So by adding *another* resistor that is known and applying an input voltage that is known, by measuring the output voltage, we can calculate the resistance of the sensor with our voltage divider!
 
-### TODO: picture here
+So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximise the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to: 
+![Voltage divider value](https://latex.codecogs.com/svg.latex?R_{1}%20%3D%20\sqrt{R_{min}%20\times%20R_{max}})
+
+In practice, this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
+
+![Voltage divider source:Wikipedia](figures/Vdiv.png)
 
 ### How do we know what the resistance means in the real world?
 
@@ -102,9 +107,9 @@ Let's see how you might do that in practice! First, the code to calibrate the se
 ```python
 from microbit import *
 while True:
-  sensor = pin0.read_analog()
-  print(sensor)
-  sleep(50)
+    sensor = pin0.read_analog()
+    print(sensor)
+    sleep(50)
 ```
 
 then once we have a threshold value, we write a simple `if` statement to trigger the action!
@@ -112,25 +117,19 @@ then once we have a threshold value, we write a simple `if` statement to trigger
 ```python
 from microbit import *
 
-threshold = 600   # measured during calibration
+threshold = 600   # Measured during calibration
 
 while True:
-  sensor = pin0.read_analog()
-  if sensor > threshold:
-    pin1.write_digital(1)  # turn on a light
-  else:
-    pin1.write_digital(0)  # turn it off
+    sensor = pin0.read_analog()
+    if sensor > threshold:
+        pin1.write_digital(1)  # turn on a light
+    else:
+        pin1.write_digital(0)  # turn it off
 ```
 
-### Hang on, how do I know what resistor to use?
-
-This comes from knowing the *range of values* for your sensor (it will be in the datasheet). So if your sensor ranges from 1 kΩ to 10 kΩ, pick a static resistor around the middle, like 5.6 kΩ. This will mean the range of output values is large.
-
-## Chapter 6 - Pull-up and down resistors
+## Pull-up and down resistors
 
 A pull-up or pull-down resistor is a resistor that "pulls" a point that is *floating* to a positive voltage (pull **up**), or to ground (pull **down**). This is used in *digital circuits* because everything has to be either on or off.
-
-### What is a floating point?
 
 Say we wanted to connect a button to a controller (we do want to do that, a lot), how do we wire it up?
 
@@ -142,7 +141,7 @@ But how do we want know what the voltage is at the `pin` when the switch is open
 
 We don't! The point is *floating*, which means we can't tell what the voltage at the point will be. When something is supposed to be either "on" or "off", floating is the opposite of what we want, because we have no idea what it is.
 
-So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything. This is a pull **up** resistor circuit:
+So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything. This is a pull **down** resistor circuit:
 
 ### TODO: pull up resistor image here
 
@@ -180,6 +179,7 @@ Some devices are only designed to work at a certain voltage. A `1` might be defi
 
 If a logic level is too high, it might be a value greater than a device will accept, so you could damage the components. It's important to send a value to a device that it expects, so it's important to know the voltage of your microcontroller (on the micro:bit it is `3.3V`), and the voltage the device operates at.
 
+For example, neopixels (WS2812B is the name of the chip), are designed to run at 5V, the reason is because extra voltage is required to produce the full range of colours from the LED, if you supply less, some colours will not be as bright, so the white looks like an off-brown.
 
 ## Light Emitting Diodes (LEDs)
 
