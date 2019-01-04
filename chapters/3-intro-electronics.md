@@ -8,7 +8,7 @@ Since there is such a large number of topics to cover, don't worry if this doesn
 
 To build any electronic device, we need to have a way of sending power and signals between controllers, sensors and outputs. The way we send those signals is by sending electrons from one place to another, the movement of electrons through is circuit is called **current**. The units of current is amps (A), the more amps, the larger the number of electrons that are flowing.
 
-The way create a current is to apply a **voltage**, a difference in voltage between two points in a circuit will cause current to flow. Specifically, when we're talking about electronics (as opposed to chemistry), electrons flow along paths of positive voltage. The units of voltage are volts (V).
+The way create a current is to apply a **voltage**, a difference in voltage between two points in a circuit will cause current to flow. Specifically, when we're talking about electronics (as opposed to chemistry), electrons flow along paths of positive voltage (i.e. from higher to lower voltage). The units of voltage are volts (V).
 
 We can draw an analogy between voltages and currents, and water pressures and flows. A voltage is like a water pressure. If there is a pressure difference between two points, water will flow (like current) between those two points to try and equalize those pressures.
 
@@ -22,9 +22,9 @@ Now that we've established that an electron flow is current and that electrons f
 
 From the start there is one intuitive relation that we expect to hold true. A higher voltage different should probably cause a higher current to flow (or reversing that statement, a higher current means a higher voltage difference). What if they were just related by a simple constant. The relation might look like:
 
-![Ohm's Law](https://latex.codecogs.com/svg.latex?V%20%3D%20IR)
+![Ohm's Law](http://mathurl.com/ybteqj8m.png)
 
-And in fact, this is Ohm's famous law: `<Voltage across device> = <Current through device> * <Resistance of device>`. We've had to introduct a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an ohm (Ω).
+And in fact, this is Ohm's famous law: The voltage across device will be the current through the device times the resistance of the device. Or equivalently, the current through the device is equal to the voltage divided by the resistance. We've had to introduct a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an ohm (Ω).
 
 So what do we expect the resistance of various objects to be? Well again, there are a couple of things we might guess:
  * A thinner wire should probably carry less current than a thicker wire. So the thinner wire should have a *higher* resistance, just like a thick pipe can carry more water than a thin pipe.
