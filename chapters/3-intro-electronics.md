@@ -2,7 +2,7 @@
 
 Since we're learning all about embedded development, we need to spend some time learning about electronics. How do microcontrollers send information between sensors, displays and other microcontrollers? Electronics is a huge field, and encompasses a large number of topics, so it's impossible for us to cover every topic exhaustively. So, rather than trying to exhaustively cover the field of electronics, what we'll try and do is introduce enough topics that you can put together simple circuits, hook components together and start to understand what is going on with the embedded devices you see around you.
 
-Since there is such a large number of topics to cover, don't worry if this doesn't all make sense on your first readthrough. Most of this is stuff that you will have a chance to learn along the way. But since we can't cover everything in the limited time we have, this section is meant to be a reference to come back to as the program progresses.
+Since there is such a large number of topics to cover, don't worry if this doesn't all make sense on your first read-through. Most of this is stuff that you will have a chance to learn along the way. But since we can't cover everything in the limited time we have, this section is meant to be a reference to come back to as the program progresses.
 
 ### Voltages and Currents
 
@@ -24,7 +24,7 @@ From the start there is one intuitive relation that we expect to hold true. A hi
 
 ![Ohm's Law](http://mathurl.com/ybteqj8m.png)
 
-And in fact, this is Ohm's famous law: The voltage across device will be the current through the device times the resistance of the device. Or equivalently, the current through the device is equal to the voltage divided by the resistance. We've had to introduct a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an ohm (Ω).
+And in fact, this is Ohm's famous law: The voltage across device will be the current through the device times the resistance of the device. Or equivalently, the current through the device is equal to the voltage divided by the resistance. We've had to introduce a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an ohm (Ω).
 
 So what do we expect the resistance of various objects to be? Well again, there are a couple of things we might guess:
  * A thinner wire should probably carry less current than a thicker wire. So the thinner wire should have a *higher* resistance, just like a thick pipe can carry more water than a thin pipe.
@@ -97,7 +97,7 @@ At NCSS, the main way we'll be using voltage dividers is to read in analog senso
 
 It's hard for us to read resistance directly, but the micro:bit is *really* good at measuring voltages. So by adding *another* resistor that is known and applying an input voltage that is known, by measuring the output voltage, we can calculate the resistance of the sensor with our voltage divider!
 
-So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximise the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to:
+So what value resistor should we pick for any given sensor? Well the aim of the voltage divider circuit should be to maximize the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to:
 
 ![Voltage divider value](https://latex.codecogs.com/svg.latex?R_{1}%20%3D%20\sqrt{R_{min}%20\times%20R_{max}})
 
@@ -154,7 +154,7 @@ So what we do is use a resistor to *pull* the voltage to a known state when it i
 
 When the switch is open, the resistor pulls the voltage at the pin to 0V, and when it is closed, this connects the pin directly to *high* (3.3V), so we never have an undefined voltage. This is called a *pull-down* resistor since it pulls the voltage down to `0V`
 
-We can also invert the behavious of the switch by changing around the order of the switch and the resistor.
+We can also invert the behavior of the switch by changing around the order of the switch and the resistor.
 
 ![PullUp Switch](images/pullup_switch.png)
 
@@ -195,9 +195,9 @@ Almost every electronic device has an LED in it. Whether it's just the power lig
 Although there are many types of lights that can be used in circuits, we almost exclusively use LEDs because of their excellent power efficiency, small size, and ease of use.
 
 #### Theory
-LEDs are a type of diode, which is a semiconductor device that contains a special junction that only allows current to pass in one direction. The semiconductor junction in an LED is specially built such that when current is flowing, the *band gap* of the semiconductor results in electron transitions that emit photons of specific wavelenghts. This is how LEDs have different colours, red LEDs produce photons that have a wavelength of approximately 650nm, green are 520nm, etc. By combining different colours (usually the primary colours, red, green, and blue) we can produce a whole rainbow of different colours.
+LEDs are a type of diode, which is a semiconductor device that contains a special junction that only allows current to pass in one direction. The semiconductor junction in an LED is specially built such that when current is flowing, the *band gap* of the semiconductor results in electron transitions that emit photons of specific wavelengths. This is how LEDs have different colours, red LEDs produce photons that have a wavelength of approximately 650nm, green are 520nm, etc. By combining different colours (usually the primary colours, red, green, and blue) we can produce a whole rainbow of different colours.
 
-There also exist LEDs that produce light outside the visible range, for example, ultraviolet (~300nm) and infrared (~900nm). Infrared LEDs are used in television remote controls or night vision, and ultraviolet has a wide range of uses from skin therapy to sterilisation and even in the production of white light using phosphors. This is how LED light bulbs you use in your house work, they are often UV LEDs which cause a phosphor to glow.
+There also exist LEDs that produce light outside the visible range, for example, ultraviolet (~300nm) and infrared (~900nm). Infrared LEDs are used in television remote controls or night vision, and ultraviolet has a wide range of uses from skin therapy to sterilization and even in the production of white light using phosphors. This is how LED light bulbs you use in your house work, they are often UV LEDs which cause a phosphor to glow.
 
 ### Powering an LED
 Diodes are *"non-linear"* or *"non-ohmic"* devices, which means that Ohm's law doesn't apply to them. When they are conducting, they have very little resistance, and in the other direction they have a very high resistance.
@@ -232,4 +232,4 @@ Resistors only come in specific values, so just round *up* to the nearest one (e
 * The resistor can be on either side of the LED, it doesn't matter.
 * Sometimes you might choose to "invert" the LED by connecting it to VCC instead, then when you turn *off* the pin, the LED will turn on.
 * The micro:bit also has current limiting resistors for its built-in LED grid. *They're really tiny! Can you find them and measure their resistance?*
-* Blue LEDs typically have a higher forward voltage drop, so will usually require a lower-value resistor for the same brightness. This is because the wavelength of blue light is much shorter than that of red light, so the photons that make up blue light are more energetic. The voltage drop across an LED is directly poprtional to the energy of emitted photons.
+* Blue LEDs typically have a higher forward voltage drop, so will usually require a lower-value resistor for the same brightness. This is because the wavelength of blue light is much shorter than that of red light, so the photons that make up blue light are more energetic. The voltage drop across an LED is directly proportional to the energy of emitted photons.

@@ -282,7 +282,7 @@ Here are some examples from the bit:bot:
 * Turn left 90 degrees by turning the the motors in opposite directions for 0.9 seconds.
 * Follow a course by pre-programming motor movements.
 
-You might recognise this form of control from the previous lab. When we preprogrammed the motor powers and rotation times to get our robot to move in certain ways in the previous lab we were doing *open loop control*.
+You might recognize this form of control from the previous lab. When we preprogrammed the motor powers and rotation times to get our robot to move in certain ways in the previous lab we were doing *open loop control*.
 
 Open-loop control is much simpler to implement, but tends to make it very difficult to get accurate results. For example, if the battery is lower, then the time needed to drive forward 1 metre will be longer. If the torque of the two motors is different (due to imperfections in the gears, fluff on the tyres etc.) then we have to adjust the powers in our program with no guarantee they won't change. *For this reason it's very difficult to do line following with open loop control!*
 
@@ -323,7 +323,7 @@ The problem with this simple approach is that the compressor will *oscillate* ve
 
 To improve this, we have two options. The first is to simply slow down our loop, preventing the system from changing state too often. In this case, adding a `sleep(30 * 60 * 1000)` at the end of the loop to only allow the compressor to be adjusted every 30 minutes. This will result in our algorithm being less responsive to temperature changes in the fridge, but will at least prevent this oscillation.
 
-The other option is to turn the compressor on at a higher temperature, and off at a lower temperature. This is called adding `hysteresis` to the system. In the example below, we still target 3 degress C, but allow a movement down to 2 and up to 4 before changing the compressor state. In this case the state of the compressor (output) will change depending on the temperature (process value) something like this:
+The other option is to turn the compressor on at a higher temperature, and off at a lower temperature. This is called adding `hysteresis` to the system. In the example below, we still target 3 degrees C, but allow a movement down to 2 and up to 4 before changing the compressor state. In this case the state of the compressor (output) will change depending on the temperature (process value) something like this:
 ![Hysteresis 1](images/Hysteresis1.png)
 
 ```python
@@ -391,7 +391,7 @@ The example above is using the number of times we've detected the line as an app
 
 The bit:bots include an ultrasonic distance sensor which connects to the header at the front. *Note: make sure you use the angle:bit to connect your micro:bit so that the USB cable does not get in the way.*
 
-These ultrasonic sensors work by measuring the echo time ("time of flight") of an untrasonic sound pulse. Sound travels at approximately 340 metres/second, or in other words, 1 centimetre every 29.4 microseconds. That's too fast to measure with a stopwatch, but no trouble at all for a microcontroller.
+These ultrasonic sensors work by measuring the echo time ("time of flight") of an ultrasonic sound pulse. Sound travels at approximately 340 metres/second, or in other words, 1 centimeter every 29.4 microseconds. That's too fast to measure with a stopwatch, but no trouble at all for a microcontroller.
 
 *This is how you can measure approximately how far away lightning is by measuring the time between the flash and the boom and multiplying by 1000/340 (which is ~3).*
 
@@ -409,11 +409,11 @@ These sensors have four pins:
 
 To measure distance, you send a brief pulse on the trig line, then measure how long the pulse on the echo line lasts for. Because we want the timing to be accurate, we used a special built-in MicroPython function to time the pulse for us named `machine.time_pulse_us`. This function takes a pin and a pulse level. In this case we're looking for a "high" pulse, so we set the level to `1`.
 
-To calculate the distance, we multipy the length of the pulse by the speed of sound, divided by two.
+To calculate the distance, we multiply the length of the pulse by the speed of sound, divided by two.
 
 ![us timing](http://mathurl.com/yc2u5ouq.png)
 
-Because the pulse is measured in microseconds, and we want the distance in centimetres, we use 0.034 centimetres/microsecond as the speed of sound. The divide by two is required because it's the time taken for the ultrasound to travel to the target and echo back again.
+Because the pulse is measured in microseconds, and we want the distance in centimeters, we use 0.034 centimeters/microsecond as the speed of sound. The divide by two is required because it's the time taken for the ultrasound to travel to the target and echo back again.
 
 Confusingly, on the bit:bot, the `echo` and `trig` lines are connected together into a single micro:bit pin (pin 15), so you need to first send the trigger, then switch the pin back to input, then time the pulse.
 
