@@ -155,13 +155,13 @@ This is a variable resistor that changes based on the angle you turn it to (like
 
 This is a device that changes it's resistance based on how much light is shining on the sensor.
 
-![ldr](images/ldr.jpg)
+![Light Dependant Resistor](images/ldr.jpg)
 
 #### Flex Sensor
 
 This is a variable resistor that changes based on how much the strip has been bent.
 
-![flex](images/flex-sensor.jpg)
+![Flex Sensor](images/flex-sensor.jpg)
 
 #### GPS Receiver
 
@@ -189,7 +189,15 @@ We've seen how to control an LED connected to a pin by using `write_digital` to 
 
 The most obvious way to make the brightness change would be to change the pin voltage, as you can see in the formula:
 
-![LED current](images/led_curr.png)
+```{=latex}
+\begin{equation}
+\begin{split}
+V_{res} &= V_{pin} - V_{led} \\
+R &= \frac{V_{res}}{I} \\
+R &= \frac{V_{pin} - V_{led}}{I}
+\end{split}
+\end{equation}
+```
 
 If the pin voltage decreases, then the current will decrease correspondingly, which will lower the brightness of the LED. Unfortunately, most microcontrollers do not have a way to set a pin voltage to anything other than *digital low* (0V) and *digital high* (often 3.3V or 5V), whereas we'd need some way to set an *analog voltage*. Some microcontrollers may have a device called a "Digital to Analog Converter" (DAC), but typically this will only be connected to one or two pins, and the micro:bit does not have one.
 
@@ -221,7 +229,7 @@ while True:
 
 *Note: there are no sleeps needed in this code for the write_digital calls do something. We rely on the fact that `write_digital` itself takes about 1 ms to execute.*
 
-![PWM](images/pwm.png)
+![PWM with varying duty cycles](images/pwm.png)
 
 This is called "Pulse Width Modulation" or PWM. Our code is generating pulses, and modulating their width. (Modulation is one thing controlling another thing). Some terminology:
 
@@ -273,7 +281,7 @@ To drive a motor from a microcontroller, you need a circuit that can switch on o
 
 In order to make the motor spin in both directions, you need four transistors, in an arrangement called an H-bridge. In the diagram below, the transistors are shown as switches, but you can see that turning on S1 and S4 will cause current to flow through the motor in one direction (forwards spin), and turning on S2 and S3 will cause it to flow in the opposite direction (reverse spin).
 
-![h bridge](images/h-bridge.png)
+![H-Bridge Motor Driver](images/h-bridge.png)
 
 ### Continuous Rotation Servo Motors
 
