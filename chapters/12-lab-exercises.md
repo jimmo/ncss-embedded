@@ -16,6 +16,8 @@ Download the "PortaMu" editor from: https://codewith.mu/en/download and unzip it
 
 **Note**: Make sure that you save all your work onto the network drives, as we will be switching between labs and computers over the course of the camp. Anything that you save to "My Documents" or the local computer will become inaccessible and may be automatically wiped.
 
+\clearpage
+
 ## Lab 1 -- Saturday morning
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **four** (i.e. up to the "Simple Snake" problem).
@@ -40,11 +42,13 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 
     Use two of the LEDs in the display to represent the current state of the lights (off, dim, bright).
 
+\clearpage
+
 ## Lab 2 -- Saturday afternoon
 
 1. Complete the Grok *micro:bit Crash Course* up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
 
-2. In the crash course we saw how connect an external button. As a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
+2. In the crash course we saw how connect an external button. Ask a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
     1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
 
 3. Ask a tutor for some LEDs. Wire them up using a breadboard, some Grove->breadboard cable (in the bottom drawer of the component kits), and some current limiting resistors (also in the component kits).
@@ -58,6 +62,8 @@ The RGB LEDs are actually three LEDs (red, green, blue) together inside the bulb
 
 4. Can you think of a way to adjust the brightness of the LED? *Hint: what if you turn the LED on and off really quickly?*
     1. Use this to get other colours from the RGB LED.
+
+\clearpage
 
 ## Lab 3 -- Sunday morning
 
@@ -81,7 +87,7 @@ For these tasks you will need:
 Most of these sensors behave a lot like the micro:bit buttons (especially the button module!). It'd be great if we could use the `is_pressed()` and `was_pressed()` functions like we can on the built-in buttons.
 
 1. Write a class for each of the sensors that works like the `MicroBitButton` class. It should provide both an `is_pressed()` and a `was_pressed()` method (or equivalently, `is/was_motion()` and `is/was_magnet()`).
-   1. *Hint*: you'll need to add another method that your program will need to call at the start of every loop that will actually read the state of the pin.
+    * **Hint**: you'll need to add another method that your program will need to call at the start of every loop that will actually read the state of the pin.
 2. Try out one of the heart rate monitors. These work by sending a pulse for every beat detected (much like the motion sensors, but much shorter pulses). Ask your tutors for advice. Make the micro:bit flash the `Image.HEART` image for every beat and press a button to `display.show` the BPM.
 
 
@@ -98,7 +104,7 @@ This gives us the *volume* of the ambient sound in the room.
 display.show(Image.HEART/1.5)
 ```
 3. Write a program so scale the brightness of each pixel of *anything currently displayed* proportional to the volume detected by the sound sensor. *Hint* you should use `display.get_pixel` to get each pixel value and adjust the brightness by creating an *image string*.
-   1. **Bonus**: write a function to turn one of your image strings into an `Image` object, so you can use divides like in your solution to the previous problem.
+    * **Bonus**: write a function to turn one of your image strings into an `Image` object, so you can use divides like in your solution to the previous problem.
 
 *Show your work to a tutor before continuing*
 
@@ -132,14 +138,16 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 #### Part 4 -- PWM
 
 1. Make an LED pulse on and off by smoothly changing the brightness up and down.
-    1. Try different pulsing patterns (e.g. sinusoidal).
+    * Try different pulsing patterns (e.g. sinusoidal).
 2. Use an RGB LED to experiment with colours.
-    1. Generate a rainbow sequence, smoothly changing through the spectrum.
+    * Generate a rainbow sequence, smoothly changing through the spectrum.
 
 
 #### Part 5 -- Servo motors
 
 1. Use a standard servo to make a boom-gate style barrier that open and closes based on a signal from the micro:bit (e.g. when a button is pressed).
+
+\clearpage
 
 ## Lab 4 -- Sunday afternoon
 
@@ -147,7 +155,11 @@ Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the
 
 **Channel selection**: To ensure that everyone's using a different channel for their micro:bit, use the following formula to select a channel number for your programs.
 
-![radio channel](http://mathurl.com/ycn82kxx.png)
+```{=latex}
+\begin{equation}
+\text{Channel} = (\text{GroupNumber} - 6) \times 20 + \text{StudentNumber}
+\end{equation}
+```
 
 Use the student number that you use when counting off in your groups.
 
@@ -159,6 +171,8 @@ Use the student number that you use when counting off in your groups.
 	3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
 
 4. Most computer networks have a concept of a router, which is a device that can forward network messages to other devices. Write a program for a micro:bit that will act as a simple relay router that will resend any messages that it receives. See if you can use this to improve the range in your earlier experiments.
+
+\clearpage
 
 ## Lab 5 -- Monday morning
 
@@ -206,6 +220,8 @@ Use the student number that you use when counting off in your groups.
     1. Calibrate the sensor with a ruler and update the speed of sound conversion factor and possibly add an offset.
     2. Try creating a moving average of the sensor readings to reduce noise.
 
+\clearpage
+
 ## Lab 6 -- Monday afternoon
 
 #### Line following
@@ -240,7 +256,9 @@ Today's lab focuses on closed-loop control. We're going to work on taking some o
         * *HINT*: You may have to slow down when you approach the correct heading to ensure you don't overshoot. Can you use the difference between the current heading and target heading to select a speed? What sort of control algorithm would this be?
     4. Use this code to drive forwards for 1 second, rotate 180 degrees, and drive forwards for 1 second. Did it do better than before? What about if you upload the same code to another bit:bot with no modifications?
 
-#### Bit:Bot Challenge
+\clearpage
+
+#### bit:bot Challenge
 
 Once you've completed the above lab exercises, there are a couple of additional challenges that will require you to combine all the concepts you've covered thus far.
 
@@ -263,6 +281,7 @@ We've set up two (hidden) courses somewhere in the building. Your challenges, sh
 
     Although not as sharp as for challenge 1, the course will still have some steep curves that you will need to handle.
 
+\clearpage
 
 ## Lab 8 -- Thursday morning
 
