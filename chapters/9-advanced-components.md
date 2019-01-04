@@ -1,4 +1,4 @@
-## Chapter 9 -- Integrated circuits
+## Integrated circuits
 
 Integrated circuits (ICs), are chips that perform a specific function in electronics.
 
@@ -67,7 +67,7 @@ Let's take a look at exactly what happens, the entire sequence of bits sent to s
 3. At a regular time interval, the next bits in the byte are read
 4. There is an optional `parity` bit at the end, which is used for error-checking
 5. The line is pulled high, this is the **stop bit**
-6. The line stays high until the next frame.
+6. The line stays high until the next frame.  
 
 For this to work, a few things need to be agreed by both devices before communication occurs:
 - Data rate (also called baudrate), the micro:bit defaults to `115200`
@@ -178,3 +178,62 @@ To communicate you can use `i2c.read` and `i2c.write` to communicate with the de
 It's important to connect the `SDA` to `pin20` and `SCL` to `pin19`, and the grounds of each device should be shared. It's possible to change these pins, but the accelerometer and compass use the `i2c` bus and they will stop working if the pins are changed. There are internal pull-up resistors on the micro:bit, but you may need to add these separately if the connection wires are long.
 
 As always, the [documentation](https://microbit-micropython.readthedocs.io/en/latest/i2c.html) is very helpful when using the `i2c` module.
+
+### Drivers
+
+Normally when we're communicating with devices, we don't really want to think about the underlying details about *how a device works*, we just want to *use* the device.
+
+So what we do is think about it once - by writing a driver - that we can re-use whenever that device is used.
+
+Often we like to create a driver object - this way all of the functions in the device are the same, the only things that need to be configured (like the pins) go into the objects constructor.
+
+Let's write a driver for something we've already looked at in the labs, the rotary encoder.
+
+```python
+class RotaryEncoder:
+  def __init__(self, pin_a, pin_b):
+    self.pos = 0
+    self.old_sig_a = False
+    self.sig_a = 0
+    self.sig_b = 0
+    self.pin_a = pin_a
+    self.pin_b = pin_b
+    self.setup_pins(pin_a, pin_b)
+
+  def setup_pins(self, pin_a, pin_b):
+    """set the internal pull-up resistors"""
+    pin_b.read_digital()
+    pin_b.set_pull(pin_b.PULL_UP)
+    pin_a.read_digital()
+    pin_a.set_pull(pin_a.PULL_UP)
+
+  def read_rotor(self):
+    """returns the global count if clockwise increments and anti-clockwise decrements"""
+    self.sig_a = self.pin_a.read_digital()
+    self.sig_b = self.pin_b.read_digital()
+    # catch the rising edge of A
+    if self.sig_a and not self.old_sig_a:
+      # if b is also high, clockwise
+      if self.sig_b:
+        self.pos += 1
+      else:
+        self.pos -= 1
+    self.old_sig_a = self.sig_a
+    return self.pos
+```
+That's the complete driver! to use the device we simply call the make the object this way:
+
+```python
+rotor = RotaryEncoder(pin0, pin13)
+```
+And to read the encoder, just use this line:
+```python
+rot = rotor.read_rotor()
+```
+All the underlying functionality lives in the driver class, and the just *use* the device, we only need those to lines: create the object, and read the information.
+
+It depends on the sensors we want to use, but drivers should capture the full functionality of the device and be as simple to use as possible.
+
+Writing good drivers builds on a greater understanding of classes, often to make things more convenient (such as using [`property`](https://docs.python.org/3/library/functions.html#property) to only access variables via `getter` and `setter` methods (a method is a function inside an object).
+
+As you write more Python programs, you'll learn more tricks like this. But our advice is to not try and make a spaceship driver from the start, focus on getting the functionality, and ask yourself how *you* would like to make it more convenient to use.
