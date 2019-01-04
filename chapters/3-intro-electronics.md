@@ -135,25 +135,25 @@ Say we wanted to connect a button to a controller (we do want to do that, a lot)
 
 For starters, it's possible to wire it directly to the positive rail like this:
 
-### TODO: positive switch image here
+![Floating Switch](figures/floating_switch.png)
 
 But how do we want know what the voltage is at the `pin` when the switch is open (not pressed)?
 
 We don't! The point is *floating*, which means we can't tell what the voltage at the point will be. When something is supposed to be either "on" or "off", floating is the opposite of what we want, because we have no idea what it is.
 
-So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything. This is a pull **down** resistor circuit:
+So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything.
 
-### TODO: pull up resistor image here
+![PullDown Switch](figures/pulldown_switch.png)
 
-When the switch is open, the resistor pulls the voltage at the pin to be 3.3V, and when it is closed, this connects the pin directly to ground (0V). So the button works now!
+When the switch is open, the resistor pulls the voltage at the pin to 0V, and when it is closed, this connects the pin directly to *high* (3.3V), so we never have an undefined voltage. This is called a *pull-down* resistor since it pulls the voltage down to `0V`
 
-A pull down resistor looks like this:
+We can also invert the behavious of the switch by changing around the order of the switch and the resistor.
 
-### TODO: pull down resistor here.
+![PullUp Switch](figures/pullup_switch.png)
 
-In this case the opposite is true, when the switch is open the voltage at the pin is 0V, and when the switch is closed, the voltage is 3.3V.
+In this case the opposite is true, when the switch is open the voltage at the pin is `3.3V`, and when the switch is closed, the voltage is `0V`. For this reason it is called a *pull-up* resistor.
 
-### Does it matter if I use pull-up or down?
+#### Does it matter if I use pull-up or down?
 
 No, it's just a matter of preference. It's much more important to know what each of them means (and write your code accordingly), and that you need to use one of them when you're connecting a button (or basically anything) to a digital input.
 
@@ -197,7 +197,7 @@ Diodes are *"non-linear"* or *"non-ohmic"* devices, which means that Ohm's law d
 
 Something with a very low resistance effectively looks like a short circuit, which means that a lot of current will flow and potentially damage the LED or the thing that is powering it (e.g. the micro:bit pin). So what we need is a way to ensure that only a specific current flows, which is why every time we use an LED, we also need a *current-limiting resistor*.
 
-#### TODO: circuit diagram
+![PullUp Switch](figures/led_res.png)
 
 Typically we choose a desired brightness for our LED, and look up the LED's *data sheet* to find out what current it needs. Then we choose a resistor using Ohm's Law *(V=IR)* to make that work. Remember that devices in series will all have the same current flowing through them, so the current flowing through the LED will be the same as what flows through the resistor.
 
@@ -223,4 +223,4 @@ Resistors only come in specific values, so just round *up* to the nearest one (e
 * The resistor can be on either side of the LED, it doesn't matter.
 * Sometimes you might choose to "invert" the LED by connecting it to VCC instead, then when you turn *off* the pin, the LED will turn on.
 * The micro:bit also has current limiting resistors for its built-in LED grid. *They're really tiny! Can you find them and measure their resistance?*
-* Blue LEDs typically have a higher forward voltage drop, so will usually require a lower-value resistor for the same brightness.
+* Blue LEDs typically have a higher forward voltage drop, so will usually require a lower-value resistor for the same brightness. This is because the wavelength of blue light is much shorter than that of red light, so the photons that make up blue light are more energetic. The voltage drop across an LED is directly poprtional to the energy of emitted photons.
