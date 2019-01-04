@@ -203,7 +203,7 @@ Whenever you change any LEDs, you need to call the `show` method to send the new
 
 Here are some example colours:
 
-```
+```python
 COLOUR_BLACK = (0, 0, 0,)
 COLOUR_WHITE = (255, 255, 255,)
 COLOUR_RED = (255, 0, 0,)
@@ -417,7 +417,7 @@ Because the pulse is measured in microseconds, and we want the distance in centi
 
 Confusingly, on the bit:bot, the `echo` and `trig` lines are connected together into a single micro:bit pin (pin 15), so you need to first send the trigger, then switch the pin back to input, then time the pulse.
 
-```
+```python
 from microbit import *
 import machine
 
