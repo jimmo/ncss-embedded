@@ -18,14 +18,16 @@ We have made micro:bit adapters for NCSS, which have 4 grove connectors and a sp
 
 ![Grove adapter](images/grove-adapter.png)
 
-The micro:bit pin connections on each connector, from right to left, are:
+The micro:bit pins that correspond to each connector, from right to left, are:
 
-- 0 and 13
-- 1 and 14
-- 2 and 15
-- 19 and 20
+| Socket | Grove Pin 1 (yellow) | Grove Pin 2 (white) |
+| --- | --- | --- |
+| 1 (right) | pin0 | pin13 |
+| 2 | pin1 | pin14 |
+| 3 | pin2 | pin15 |
+| 4 (left) | pin19 | pin20 |
 
-`pin0` is also the speaker, some adapters do not have a speaker attached (you can't use both).
+`pin0` is also the speaker, but most adapters do not have a speaker attached. When using an adaptor with a speaker, don't use the first socket.
 
 ### Summary Table
 | Sensor | Type | Description |
