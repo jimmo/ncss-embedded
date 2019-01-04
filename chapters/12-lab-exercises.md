@@ -20,7 +20,7 @@ Download the "PortaMu" editor from: https://codewith.mu/en/download and unzip it
 
 ## Lab 1 -- Saturday morning
 
-1. Complete the Grok *micro:bit Crash Course* up to the end of module **four** (i.e. up to the "Simple Snake" problem).
+1. Complete the Grok *micro:bit Crash Course* ([https://groklearning.com/course/ncss-2019-embedded/](https://groklearning.com/course/ncss-2019-embedded/)) up to the end of module **four** (i.e. up to the "Simple Snake" problem).
 
 The Grok course will likely take most of the lab time, but here are some extension exercises:
 
@@ -46,7 +46,7 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 
 ## Lab 2 -- Saturday afternoon
 
-1. Complete the Grok *micro:bit Crash Course* up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
+1. Complete the Grok *micro:bit Crash Course* ([https://groklearning.com/course/ncss-2019-embedded/](https://groklearning.com/course/ncss-2019-embedded/)) up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
 
 2. In the crash course we saw how connect an external button. Ask a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
     1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
@@ -124,11 +124,25 @@ The rotary encoder works by having 2 signals. The relative phase of the two sign
 
 **The clockwise signal looks something like this:**
 
-![Clockwise rotary signals](images/clockwise-rotary.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{images/clockwise-rotary.png}
+\caption{Clockwise rotary signals} 
+\label{fig:clock_rot}
+\end{figure}
+```
 
 **The anti-clockwise signal looks something like this:**
 
-![Anti-clockwise rotary signals](images/anticlockwise-rotary.png)
+```{=latex}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{images/anticlockwise-rotary.png}
+\caption{Anti-clockwise rotary signals} 
+\label{fig:anticlock_rot}
+\end{figure}
+```
 
 Write a program to read from the encoder, and print 0 to 9 on the 5x5 LED on the micro:bit. If the number is greater than 9, it should be set to 0, similarly if it becomes less than 0, it should be set to 9.
 
@@ -213,7 +227,7 @@ Use the student number that you use when counting off in your groups.
 2. Update your line following program to add "indicators" to the bit:bot. Flash the left or right sides orange when turning left or right.
 3. Make a rainbow pattern with the neopixels. Ask your tutors about HSV colour and how to convert to RGB.
 
-#### Ultrasonic distance sensor
+#### The ultrasonic distance sensor
 
 1. Try out the example from the notes in chapter 7. How accurate and precise are the measurements?
 2. Experiment with some ways to improve the reliability of the sensor:
