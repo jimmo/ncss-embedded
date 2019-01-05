@@ -11,7 +11,7 @@ Aside from working with sensors and screens, we can also hook up our micro:bits 
 
 <span style="color:red">**Warning!!**</span> The gearboxes on the bit:bot are a little fragile, and the teeth on the gears can break if too much torque is applied. Don't try to hold the wheels from spinning while the motors are on.
 
-We'll start with exploring the features of the bit:bots, then learning about some algorithms for making the bit:bots perform various line following tasks.
+We'll start with exploring the features of the bit:bots, then learn about some algorithms for making the bit:bots perform various line following tasks.
 
 ## Getting Started with bit:bots
 
@@ -123,7 +123,7 @@ During the labs we will usually be following a line made of masking tape against
 
 #### Light sensing
 
-The light sensors on top of the bit:bots, unlike the line sensors, are analog sensors, and so are able to detect a range of different light values. Unfortunately, as there are only 3 free analog pins on the micro:bit, and 2 of those are used to control the motors, we somehow have to multiplex two light sensors onto one analog pins. In order to do this, the bit:bot uses `pin16` to control a switch that selects which sensor should be read, and the sensor value can be read from `pin2`.
+The light sensors on top of the bit:bots, unlike the line sensors, are analog sensors, and so are able to detect a range of different light values. Unfortunately, as there are only 3 free analog pins on the micro:bit, and 2 of those are used to control the motors, we somehow have to multiplex two light sensors onto one analog pin. In order to do this, the bit:bot uses `pin16` to control a switch that selects which sensor should be read, and the sensor value can be read from `pin2`.
 
 For example, to read the left and right sensor values, we can do:
 
@@ -139,7 +139,7 @@ right_sensor = pin2.read_analog()
 
 #### Neopixels
 
-Along the edge of the bit:bots there are 12 RGB LEDs called neopixels. By writing values RGB values to each of these sensors, we can show colors around the edge of the LEDs. The neopixels are chained together on a single pin, such that we don't need to use a pin (or 3) per LED. We will go neopixels in more detail in the next chapter, but as an example of how they work, let's set the 2nd LED to show a dim blue light, and the 8th LED to show a bright green light:
+Along the edge of the bit:bots there are 12 RGB LEDs called neopixels. By writing RGB values to each of these sensors, we can show colours around the edge of the LEDs. The neopixels are chained together on a single pin, such that we don't need to use a pin (or 3) per LED. We cover neopixels in more detail in the next section, but as an example of how they work, let's set the 2nd LED to show a dim blue light, and the 8th LED to show a bright green light:
 
 ```python
 import neopixel
@@ -155,7 +155,7 @@ np.show()
 
 #### Buzzer
 
-The buzzer on the bit:bot have an internal oscillator, and put out a fixed tone when pin 14 is driven `HIGH`. Note that this also means that we are only able to play a single tone with this speaker.
+The buzzer on the bit:bot has an internal oscillator, and puts out a fixed tone when pin 14 is driven `HIGH`. Note that this also means that we are only able to play a single tone with this speaker.
 
 ```python
 # Play a short beep.
@@ -301,7 +301,7 @@ The main challenge with closed-loop control is getting good results from the sen
 
 ### Control Algorithms
 
-Although it does add an additional bit of complexity, for any system that needs to operate for any length of time, some form of closed-loop control is generally necessary. The difficulty then becomes how does one translate a control input
+Although it does add an additional bit of complexity, for any system that needs to operate for any length of time, some form of closed-loop control is generally necessary. The difficulty then becomes how does one translate a control input into a control output.
 
 #### "Bang bang" control
 
@@ -364,11 +364,11 @@ One of the main ways to improve this is to look at how to get a better indicatio
 count_left = 0
 count_right = 0
 while True:
-  if pinA.read_digital() == 1:
+  if pin11.read_digital() == 1:
     count_left += 1
   else:
     count_left = max(0, count_left - 1)
-  if pinB.read_digital() == 1:
+  if pin5.read_digital() == 1:
     count_right += 1
   else:
     count_left = max(0, count_right - 1)
