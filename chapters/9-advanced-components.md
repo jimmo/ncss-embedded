@@ -4,7 +4,10 @@ Integrated circuits (ICs), are chips that perform a specific function in electro
 
 So an IC is also a circuit made of wires, transistors, and other components, that are designed to make your life easier and do lots of the complicated electronics functions for you!
 
-There are two general types of packages that ICs come in *surface mount* and *through-hole*. As the name would suggest, surface mount are designed to be soldered to the surface of a PCB, so no wiring needs to go
+There are two general types of packages that ICs come in: *surface mount* and *through-hole*. 
+As the name would suggest, surface mount are designed to be soldered to the surface of a PCB, 
+so no wiring needs to go through the board, whereas through-hole components have longer leads 
+that are inserted into holes in the circuit board (and then soldered on the other side).
 
 ICs come in [*lots of different types*](https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types), but here are some ones you might see at NCSS:
 
@@ -17,7 +20,7 @@ ICs come in [*lots of different types*](https://en.wikipedia.org/wiki/List_of_in
 
 The type of package may not make a big difference in performance, but it will make a big difference in terms of fitting the device onto your circuit board, and how the device is wired up on a PCB.
 
-If you're ordering ICs, they will come in a variety of packages with slightly different part-numbers that reflect the change, it's really easy to buy the write chip but the wrong package in a PCB you've designed, so it's important to be careful and check the datasheet.
+If you're ordering ICs, they will come in a variety of packages with slightly different part-numbers that reflect different form-factors, it's really easy to buy the right chip but the wrong package for a PCB you've designed, so it's important to be careful and check the datasheet.
 
 All of our chips at NCSS will be DIP (which stands for dual in-line package), so they can be used in breadboards, but take a look at the circular LEDs or the LED bar, and see if you can identify what the package is!
 
@@ -41,9 +44,9 @@ This includes information such as:
 
 ## Digital signalling
 
-With microcontollers, it's very common to want to transmit more information that just a voltage level to a sensor or peripheral device. It is possible to use many wires with different analog voltages to transmit more information, but to minimise the number of wires needed, we use digital signalling protocols to achieve this instead.
+With microcontollers, it's very common to want to transmit more information than just a voltage level to a sensor or peripheral device. It is possible to use many wires with different analog voltages to transmit more information, but to minimise the number of wires needed, we use digital signalling protocols to achieve this instead.
 
-To send a digital signal there is only a certain number of things we can do:
+To send a digital signal there are only a certain number of things we can do:
 - Set a voltage on a wire
 - Read a voltage from a wire
 
@@ -56,7 +59,8 @@ The answer is we need to come up with an agreed method to do this, and there are
 
 ### UART
 
-UART stands for Universal Asyncronous Receiver/Transmitter, **asyncronous** means that communication happen without the use of an external clock. So each direction of transmission occurs on 1-wire from 1 device to another. To transmit and receive requires each direction to be on it's own wire.
+UART stands for Universal Asyncronous Receiver/Transmitter, **asyncronous** means that communication happens without the use of an external clock. So data is transmitted in both directions on one wire between two devices. 
+Each connection between two devices will only transmit in one direction, so if you need to send data backwards and forwards you will need two wires.
 
 The signal looks like this:
 
@@ -96,7 +100,7 @@ uart.init(115200)
 ```
 
 Here's a working example to receive information on the `uart`:
-```
+```python
 from microbit import *
 
 uart.init(9600, tx=pin0, rx=pin1)
@@ -163,7 +167,7 @@ I²C works by using two wires, `SDA` - data wire, and `SCL` - clock. The differe
 
 ![I2C](images/i2c.png)
 
-Each device has it's own unique address, that is either fixed for the device or configured.
+Each device has its own unique address, that is either fixed for the device or configured.
 
 To connect to devices, first you need to initialise the `i2c` module:
 
