@@ -4,7 +4,7 @@
 
 The micro:bit includes a Bluetooth Low Energy (BLE) radio. From MicroPython, we don't have access to most of the BLE functionality, but we can use the radio to send and receive small *packets* of data.
 
-If you've listened to an AM or FM radio station, you'll hear them referred to by their frequency. For example, Triple J in Sydney is 105.7 MHz. Similar for television stations, mobile phones, etc. By broadcasting at different frequencies, they can transmit at the same time without interference. micro:bits use an area of the spectrum at 2.4GHz called the ISM band, and they can use 84 different channels all at slightly different frequencies.
+If you've listened to an AM or FM radio station, you'll hear them referred to by their frequency. For example, Triple J in Sydney transmits on the frequency 105.7 MHz. This is the same for television stations, mobile phones, etc. By broadcasting at different frequencies, they can transmit at the same time without interfering with each other. micro:bits use a band of the frequency spectrum between 2.4GHz and 2.5GHz called the ISM band, which is split into 84 different channels.
 
 Much like a radio station, *packets* are broadcast to all nearby micro:bits that are listening on that channel. As a result we don't need to pair micro:bits as long as they are all set to send and receive messages on the same channel.
 
@@ -34,9 +34,9 @@ while True:
     display.show(message)
 ```
 
-The way receive works is a bit like a letter box. Once the radio is turned on, all messages on the configured channel will be received and stored in the "letter box". When we call `receive`, it checks to see if there's any messages waiting for us. If there isn't it returns `None`, which is why we need the if statement above. 
+The way receive works is a bit like a letter box. Once the radio is turned on, all messages on the configured channel will be received and stored in the "letter box", that is called a queue. When we call `receive`, it checks to see if there's any messages waiting for us in the queue. If there isn't it returns `None`, which is why we need the if statement above. 
 
-By default, the radio can only store 3 messages in the queue with a maximum length of 32-bytes, so make sure your messages aren't too long and you regularly clear the incoming message queue. If you try and send a message longer than 32 characters you might find your messages get cut short. Similarly, if the queue is full, any new incoming messages will be dropped silently.
+By default, the radio can only store 3 messages in the queue with a maximum message length of 32-bytes, so make sure that your messages aren't too long, and that you regularly clear the incoming message queue. If you try and send a message longer than 32 characters you might find your messages get cut short. Similarly, if the queue is full, any new incoming messages will be dropped silently.
 
 If you need to, you can increase the maximum message length (up to 254 characters) and the size of the queue, at the expense of reducing the amount of memory available on your micro:bit. We can do this by passing the optional `length` and `queue` arguments to the `config()` function:
 
