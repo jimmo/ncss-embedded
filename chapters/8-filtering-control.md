@@ -2,7 +2,7 @@
 
 Any sensor will inevitably suffer from some noise. Whether it comes from limitations in the sensor, random fluctuations in the electronics and amplifiers, or from imperfectly mounted sensors, it is necessary to design our code in a way that handles the unavoidable noise of our sensors. Unfortunately, when there are random fluctuations in the signal, it can make extracting events out of the signal very difficult. 
 
-Take the below data for example. The true signal is a nice smooth bump, perhaps the intensity of a light source. We want to know when the signal intensity rises above some threshold. From the true signal, we can define a clear threshold above which we can say the event occurred. Unfortunately, once this signal passes through our light sensor, the data is no longer quite so clear. It is impossible in this data to define a simple threshold which will constitute the event occurring. For any line we can draw, the noise causes the measured signal to pass through the multiple times for our single event.
+Take the below data for example. The true signal is a nice smooth bump, perhaps the intensity of a light source. We want to know when the signal intensity rises above some threshold. From the true signal, we can define a clear threshold above which we can say the event occurred. Unfortunately, once this signal passes through our light sensor, the data is no longer quite so clear. It is impossible in this data to define a simple threshold which will constitute the event occurring. For any line we can draw, the noise causes the measured signal to pass through the threshold multiple times.
 
 Depending on the speed of the event that you would like to detect, one approach to reducing the random fluctuations in our signal is averaging: reading multiple samples of data and taking a weighted sum of those samples. Below we will review the two most common ways that we can perform this averaging.
 
@@ -56,7 +56,7 @@ The above code will output a filtered signal from the light sensor on the bit:bo
 
 While windowed averaging gives good results, it can be quite a expensive method of performing filtering in terms of the amount of memory required, as we need to keep a list of the $N$ previous signal points for the algorithm to work. Once $N$ becomes large, this can end up being limiting.
 
-Another method of performing filtering, that only requires us to keep track of *one* number, is exponential averaging (sometimes called exponential smoothing). Here we weight our incoming data by a damping factor ($\alpha$), which takes a value between 0 and 1, such that our smoothed data is made up of a mixture of the previous point($x_p$) and the new sample ($s_n$) according to:
+Another method of performing filtering that only requires us to keep track of a single number is exponential averaging (sometimes called exponential smoothing). Here we weight our incoming data by a damping factor ($\alpha$), which takes a value between 0 and 1, such that our smoothed data is made up of a mixture of the previous point($x_p$) and the new sample ($s_n$) according to:
 
 \begin{equation}
 x_n = \alpha \times x_p + (1-\alpha) \times s_n
@@ -86,7 +86,7 @@ while True:
 
 Where we use the value of $N$ in windowed averaging to increase the amount of smoothing, in exponential averaging, we use the value of $\alpha$ to control the degree of smoothing. The closer $\alpha$ is to 1, the more smoothed our output data will be (as incoming samples will have less of an effect on the output data).
 
-Given that this method only requires a single variable, you might ask why we don't always use exponential averaging? Unfortunately, since we no longer have a record of old points, it is no longer possible to remove old data from the average, so any spikes will persist for longer in exponential averaging than they would for a windowed average, for a similar degree of smoothing.
+Given that this method only requires a single variable, you might ask why we don't always use exponential averaging? Unfortunately, since we no longer have a record of old points, it is no longer possible to remove old data from the average, so any spikes will persist for longer in exponential averaging than they would for a windowed average for a similar degree of smoothing.
 
 ## The downside of filtering
 
