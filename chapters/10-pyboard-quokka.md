@@ -290,7 +290,7 @@ n[0] = (255, 0, 0)
 n.show()
 ```
 
-To access the built-in NeoPixels on teh Quokka, just pass no pin or number of LEDs to the `NeoPixel` constructor:
+To access the built-in NeoPixels on the Quokka, just pass no pin or number of LEDs to the `NeoPixel` constructor:
 
 ```python
 from quokka import *
