@@ -9,7 +9,7 @@ Aside from working with sensors and screens, we can also hook up our micro:bits 
 * 12 programmable RGB LEDs
 * Optional accessories, including a distance sensor and a claw
 
-<span style="color:red">**Warning!!**</span> The gearboxes on the bit:bot are a little fragile, and the teeth on the gears can break if too much torque is applied. Don't try to hold the wheels from spinning while the motors are on.
+`{\color{red} \textbf{Warning!!}}`{=latex} The gearboxes on the bit:bot are a little fragile, and the teeth on the gears can break if too much torque is applied. Don't try to hold the wheels from spinning while the motors are on.
 
 We'll start with exploring the features of the bit:bots, then learn about some algorithms for making the bit:bots perform various line following tasks.
 
@@ -21,16 +21,16 @@ Each function on the bit:bot is accessible on a pin through the micro:bit. The b
 
 | Function | Pin | Description |
 | --- | --- | --- |
-| Left Motor Direction | Pin 8 | Access using `write_digital`<br>`0 - Forward`<br>`1 - Backwards` |
-| Left Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog` |
-| Right Motor Direction | Pin 12 | Access using `write_digital`<br>`0 - Forward`<br>`1 - Backwards` |
-| Right Motor Speed | Pin 1 | Speed `0 - 1023` with `write_analog` |
-| Left Line Sensor | Pin 11 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
-| Right Line Sensor | Pin 5 | Access using `read_digital`<br>`HIGH` on a reflective surface<br>`LOW` on a dark surface |
-| Neopixels | Pin 13 | RGB LEDs around the edge of the bit:bot.<br>Access using the `neopixel` module |
-| Buzzer | Pin 14 | Makes a beeping noise, when accessed using `write_digital` |
-| Light Sensor Select | Pin 16 | Select upwards facing light sensor to read.<br>`LOW` - Left Sensor<br>`HIGH` - Right Sensor |
-| Light Sensor Input | Pin 2 | Reads the upwards facing light sensors on the left/right of the micro:bit.<br>Returns a value between `0-1023` |
+| Left Motor Direction | Pin 8 | Access using `write_digital`\newline`0 - Forward`\newline`1 - Backwards`\newline |
+| Left Motor Speed | Pin 0 | Speed `0 - 1023` with `write_analog`\newline |
+| Right Motor Direction | Pin 12 | Access using `write_digital`\newline`0 - Forward`\newline`1 - Backwards`\newline |
+| Right Motor Speed | Pin 1 | Speed `0 - 1023` with `write_analog`\newline |
+| Left Line Sensor | Pin 11 | Access using `read_digital`\newline`HIGH` on a reflective surface\newline`LOW` on a dark surface\newline |
+| Right Line Sensor | Pin 5 | Access using `read_digital`\newline`HIGH` on a reflective surface\newline`LOW` on a dark surface\newline |
+| Neopixels | Pin 13 | RGB LEDs around the edge of the bit:bot. \newline Access using the `neopixel` module\newline |
+| Buzzer | Pin 14 | Makes a beeping noise, when accessed using `write_digital`\newline |
+| Light Sensor Select | Pin 16 | Select upwards facing light sensor to read.\newline`LOW` - Left Sensor\newline`HIGH` - Right Sensor\newline |
+| Light Sensor Input | Pin 2 | Reads the upwards facing light sensors on the left/right of the micro:bit.\newline Returns a value between `0-1023`\newline |
 
 If you ever need it, this information is also helpfully printed on the bottom of the bit:bots.
 
@@ -163,6 +163,7 @@ pin14.write_digital(1)
 sleep(500)
 pin14.write_digital(0)
 ```
+
 ## Neopixels & programmable LEDs
 
 As well as the line following and light sensors, the bit:bots also have 12 programmable RGB LEDs. These are commonly known as "Neopixels", however their real part name is `WS2812B`.
@@ -180,7 +181,7 @@ Programmable LEDs, on the other hand, have tiny integrated circuits inside of th
 
 Here's an example of four WS2812Bs wired together (this is adapted from the Quokka circuit diagram -- you'll see the Quokka later in the week).
 
-![neopixel chain](images/neopixel-chain.png)
+![A neopixel chain. Note how the data pins are chained (DOUT->DIN).](images/neopixel-chain.png)
 
 ### Programming
 
@@ -219,6 +220,7 @@ COLOUR_PURPLE = (204, 0, 255,)
 ### Extra: Other types of programmable LED
 
 The main alternative to the WS2812B is the APA102C (commonly known as "Dotstars"). These have two distinct advantages over the WS2812B:
+
  * They are much easier to program, as they use SPI communications.
  * They have a much higher refresh rate, allowing for video and persistence-of-vision effects.
 
@@ -290,7 +292,7 @@ Open-loop control is much simpler to implement, but tends to make it very diffic
 
 The system operates in a loop, where sensor readings provide "feedback" into the control algorithm. The fridge or air conditioner is a great example of this -- when the temperature is too high, it turns on the cooling, and when it's too low it turns it off.
 
-![Closed Loop](images/closed-loop.png)
+![Closed Loop Control](images/closed-loop.png)
 
 Here are some examples from the bit:bot:
 * Drive forward 1 metre by using the ultrasonic distance sensor to measure how far has been travelled.
@@ -324,7 +326,8 @@ The problem with this simple approach is that the compressor will *oscillate* ve
 To improve this, we have two options. The first is to simply slow down our loop, preventing the system from changing state too often. In this case, adding a `sleep(30 * 60 * 1000)` at the end of the loop to only allow the compressor to be adjusted every 30 minutes. This will result in our algorithm being less responsive to temperature changes in the fridge, but will at least prevent this oscillation.
 
 The other option is to turn the compressor on at a higher temperature, and off at a lower temperature. This is called adding `hysteresis` to the system. In the example below, we still target 3 degrees C, but allow a movement down to 2 and up to 4 before changing the compressor state. In this case the state of the compressor (output) will change depending on the temperature (process value) something like this:
-![Hysteresis 1](images/Hysteresis1.png)
+
+![Hysteresis in a Control Loop](images/Hysteresis1.png)
 
 ```python
 sp = 3
@@ -339,7 +342,8 @@ while True:
 ```
 
 The temperature of the fridge using this sort of control will then look something like:
-![Hysteresis 2](images/Hysteresis2.png)
+
+![With hysteresis, the process value will fluctuate around the setpoint.](images/Hysteresis2.png)
 
 The simplest possible line following algorithm works in much the same way, however there's a key difference. In a fridge, we can measure the PV (current temperature) extremely well, but only have very crude control over the OP (compressor on/off). On a bit:bot we have very good control over the OP (motor speed), but a very limited way to measure the PV (are we currently over a line).
 
@@ -398,6 +402,7 @@ These ultrasonic sensors work by measuring the echo time ("time of flight") of a
 The sensors on the bit:bot are called *HC-SR04*. You can read more about them in [the HC-SR04 datasheet](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf).
 
 These sensors have four pins:
+
  * Power (5V)
  * Ground
  * Trig
@@ -405,13 +410,15 @@ These sensors have four pins:
 
 *Note: although the distance sensors require 5V, the bit:bot takes care of this for us. If you were connecting an ultrasonic sensor directly to the micro:bit, you'd need additional circuitry.*
 
-![hc-sr04](images/hc-sr04.png)
+![Pulse from the ultrasonic distance sensor](images/hc-sr04.png)
 
 To measure distance, you send a brief pulse on the trig line, then measure how long the pulse on the echo line lasts for. Because we want the timing to be accurate, we used a special built-in MicroPython function to time the pulse for us named `machine.time_pulse_us`. This function takes a pin and a pulse level. In this case we're looking for a "high" pulse, so we set the level to `1`.
 
 To calculate the distance, we multiply the length of the pulse by the speed of sound, divided by two.
 
-![us timing](http://mathurl.com/yc2u5ouq.png)
+\begin{equation}
+D = \frac{T_{pulse} \times v_{sound}}{2}
+\end{equation}
 
 Because the pulse is measured in microseconds, and we want the distance in centimeters, we use 0.034 centimeters/microsecond as the speed of sound. The divide by two is required because it's the time taken for the ultrasound to travel to the target and echo back again.
 
