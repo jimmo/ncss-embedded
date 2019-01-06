@@ -22,6 +22,8 @@ The **Quokka* is a board that was developed for NCSS. It's an expansion for the 
 * 4 single-colour indicator LEDs (red, orange, green, blue)
 * 6 Grove connectors
 
+TODO: photo
+
 ### Uploading code to the pyboard
 
 On the micro:bit, we program it by converting our Python code into a `.hex` file, then copying it onto the virtual USB drive created by the micro:bit. The pyboard takes this one step further -- we just put our Python files directly onto the virtual USB drive.
@@ -221,6 +223,23 @@ from quokka import *
 display.line(0, 0, 128, 64, 1)
 display.show()
 ```
+
+#### Showing images on the display
+
+If you have an image file (e.g. `.jpg` or `.png`) you can convert it into a format for the Quokka (`.qimz`) and store it to the pyboard's virtual USB drive. Your tutors will show you how to do this.
+
+To load the image, you can use `Image.load`, e.g.
+
+```python
+from quokka import *
+
+q = Image.load('quokka-46x64.qimz')
+display.fill(1)
+display.blit(q, 20, 0)
+display.show()
+```
+
+TODO: photo
 
 #### Accelerometer / Compass / Gyro
 
