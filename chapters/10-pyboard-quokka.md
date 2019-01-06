@@ -22,6 +22,8 @@ The **Quokka* is a board that was developed for NCSS. It's an expansion for the 
 * 4 single-colour indicator LEDs (red, orange, green, blue)
 * 6 Grove connectors
 
+![The Quokka](images/quokka-photo.jpg)
+
 ### Uploading code to the pyboard
 
 On the micro:bit, we program it by converting our Python code into a `.hex` file, then copying it onto the virtual USB drive created by the micro:bit. The pyboard takes this one step further -- we just put our Python files directly onto the virtual USB drive.
