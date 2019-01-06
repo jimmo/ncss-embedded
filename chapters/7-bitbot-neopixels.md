@@ -181,7 +181,7 @@ Programmable LEDs, on the other hand, have tiny integrated circuits inside of th
 
 Here's an example of four WS2812Bs wired together (this is adapted from the Quokka circuit diagram -- you'll see the Quokka later in the week).
 
-![A neopixel chain. Note how the data pins are chained (DOUT->DIN).](images/neopixel-chain.png)
+![A neopixel chain. Note how the data pins are chained: DOUT->DIN.](images/neopixel-chain.png)
 
 ### Programming
 
@@ -271,6 +271,7 @@ The code above is an example of a "control" algorithm -- it continuously adjusts
 There are two main categories of control algorithms, "open-loop" and "closed-loop" control. The difference being whether they use feedback from sensors to change their behaviour.
 
 Since these algorithms are very commonly used to control systems, there are a couple of bits of jargon that you may come across when reading about control algorithms. The three most important terms that you will come across repeatedly are:
+
 * Process value (pv) -- the current measured value (e.g. in degrees C)
 * Set point (sp) -- the desired state (i.e. the desired temperature in degrees C)
 * Output (op) -- the current control output (i.e. is the compressor on or off)
@@ -280,6 +281,7 @@ Since these algorithms are very commonly used to control systems, there are a co
 Like the first automatic light example above, no feedback from sensors is used, so the control loop is said to be "open". Instead some model of how the system operates is used to "guess" what will happen (in this case the simple model is that people leave the room within 10 minutes).
 
 Here are some examples from the bit:bot:
+
 * Drive forward 1 metre by turning on both motors at full speed for 3.7 seconds.
 * Turn left 90 degrees by turning the the motors in opposite directions for 0.9 seconds.
 * Follow a course by pre-programming motor movements.
@@ -295,6 +297,7 @@ The system operates in a loop, where sensor readings provide "feedback" into the
 ![Closed Loop Control](images/closed-loop.png)
 
 Here are some examples from the bit:bot:
+
 * Drive forward 1 metre by using the ultrasonic distance sensor to measure how far has been travelled.
 * Turn left 90 degrees using the micro:bit's compass.
 * Line following using the line sensors on the bit:bot.
@@ -356,6 +359,7 @@ When a control algorithm drives the output as a function of the difference betwe
 #### Line following
 
 For our line following algorithm, the obvious approach is to use the following values:
+
  * sp - make both sensors read "dark".
  * op - motor speeds.
  * pv - current sensor readings ("light" or "dark").
