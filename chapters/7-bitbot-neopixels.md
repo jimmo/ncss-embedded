@@ -403,7 +403,7 @@ These ultrasonic sensors work by measuring the echo time ("time of flight") of a
 
 *This is how you can measure approximately how far away lightning is by measuring the time between the flash and the boom and multiplying by 1000/340 (which is ~3).*
 
-The sensors on the bit:bot are called *HC-SR04*. You can read more about them in [the HC-SR04 datasheet](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf).
+The sensors on the bit:bot are called *HC-SR04*. You can read more about them in [the HC-SR04 datasheet: https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf).
 
 These sensors have four pins:
 
