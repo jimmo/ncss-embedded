@@ -103,6 +103,8 @@ while True:
 
 To make the Quokka more similar to the micro:bit, we've provided a `quokka` module that provides similar functionality to the `microbit` module. Like we've been doing on the micro:bit, you can use `from quokka import *`, or alternatively, `import quokka` then prefix everything with `quokka.`.
 
+You can find some example programs at [https://github.com/jimmo/quokka/tree/master/py/demos](https://github.com/jimmo/quokka/tree/master/py/demos). In particular look at `maze_accelerometer.py` for a more complicated example of what is possible.
+
 #### LEDs
 
 ```python
