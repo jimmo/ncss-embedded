@@ -310,9 +310,11 @@ while True:
 ### Controlling a servo motor
 
 Servo motors three connectors:
-* Power
+* Power (5V)
 * Ground
 * Signal (PWM)
+
+Note that the servos we have are 5V. The micro:bit is 3V, so we need a level shifter to correct the voltage.
 
 Servo motors are designed to take a PWM signal, and typically they care only about the pulse length. Importantly, their internal motor is powered by the power pin, and only controlled by the signal from the microcontroller.
 
