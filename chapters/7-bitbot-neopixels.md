@@ -194,7 +194,7 @@ for i in range(12):
 leds.show()
 ```
 
-This uses the built-in `neopixel` module that is included with micro:bit MicroPython. The code constructs an instance of the Neopixel class, telling it how many LEDs we have in the chain (`12`), and which pin the first one is connected to (`pin14`). You can check the pin number by looking at the notes on the bottom of the bit:bot.
+This uses the built-in `neopixel` module that is included with micro:bit MicroPython. The code constructs an instance of the Neopixel class, telling it how many LEDs we have in the chain (`12`), and which pin the first one is connected to (`pin13`). You can check the pin number by looking at the notes on the bottom of the bit:bot.
 
 This gives us an object, `leds`, which behaves like a list of tuples of `(red, green, blue)`. We can set the colour and brightness of any LED by assigning to that element of the list. So `leds[3] = (0, 255, 0,)` would set the fourth LED to green at full brightness. In the example above, we set all 12 LEDs to red at half brightness.
 
