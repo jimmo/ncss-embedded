@@ -30,9 +30,9 @@ On the micro:bit, we program it by converting our Python code into a `.hex` file
 
 So when you connect a pyboard (with or without the Quokka expansion), a drive will show up named `PYBFLASH`, containing the following files:
 
+* pybcdc.inf
+* README.txt
 * boot.py -- Configuration for the pyboard
-* TODO.inf
-* TODO.something
 * main.py -- Our program
 
 We can actually edit main.py directly, but it's easier to work on a file named main.py somewhere on your computer, then copy that onto the pyboard when you want to program it.
@@ -156,17 +156,6 @@ There's `button_a`, `button_b`, `button_c`, `button_d`, and `button_usr`.
 
 To match the micro:bit, the quokka module provides a `sleep` method that takes milliseconds. It's equivalent to calling `time.sleep_ms`. These two code snippets are identical:
 
-```
-
-#### Sleep
-
-To match the micro:bit, the quokka module provides a `sleep` method that takes milliseconds. It's equivalent to calling `time.sleep_ms`. These two code snippets are identical:
-
-```
-from quokka import *
-sleep(500)
-```
-
 ```python
 from quokka import *
 sleep(500)
@@ -195,7 +184,7 @@ You can clear the display using `display.clear`.
 
 The other way to display text is with `display.text` which will allow you to place text anywhere you like on the screen. It takes the text to show, x and y coordinates, and optionally a colour (0 for white, or 1 for black, defaults to white), and a scale to size it (must be an integer, defaults to 1).
 
-```
+```python
 from quokka import *
 
 display.text('hello', 10, 10, scale=2)
@@ -247,7 +236,7 @@ display.show()
 
 This works exactly like the micro:bit:
 
-```
+```python
 from quokka import *
 
 while True:
