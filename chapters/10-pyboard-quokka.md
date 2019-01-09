@@ -8,8 +8,8 @@ It has much more ROM (to store your program), RAM (memory to run your program) a
 
 | | micro:bit | pyboard lite 1.0 |
 | --- | --- | --- |
-| ROM | 256kiB | 512 kiB |
-| RAM | 16kiB | 128 kiB |
+| ROM | 256kiB | 512kiB |
+| RAM | 16kiB | 128kiB |
 | CPU | 16 MHz | 96 MHz |
 
 The **Quokka* is a board that was developed for NCSS. It's an expansion for the pyboard that adds:
