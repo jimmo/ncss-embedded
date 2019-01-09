@@ -9,14 +9,14 @@ As the name would suggest, surface mount are designed to be soldered to the surf
 so no wiring needs to go through the board, whereas through-hole components have longer leads 
 that are inserted into holes in the circuit board (and then soldered on the other side).
 
-ICs come in [*lots of different types*](https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types), but here are some ones you might see at NCSS:
+ICs come in *lots of different types*: [https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types](https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types), but here are some ones you might see at NCSS:
 
 | Package | Picture |
 | --- | --- |
-| DIP | ![DIP package](images/dip.svg) |
-| TO-220 | ![TO-220](images/to-220.svg) |
-| SOIC | ![SOIC](images/soic.jpg) |
-| SOT | ![SOT](images/sot.svg) |
+| DIP | \includegraphics[width=0.2\linewidth]{images/dip.png} |
+| TO-220 | \includegraphics[width=0.2\linewidth]{images/to-220.png} |
+| SOIC | \includegraphics[width=0.2\linewidth]{images/soic.jpg} |
+| SOT | \includegraphics[width=0.2\linewidth]{images/sot.png} |
 
 The type of package may not make a big difference in performance, but it will make a big difference in terms of fitting the device onto your circuit board, and how the device is wired up on a PCB.
 
@@ -64,7 +64,7 @@ Each connection between two devices will only transmit in one direction, so if y
 
 The signal looks like this:
 
-![UART frame](images/uart.svg)
+![UART frame](images/uart.png)
 
 Let's take a look at exactly what happens, the entire sequence of bits sent to send one byte is called a *frame*:
 1. The wire is held `HIGH`
@@ -81,7 +81,7 @@ For this to work, a few things need to be agreed by both devices before communic
 
 You might use this to communicate to the computer to the micro:bit. **Warning**: because the micro:bit only has one UART, you will lose the serial console if you do this, so it's difficult to debug.
 
-The [micro:bit documentation](https://microbit-micropython.readthedocs.io/en/latest/uart.html#microbit.uart.init) lists the default values:
+The micro:bit documentation: [https://microbit-micropython.readthedocs.io/en/latest/uart.html#microbit.uart.init](https://microbit-micropython.readthedocs.io/en/latest/uart.html#microbit.uart.init) lists the default values:
 
 ```python
 uart.init(baudrate=9600, bits=8, parity=None, stop=1, *, tx=None, rx=None)
@@ -116,7 +116,7 @@ print(data_in)
 ```
 What this code does, is once there is data on the `uart`, `sleep` for a short time and read all the data, re-initialise the serial console and `print` the data read in back to the console.
 
-Please [read the documentation](https://microbit-micropython.readthedocs.io/en/latest/uart.html) for examples of the other functions.
+Please read the documentation: [https://microbit-micropython.readthedocs.io/en/latest/uart.html](https://microbit-micropython.readthedocs.io/en/latest/uart.html) for examples of the other functions.
 
 ### SPI
 
@@ -155,7 +155,7 @@ The default pins can be found on the micro:bit pinout image:
 
 ![pinout](images/spi-i2c-pins.png)
 
-More information can be [found in the documentation](https://microbit-micropython.readthedocs.io/en/latest/spi.html)
+More information can be found in the documentation: [https://microbit-micropython.readthedocs.io/en/latest/spi.html](https://microbit-micropython.readthedocs.io/en/latest/spi.html)
 
 ### I²C
 
@@ -186,7 +186,7 @@ To communicate you can use `i2c.read` and `i2c.write` to communicate with the de
 
 It's important to connect the `SDA` to `pin20` and `SCL` to `pin19`, and the grounds of each device should be shared. It's possible to change these pins, but the accelerometer and compass use the `i2c` bus and they will stop working if the pins are changed. There are internal pull-up resistors on the micro:bit, but you may need to add these separately if the connection wires are long.
 
-As always, the [documentation](https://microbit-micropython.readthedocs.io/en/latest/i2c.html) is very helpful when using the `i2c` module.
+As always, the [documentation: https://microbit-micropython.readthedocs.io/en/latest/i2c.html](https://microbit-micropython.readthedocs.io/en/latest/i2c.html) is very helpful when using the `i2c` module.
 
 ### Drivers
 
@@ -243,6 +243,6 @@ All the underlying functionality lives in the `RotaryEncoder` class, and to just
 
 It depends on the sensors we want to use, but drivers should capture the full functionality of the device and be as simple to use as possible.
 
-Writing good drivers builds on a greater understanding of classes, often to make things more convenient (such as using [`property`](https://docs.python.org/3/library/functions.html#property) to only access variables via `getter` and `setter` methods (a method is a function inside an object).
+Writing good drivers builds on a greater understanding of classes, often to make things more convenient (such as using [`property` - https://docs.python.org/3/library/functions.html#property](https://docs.python.org/3/library/functions.html#property) to only access variables via `getter` and `setter` methods (a method is a function inside an object).
 
 As you write more Python programs, you'll learn more tricks like this. But our advice is to not try and make a spaceship driver from the start, focus on getting the functionality, and ask yourself how *you* would like to make it more convenient to use.
