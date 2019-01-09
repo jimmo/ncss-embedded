@@ -333,3 +333,11 @@ while True:
   if m:
     display.print(m)
 ```
+
+### More info
+
+The board designs for the quokka are at [https://github.com/jimmo/quokka/tree/master/hardware](https://github.com/jimmo/quokka/tree/master/hardware).
+
+The current MicroPython firmware is at [https://github.com/jimmo/micropython/tree/ncss-2019-quokka](https://github.com/jimmo/micropython/tree/ncss-2019-quokka) (adds the `BOARD=PYBLITEV10-QUOKKA` variant, the neopixel driver, and the quokka modules).
+
+Some sample programs are at [https://github.com/jimmo/quokka/tree/master/py/demos](https://github.com/jimmo/quokka/tree/master/py/demos).
