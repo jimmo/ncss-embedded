@@ -1,4 +1,4 @@
-# Integrated circuits
+# Chapter 9 -- Integrated circuits
 
 Integrated circuits (ICs), are chips that perform a specific function in electronics.
 

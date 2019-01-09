@@ -1,4 +1,4 @@
-# Chapter 10 - Pyboard, Quokka
+# Chapter 10 -- Pyboard, Quokka
 
 The **pyboard** is another MicroPython-based microcontroller board. You can read more about it at [https://store.micropython.org/pyb-features](https://store.micropython.org/pyb-features). At NCSS we are using the Pyboard lite v1.0. The pyboard is developed by the author of MicroPython, Damien George.
 
