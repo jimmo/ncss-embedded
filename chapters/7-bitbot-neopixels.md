@@ -438,7 +438,9 @@ def distance_cm():
   pin15.write_digital(0)
   # Read from the pin to turn it back to an input.
   pin15.read_digital()
-  pulse_time = machine.time_pulse_us(pin15, 0, 1)
+  # Turn on the internal pull-up resistor
+  pin15.set_pull(pin15.PULL_UP)
+  pulse_time = machine.time_pulse_us(pin15, 1)
   if pulse_time < 0:
     return 0
   return pulse_time * 0.034 / 2
