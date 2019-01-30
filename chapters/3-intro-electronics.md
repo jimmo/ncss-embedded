@@ -23,7 +23,6 @@ Now that we've established that an electron flow is current and that electrons f
 
 A higher voltage difference should cause a higher current to flow (or reversing that statement, a higher current means a higher voltage difference). What if they were just related by a simple constant? The relation might look like:
 
-```{=latex}
 \begin{equation}
 \begin{split}
 V &= I \times R \\
@@ -31,7 +30,6 @@ I &= \frac{V}{R} \\
 R &= \frac{V}{I}
 \end{split}
 \end{equation}
-```
 
 And in fact, this is Ohm's famous law: The voltage across a device will be the current through the device times the resistance of the device. Or equivalently, the current through the device is equal to the voltage divided by the resistance. We've had to introduce a new constant: **resistance**, to describe how current flows through various objects. Like its name suggests, resistance resists current flow. The unit of resistance is an Ohm (Ω).
 
@@ -62,27 +60,21 @@ Before we start dropping equations, let's again try and figure out what they sho
 
 The simplest way we might think about implementing the series case is to have all the resistances add together, and this is indeed what happens. The total series resistance is given by:
 
-```{=latex}
 \begin{equation}
 V_{tot} = V_1 + V_2 + \cdots + V_N
 \end{equation}
-```
 
 In parallel the situation is slightly more difficult as we have to take into account the multiple paths that current can flow. The equation becomes:
 
-```{=latex}
 \begin{equation}
 V_{tot} = \frac{1}{\frac{1}{V_1} + \frac{1}{V_2} + \cdots + \frac{1}{V_N}}
 \end{equation}
-```
 
 Although this looks like a complicated equation, you can still draw some intuitive conclusions. If we have two parallel resistors with equal resistance, then since we've doubled the number of paths that electrons can take through equal resistances, the total resistance halves:
 
-```{=latex}
 \begin{equation}
 V_{tot} = \frac{V}{2}
 \end{equation}
-```
 
 Try to plug two resistors into the above formula and see if you can get the same result...
 
@@ -108,24 +100,20 @@ Since ground is just a point we choose, we have to make sure that whenever we ar
 
 A voltage divider is one of the most common circuits that exist! It looks like this:
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.2\linewidth]{images/Resistive_divider2.png}
 \caption{A voltage divider} 
 \label{fig:v_div} 
 \end{figure}
-```
 
 Given a voltage input, it produces a fraction of the input as the output.
 
 The equation for the output is:
 
-```{=latex}
 \begin{equation}
 V_{out} = V_{in} \frac{R_2}{R_1 + R_2}
 \end{equation}
-```
 
 The voltage divider produces a smaller voltage using the ratio of resistors, which we can calculate from the equation above. For example we can make a simple volume control by changing the ratios of `R1`, `R2` such that the output voltage being fed to our headphones is reduced.
 
@@ -135,22 +123,18 @@ It's hard for us to read resistance directly, but the micro:bit is *really* good
 
 What value resistor should we pick for any given sensor? The aim of the voltage divider circuit should be to maximize the change in voltage when our sensor measures some change. If we look at how the output voltage of a voltage divider varies as a function of the sensor resistance, what we find is that we get the **most sensitivity** to changes in resistance when the value of the resistor in the voltage divider is set to:
 
-```{=latex}
 \begin{equation}
 R_{opt} = \sqrt{R_{min} \times R_{max}}
 \end{equation}
-```
 
 In practice this means we should measure the resistance of the sensor at the two extremes of what we want to measure (for example in a bright room, and a dark room if we were using a resistive light sensor), and choose a resistor value that we have that occurs between these two extremes, as close as possible to the optimum.
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.9\linewidth]{images/Vdiv.png}
 \caption{Optimizing the sensitivity of a voltage divider} 
 \label{fig:v_div_sens}
 \end{figure}
-```
 
 ### Calibrating Sensors
 
@@ -191,14 +175,12 @@ Say we wanted to connect a button to a controller (we do want to do that, a lot)
 
 For starters, it's possible to wire it directly to the positive rail like this:
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.15\linewidth]{images/floating_switch.png}
 \caption{A floating switch. This probably won't work!} 
 \label{fig:float_switch}
 \end{figure}
-```
 
 But how do we know what the voltage is at the `pin` when the switch is open (not pressed)?
 
@@ -206,27 +188,23 @@ We don't! The pin is *floating*, which means we can't tell what the voltage at t
 
 So what we do is use a resistor to *pull* the voltage to a known state when it isn't connected to anything.
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.15\linewidth]{images/pulldown_switch.png}
 \caption{A pull-down resistor on a switch} 
 \label{fig:pull_down}
 \end{figure}
-```
 
 When the switch is open, the resistor pulls the voltage at the pin to 0V, and when it is closed, this connects the pin directly to *high* (3.3V), so we never have an undefined voltage. This is called a *pull-down* resistor since it pulls the voltage down to `0V`
 
 We can also invert the behavior of the switch by changing around the order of the switch and the resistor.
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.15\linewidth]{images/pullup_switch.png}
 \caption{A pull-up resistor on a switch} 
 \label{fig:pull_up}
 \end{figure}
-```
 
 In this case the opposite is true, when the switch is open the voltage at the pin is `3.3V`, and when the switch is closed, the voltage is `0V`. For this reason it is called a *pull-up* resistor.
 
@@ -246,14 +224,12 @@ So what we do in this case, is use a level-shifter to transform the waveform.
 
 Rather than building a circuit to do this ourselves (which you could do using a few transistors), we use an *integrated circuit* (or chip) designed for this purpose. One example is the 74AHCT125, which converts a `3.3V` input signal to a `5V` output signal (as shown in the diagram below).
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.6\linewidth]{images/level-shifter.png}
 \caption{Level shifting a signal from 3.3V to 5V} 
 \label{fig:lvl_shift}
 \end{figure}
-```
 
 Level shifting can be generalised in that it is shifting from *any* voltage level to *any other* voltage level. It is quite common the shift the other way (`5V`→`3.3V` where you might use `74LVC245` chip to do this).
 
@@ -283,14 +259,12 @@ Diodes are *"non-linear"* or *"non-ohmic"* devices, which means that Ohm's law d
 
 Something with a very low resistance effectively looks like a short circuit, which means that a lot of current will flow and potentially damage the LED or the thing that is powering it (e.g. the micro:bit pin). So what we need is a way to ensure that only a specific current flows, which is why every time we use an LED, we also need a *current-limiting resistor*.
 
-```{=latex}
 \begin{figure}
 \centering
 \includegraphics[width=0.1\linewidth]{images/led_res.png}
 \caption{A current limiting resistor on an LED} 
 \label{fig:led_curr}
 \end{figure}
-```
 
 *Note that in the symbol for an LED, the bar points towards the cathode (which should be connected to the lower voltage, i.e. ground).
 
@@ -298,7 +272,6 @@ Typically we choose a desired brightness for our LED, and look up the LED's *dat
 
 Here's the formula to figure out what resistor to use for a desired current:
 
-```{=latex}
 \begin{equation}
 \begin{split}
 V_{res} &= V_{pin} - V_{led} \\
@@ -306,18 +279,15 @@ R &= \frac{V_{res}}{I} \\
 R &= \frac{V_{pin} - V_{led}}{I}
 \end{split}
 \end{equation}
-```
 
 The *V<sub>led<sub>* is the *forward voltage drop* across the LED. This is a property of the LED and it will be in the data sheet. Typically it's around 2 volts for a red LED.
 
 So if we have an LED that is rated for 20mA at full brightness and has a forward drop of 2 volts, then we get:
 
-```{=latex}
 \begin{alignat}{3}
 &V_{res} \qquad &=& \qquad 3.3 - 2 \qquad &=& \qquad 1.3V \\
 &R \qquad &=& \qquad \frac{1.3V}{0.02A} \qquad &=& \qquad 65\Omega
 \end{alignat}
-```
 
 If we wanted it to be less bright, then for 10mA, the same calculations would yield 130 Ohms.
 
