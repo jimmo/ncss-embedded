@@ -12,7 +12,7 @@ The BBC micro:bit is a small, handheld, embedded microcontroller, which we will 
 \end{figure}
 ```
 
-To get started we're going to be working through the micro:bit Crash Course ([https://groklearning.com/course/ncss-2019-embedded/](https://groklearning.com/course/ncss-2019-embedded/)), on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
+To get started we're going to be working through the micro:bit Crash Course ([https://groklearning.com/course/ncss-2020-embedded/](https://groklearning.com/course/ncss-2020-embedded/)), on the Grok Learning platform. For those of you who have done the NCSS Challenge, this will be a very familiar interface, with the key difference that our code will now be running on an emulated micro:bit in the browser.
 
 The crash course will go through everything you need to play around with the micro:bit, as well as getting you up to speed on Python. In addition to the course, we give a brief description of the peripherals of the micro:bit below, and go through some key Python concepts, which you can use as a reference if you ever get stuck.
 

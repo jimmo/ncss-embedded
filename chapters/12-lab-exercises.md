@@ -20,7 +20,7 @@ Download the "PortaMu" editor from: https://codewith.mu/en/download and unzip it
 
 ## Lab 1 -- Saturday morning
 
-1. Complete the Grok *micro:bit Crash Course* ([https://groklearning.com/course/ncss-2019-embedded/](https://groklearning.com/course/ncss-2019-embedded/)) up to the end of module **four** (i.e. up to the "Simple Snake" problem).
+1. Complete the Grok *micro:bit Crash Course* ([https://groklearning.com/course/ncss-2020-embedded/](https://groklearning.com/course/ncss-2020-embedded/)) up to the end of module **five** (i.e. up to the "Reaction Time Test" problem).
 
 The Grok course will likely take most of the lab time, but here are some extension exercises:
 
@@ -46,7 +46,7 @@ For example, if the input sequence was **A**, **B**, **A**, **A+B**, **B**, **A+
 
 ## Lab 2 -- Saturday afternoon
 
-1. Complete the Grok *micro:bit Crash Course* ([https://groklearning.com/course/ncss-2019-embedded/](https://groklearning.com/course/ncss-2019-embedded/)) up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
+1. Complete the Grok *micro:bit Crash Course* ([https://groklearning.com/course/ncss-2020-embedded/](https://groklearning.com/course/ncss-2020-embedded/)) up to the end of module **eight** (i.e. up to the "Roll the Dice" problem).
 
 2. In the crash course we saw how connect an external button. Ask a tutor to get a Grove Adaptor and a button and try out your code from the "Dead Man's Switch" problem. We'll learn much more about these Grove components in later labs.
     1. When we use external buttons, we only have `read_digital` to access the current state of the pin. This is kind of like `is_pressed`. Implement some code that emulates `was_pressed` for an external button (i.e. count the number of times the button was pressed, show this number on the display).
@@ -182,7 +182,7 @@ Use the student number that you use when counting off in your groups.
 3. Experiment with the micro:bit radio. Build a test program to measure how far away you can reliably receive a signal.
     1. Use the `radio.receive_full` method to get the RSSI (Received signal strength indication). This will give you an idea of how well the micro:bit is receiving the signal. How does this value change with distance, relative orientation of the two micro:bits, or if the signal has to travel through walls.
     2. How can you make your transmissions more reliable if some messages are lost? Try writing a program that sends messages multiple times and see if that improves the radio reliability?
-	3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
+    3. Now that your sender is sending each message multiple times, how can the receiver tell whether it's received the same message more than once? Can you somehow identify the messages so that you can tell if they're duplicates at the receiver?
 
 4. Most computer networks have a concept of a router, which is a device that can forward network messages to other devices. Write a program for a micro:bit that will act as a simple relay router that will resend any messages that it receives. See if you can use this to improve the range in your earlier experiments.
 
