@@ -1,0 +1,45 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage[round]{natbib}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage[left=20mm,top=20mm]{geometry}
+\usepackage{algorithmic}
+\usepackage{subcaption}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{tokcycle}
+\usepackage{newunicodechar}
+
+\title{Test Things}
+\author{Johnny Example}
+\date{\today}
+
+% Declare emoji
+\newfontfamily\Emoji{joypixels-apple}[
+    Path = /Users/spauka/ncss/ncss-embedded/,
+    Extension = ".ttc",
+    ]
+%\newfontfamily\Emoji{DejaVu Sans}
+\def\emoji#1{\text{
+\includegraphics[width=1em,valign=t,raise=-0.1em]{emoji/#1.png}
+}}
+\newunicodechar{😛}{{\emoji{1f600}}}
+\newunicodechar{⭐}{{\emoji{2b50}}}
+\declareunicodecharacter{2764}{{\emoji{2764}}} % Heart
+
+\begin{document}
+\maketitle
+
+%%%
+%
+\section{Introduction}
+This is some text: 😛. This is some more text.
+
+\end{document}

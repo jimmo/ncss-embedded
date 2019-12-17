@@ -1,4 +1,4 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{unicode=true,colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 
 \documentclass{manual}
@@ -12,7 +12,7 @@
 \usepackage{listings}
 \usepackage{lmodern}
 \usepackage{subfig}
-\usepackage{ifxetex,ifluatex}
+\usepackage[export]{adjustbox}
 \usepackage{fixltx2e} % provides \textsubscript}
 \usepackage{makeidx}
 \usepackage{pgf}
@@ -22,14 +22,7 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{float}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
+\usepackage{hyperref}
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \usepackage{color}
@@ -102,7 +95,18 @@
 \setkeys{Gin}{width=0.4\linewidth}
 
 \usepackage{alllistings}
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{newunicodechar}
+
+\def\emoji#1{\text{
+\includegraphics[width=1em,valign=t,raise=-0.1em]{emoji/#1.png}
+}}
+\newunicodechar{😛}{{\emoji{1f600}}}
+\newunicodechar{⭐}{{\emoji{2b50}}}
+\DeclareUnicodeCharacter{2764}{{\emoji{2764}}} % Heart
+\DeclareUnicodeCharacter{2665}{{\emoji{2764}}} % Heart
+\newunicodechar{🧡}{{\emoji{1f9e1}}}
+%\newunicodechar{\char"2764}{{\emoji{2764}}}
+%\newunicodechar{♥️}{{\emoji{2764}}}
 
 \newcommand{\dept}{School of Information Technologies}
 \newlength{\mycodewidth}

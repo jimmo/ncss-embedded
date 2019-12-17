@@ -15,8 +15,8 @@ clean:
 	pandoc -o $@ $<
 
 notes.pdf: notes.tex $(TEX_CHAPTERS)
-	xelatex notes
-	xelatex notes
+	lualatex notes
+	lualatex notes
 	makeindex notes
-	xelatex notes
+	lualatex notes
 
