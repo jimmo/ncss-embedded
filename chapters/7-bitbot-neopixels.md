@@ -76,10 +76,10 @@ pin1.write_analog(512)
 
 To move backwards:
 ```python
-pin8.write_digital(0)
+pin8.write_digital(1)
 pin12.write_digital(1)
-pin0.write_analog(256)
-pin1.write_analog(767)
+pin0.write_analog(512)
+pin1.write_analog(512)
 ```
 
 To spin on the spot, you can drive the motors in opposite directions:
@@ -113,10 +113,10 @@ while True:
   right_sensor = pin5.read_digital()
 
   if left_sensor or right_sensor:
-    # Detected dark on either sensor, stop the bit:bot.
+    # Detected a reflective surface on either sensor, stop the bit:bot.
     pin0.write_analog(0)
     pin1.write_analog(0)
-  break
+    break
 ```
 
 During the labs we will usually be following a line made of masking tape against the black carpet. As a result, the sensors will read `HIGH` when the sensors run over the tape.
