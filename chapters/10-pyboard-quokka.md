@@ -232,6 +232,8 @@ display.show()
 
 ![Quokka with a Quokka showing a Quokka](images/quokka-quokka.jpg)
 
+You can access some sample images, including the one from the example above, at ![https://github.com/jimmo/quokka-projects/tree/master/quokka_images/examples](https://github.com/jimmo/quokka-projects/tree/master/quokka_images/examples).
+
 #### Accelerometer / Compass / Gyro
 
 This works exactly like the micro:bit:
@@ -255,38 +257,27 @@ You can access the pins in the six grove connectors using `grove_a.pin0` and `gr
 
 #### Neopixels
 
-Everyone's favourite feature! This also works similar to the micro:bit where you construct a `NeoPixel` object with the pin and number of LEDs.
+Everyone's favourite feature! The quokka has 8 NeoPixels on board. We can use the neopixels in a similar way to the bit:bots.
 
 ```python
 from quokka import *
 import neopixel
 
-# Strip of 20 LEDs on pin X1.
-n = neopixel.NeoPixel(machine.Pin('X1'), 20)
+# Use the neopixels on the quokka
+n = neopixel.NeoPixel()
 # Set the first one to red.
 n[0] = (255, 0, 0)
 n.show()
 ```
 
-Generally you'll be plugging these in via the Grove connectors, so you can use:
+If you're plugging them in via the Grove connectors, you need to tell the neopixel object which pin the neopixels are connected to, and the number of neopixels in the strip.
 
 ```python
 from quokka import *
 import neopixel
 
+# Connect 20 neopixels on pin 0 of grove connector A.
 n = neopixel.NeoPixel(grove_a.pin0, 20)
-n[0] = (255, 0, 0)
-n.show()
-```
-
-To access the built-in NeoPixels on the Quokka, just pass no pin or number of LEDs to the `NeoPixel` constructor:
-
-```python
-from quokka import *
-import neopixel
-
-# Set the first Quokka built-in NeoPixel to red.
-n = neopixel.NeoPixel()
 n[0] = (255, 0, 0)
 n.show()
 ```
@@ -300,7 +291,7 @@ import neopixel
 # Create a rainbow effect on the built-in NeoPixels.
 n = neopixel.NeoPixel()
 for i in range(8):
-  n[0] = i * 14
+  n[i] = i * 14
 n.show()
 ```
 
