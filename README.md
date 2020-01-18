@@ -1,3 +1,10 @@
+# RESPOSITORY MOVED
+
+This repository has been moved to the main ncss-summer-school repository.
+Further changes and bugs should be directed there.
+
+The contents of the repository before the move are archived here.
+
 # ncss-embedded
 Booklet (lectures, lab notes, samples and demos) for NCSS Embedded stream
 
